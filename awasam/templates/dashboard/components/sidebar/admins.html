@@ -1,0 +1,258 @@
+{% load static %}
+
+<style>
+    .pl-1 {
+        padding-left: 10px !important;
+    }
+</style>
+
+<div class="sticky" style="margin-bottom: -67.4px;">
+    <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
+    <div class="app-sidebar ps ps--active-y">
+        <div class="side-header">
+            <a class="header-brand1" href="{% url 'home' %}">
+                <img src="{% static 'dashboard/logo/logo.png' %}" width="50" class="header-brand-img desktop-logo" alt="">
+                <img src="{% static 'dashboard/logo/logo.png' %}" width="50" class="header-brand-img light-logo1" alt="">
+            </a>
+            <!-- LOGO -->
+        </div>
+        <div class="main-sidemenu">
+            <div class="slide-left disabled" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
+                </svg></div>
+            <ul class="side-menu">
+                <li class="sub-category">
+
+
+                    <span class="badge bg-secondary fs-14 me-2">Super Admin Account</span>
+
+                </li>
+
+
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{% url 'dashboard:admins:home' %}">
+                        <i class="side-menu__icon fa-light fa-grid-2"></i>
+                        <span class="side-menu__label pl-1">Dashboard</span>
+                    </a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{% url 'dashboard:admins:admin_courses_view' %}">
+                        <i class="side-menu__icon fa-light fa-cart-shopping-fast"></i>
+                        <span class="side-menu__label pl-1">
+                            Courses
+                        </span>
+                        <span class="badge bg-pink side-badge">{{courses.count}}</span>
+                    </a>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-comment"></i>
+                        <span class="side-menu__label pl-1">SMS Balance (0)</span>
+                    </a>
+                </li>
+
+
+
+                <li class="slide">
+                    <a href="javascript:void(0);" class="side-menu__item has-link" data-bs-toggle="sidebar-right" data-target=".sidebar-right">
+                        <i class="side-menu__icon fa-light fa-bell animate"></i>
+                        <span class="pulse-danger "></span>
+                        <span class="side-menu__label pl-1">Notifications
+                        </span>
+                        <span class="badge bg-pink side-badge">0</span>
+                    </a>
+                </li>
+
+
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="{% url 'dashboard:admins:admin_orders_view' %}">
+                        <i class="side-menu__icon fa-light fa-bag-shopping"></i>
+                        <span class="side-menu__label pl-1">Orders</span>
+                        <span class="badge bg-pink side-badge">{{orders_count}}</span>
+                        <i class="angle hor-angle"></i>
+                    </a>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-comment"></i>
+                        <span class="side-menu__label pl-1">Chats</span>
+                    </a>
+                </li>
+
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-newspaper"></i>
+                        <span class="side-menu__label pl-1">NEWS (0)</span>
+                    </a>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-circle-exclamation"></i>
+                        <span class="side-menu__label pl-1">Rules &amp; Regulations</span>
+                    </a>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-files"></i>
+                        <span class="side-menu__label pl-1">Samples</span>
+                    </a>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-exchange"></i>
+                        <span class="side-menu__label pl-1">Custom Invoices (1)</span>
+                    </a>
+                </li>
+
+                <li class="slide" style="display: none">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-sign-in"></i>
+                        <span class="side-menu__label pl-2">Subscriptions</span>
+                    </a>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-file"></i>
+                        <span class="side-menu__label pl-1">Media Files</span>
+                    </a>
+                </li>
+
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-money-bill-1-wave"></i>
+                        <span class="side-menu__label pl-1">Finance</span>
+                    </a>
+                </li>
+
+
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-envelope"></i>
+                        <span class="side-menu__label pl-1">Communication</span>
+                    </a>
+                </li>
+
+
+
+
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                        <i class="side-menu__icon fa-light fa-files"></i>
+                        <span class="side-menu__label pl-1">Manage Content</span>
+                        <span class="badge bg-pink side-badge">&gt;</span>
+                        <i class="angle fa-light fa-chevrons-right hor-angle"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li class="side-menu-label1"><a href="">Users</a></li>
+                        <li><a href="" class="slide-item"> Posts</a></li>
+                        <li><a href="" class="slide-item"> Pages</a></li>
+                        <li><a href="" class="slide-item"> Internal Link Manager</a></li>
+                        <li><a href="" class="slide-item"> Main Pages</a></li>
+                    </ul>
+                </li>
+
+
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                        <i class="side-menu__icon fa-light fa-rectangle-ad"></i>
+                        <span class="side-menu__label pl-1">Campaign</span>
+                        <span class="badge bg-pink side-badge">&gt;</span>
+                        <i class="angle fa-light fa-chevrons-right hor-angle"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li class="side-menu-label1"><a href="">Dashboard</a></li>
+                        <li><a href="" class="slide-item">Create</a></li>
+                        <li><a href="" class="slide-item">Reports</a></li>
+                        <li><a href="" class="slide-item">Audiences</a></li>
+
+
+
+                    </ul>
+                </li>
+
+
+
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="javascript:void(0)">
+                        <i class="side-menu__icon fa-light fa-file-invoice-dollar"></i>
+                        <span class="side-menu__label pl-1">Manage Invoices</span>
+                        <span class="badge bg-pink side-badge">&gt;</span>
+                        <i class="angle fa-light fa-chevrons-right hor-angle"></i>
+                    </a>
+                    <ul class="slide-menu">
+                        <li class="side-menu-label1"><a href="">Writer Invoices</a></li>
+                        <li><a href="" class="slide-item"> Writer Invoices</a></li>
+                        <li><a href="" class="slide-item"> Editor Invoices</a></li>
+                        <li><a href="" class="slide-item"> Manager Invoices</a></li>
+                        <li><a href="" class="slide-item"> Author Invoices</a></li>
+
+
+
+                    </ul>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-vial-circle-check"></i>
+                        </i><span class="side-menu__label pl-1">Writer Tests</span>
+                    </a>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-exchange">
+                        </i><span class="side-menu__label pl-1">System Issues</span>
+                    </a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-globe">
+                        </i><span class="side-menu__label">Manage Websites</span>
+                    </a>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fa-light fa-gear"></i>
+                        <span class="side-menu__label pl-1">Order Settings</span>
+                    </a>
+                </li>
+
+
+                <hr style="background-color: grey;">
+                <a class="nav-link icon theme-layout nav-link-bg layout-setting">
+                    <span class="dark-layout">
+                        Dark Mode
+                        <i class="fa-light fa-moon" style="transform: rotate(30deg);"></i>
+                    </span>
+                    <span class="light-layout">
+                        Light Mode
+                        <i class="fa-light fa-sun"></i>
+                    </span>
+                </a>
+
+            </ul>
+            <div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
+                </svg>
+            </div>
+        </div>
+        <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
+            <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
+        </div>
+        <div class="ps__rail-y" style="top: 0px; height: 769px; right: 0px;">
+            <div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 399px;"></div>
+        </div>
+    </div>
+    <!--/APP-SIDEBAR-->
+</div>

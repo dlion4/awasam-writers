@@ -1,0 +1,35 @@
+{% extends 'dashboard/client/base.html' %}
+{% load static %}
+
+{% block css %}{% endblock css %}
+
+{% block content %}
+<!-- ROW OPEN -->
+<div class="row row-cards" style="padding-top: 80px;">
+
+  <div class="col-lg-8 col-xl-8">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Add New order</h4>
+      </div>
+      <div class="card-body">
+        <div class="card-pay">
+          {% include "dashboard/client/components/order/tabs.html" %}
+          <p style="text-align: center;">This product is coming soon</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4 col-xl-4">
+    <div class="sticky-top">
+
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'dashboard/assets/ajax/libs/jquery/3.2.1/jquery.min.js' %}"></script>
+<!-- ROW CLOSED -->
+{% endblock content %}
+
+{% block javascript %}{% endblock javascript %}

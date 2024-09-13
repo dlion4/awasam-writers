@@ -1,0 +1,190 @@
+{% extends 'dashboard/writer/base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- ROW OPEN -->
+<div class="row row-cards" style="padding-top: 40px;">
+    <div class="main-container container-fluid">
+        <h3>Recent orders</h3>
+
+        <div class="row ">
+            <div class="col-12 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        {% for order in orders %}
+                        <div class="row">
+
+                            <div class="col-sm-3">
+                                {% if order.type == "N" %}
+                                <a href="{{order.get_writer_order_absolute_url}}">
+                                    {{order.topic|truncatewords:"5"}}
+                                </a>
+                                {% else %}
+                                <a href="{{order.get_writer_order_absolute_url}}">
+                                    {{order.title|truncatewords:"5"}}
+                                </a>
+                                {% endif %}
+                                <br>
+
+                                <span style="font-size: 10px; color: green;">{{order.order_date|timesince}}
+                                    ago</span>
+
+                                <span style="font-size: 11px;" class="fw-semibold mt-sm-2 d-block">
+                                    {% if order.type == "N" %}
+                                    <a href="{{order.get_writer_order_absolute_url}}">
+                                        Order No.
+                                        {{order.pk}}
+                                        |
+                                        {{order.get_subject_display}},
+
+                                        {{order.assignment_size_pages_text}}
+
+                                        {{order.number_of_weeks_or_assignments}}
+
+                                    </a>
+                                    {% elif order.type == "C" %}
+                                    <a href="{{order.get_writer_order_absolute_url}}">
+                                        Order No.
+                                        {{order.pk}}
+                                        |
+                                        {{order.get_subject_display}},
+                                        {{order.number_of_weeks_or_assignments}}
+                                    </a>
+                                    {% else %}
+                                    <a href="">
+                                        Order No.
+                                        Some random number here
+                                    </a>
+                                    {% endif %}
+
+                                </span>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <span class="fw-semibold mt-sm-2 d-block">USD
+                                    {% if order.type == "N" %}
+                                    {{order.price}}
+                                    {% elif order.type == "C" %}
+                                    {{order.course_budget}}
+                                    {% else %}
+                                    {{order.exam_budget}}
+                                    {% endif %}
+                                    <br>
+                                </span>
+                                <span class="badge bg-info-transparent rounded-pill text-success p-2 px-3">
+                                    {% if order.type == "N" %}
+                                    Normal order
+                                    {% elif order.type == "C" %}
+                                    Course Order
+                                    {% else %}
+                                    Exam Order
+                                    {% endif %}
+                                </span>
+                            </div>
+                            <div class="col-sm-3 d-flex justify-content-center align-items-center">
+                                <div class="mt-sm-1 d-block">
+                                    {% if order.is_completed %}
+                                    {% if order.is_assigned %}
+                                    <span class="badge bg-secondary fs-14 me-2">Completed</span>
+                                    {% else %}
+                                    <span class="badge bg-secondary fs-14 me-2">Completed (Not Assigned)</span>
+                                    {% endif %}
+                                    {% elif order.is_assigned %}
+                                    <span class="badge bg-secondary fs-14 me-2">Assigned</span>
+                                    {% else %}
+                                    <span class="badge bg-secondary fs-14 me-2">Not Assigned/Completed</span>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            <div class="col-sm-2 d-flex justify-content-center align-items-center">
+                                <div class="btn-group align-top">
+                                    <a href="" class="btn btn-sm btn-default badge">
+                                        <i class="fa fa-comments"></i>
+                                        1
+                                    </a>
+                                    <nav class="nav">
+                                        <div class="">
+                                            <div class="dropdown">
+                                                <a class="nav-link" href="javascript:void(0)" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-end">
+
+                                                    <a class="dropdown-item" data-bs-target="#decline-order{{order.pk}}" data-bs-toggle="modal" href="">
+                                                        <i class="fa fa-trash"></i>
+                                                        Decline
+                                                    </a>
+                                                    {% if order.type == "N" %}
+                                                    <a class="dropdown-item" data-bs-target="#upload-order{{order.pk}}" data-bs-toggle="modal" href="">
+                                                        <i class="fa fa-cloud"></i>
+                                                        Uploading Assignment
+                                                    </a>
+                                                    {% endif %}
+                                                    <a class="dropdown-item" href="{{order.get_writer_order_absolute_url}}">
+                                                        <i class="fa fa-eye"></i>
+                                                        View Assignment
+                                                    </a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </nav>
+
+
+                                    <!-- confirm payment modal-->
+                                    <div class="modal fade" id="upload-order{{order.pk}}">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content country-select-modal">
+                                                <form action="{% url 'dashboard:writers:writer_orders_view' %}" method="post" enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    <div class="modal-header">
+                                                        <h6 class="modal-title">Upload this {{order.type}} order of id #{{order.pk}}</h6>
+                                                        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                                                            <span aria-hidden="true">×</span></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-horizontal">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="order_type" value="{{order.type}}">
+                                                            <input type="hidden" name="order_id" value="{{order.pk}}">
+                                                            <div class=" row mb-4">
+                                                                <label class="col-md-3 form-label">Upload</label>
+                                                                <div class="col-md-9">
+                                                                    <input type="file" name="file" id="id_file" class="form-control">
+                                                                </div>
+                                                                <div class="py-2"></div>
+                                                                <label class="col-md-3 form-label">Comment (optional)</label>
+                                                                <div class="col-md-9">
+                                                                    <textarea name="comment" id="id_comment" rows="5" class="form-control" placeholder="what does the client need to know about the order"></textarea>
+                                                                </div>
+                                                            </div>
+                                                            <div class=" row mb-4">
+                                                                <div class="col-md-9">
+                                                                    <button type="submit" class="btn btn-success">Upload Final File</button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <hr style="padding: 2px; color:rgb(18, 24, 24);" />
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock content%}

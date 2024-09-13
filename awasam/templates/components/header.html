@@ -1,0 +1,118 @@
+{% load static%}
+
+<header class="header">
+
+    <div class="header-dis">
+        <div class="layout-wrapper">
+            <div class="header-dis__row">
+                <p>Don't overpay! Place you first order with a <span>5% DISCOUNT</span><img src="{% static 'images/main/sup.png' %}" alt="sup"></p>
+                <p class="hid"><span>5% DISCOUNT</span><img src="{% static 'images/main/sup.png' %}" alt="sup"></p>
+                <a href="">
+                    <div>NEW CUSTOMER</div>
+                </a>
+
+            </div>
+            <div class="header-dis__close"><img src="{% static 'images/main/close.svg' %}" alt="close"></div>
+        </div>
+    </div>
+    <div class="layout-wrapper">
+        <div class="header__content">
+            <a href="{% url 'home' %}" class="logo">
+                <img class="logo-pc" src="{% static 'images/main/logo.svg' %}" alt="logo">
+                <img class="logo-mob" src="{% static 'images/main/logo-2.svg' %}" alt="logo">
+            </a>
+            <a href="tel:+18889867161" class="tel-trigger">
+                <span class="tel-trigger__img">
+                    <img src="{% static 'images/main/tel.svg' %}" alt="tel">
+                </span>
+                <span class="tel-trigger__title">1-888-986-7161</span>
+            </a>
+            <nav>
+                <div class="nav-hidden">
+                    <a href="index.htm" class="logo">
+                        <img class="logo-pc" src="{% static 'images/main/logo.svg' %}" alt="logo">
+                        <img class="logo-mob" src="{% static 'images/main/logo-2.svg' %}" alt="logo">
+                    </a>
+                    <div class="header-hidden">
+                        <a class="sign-link" href="customer/index.htm">
+                            Sign In
+                            <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7.14022 9.97586C6.89612 10.22 6.89612 10.6157 7.14022 10.8597C7.38428 11.1038 7.78003 11.1038 8.02413 10.8597L10.4419 8.44193C10.6853 8.19852 10.6849 7.80099 10.4419 7.55805L8.02413 5.14024C7.78003 4.89615 7.38428 4.89615 7.14022 5.14024C6.89616 5.38433 6.89612 5.78005 7.14022 6.02411L8.49113 7.37499H0.625C0.279813 7.37499 0 7.6548 0 7.99999C0 8.34518 0.279813 8.62499 0.625 8.62499H8.49113L7.14022 9.97586Z" fill="#1A2535"></path>
+                                <path d="M13.5482 0.242188C13.4298 0.0894063 13.2474 0 13.0542 0H5.3125C4.96731 0 4.6875 0.279813 4.6875 0.625C4.6875 0.970187 4.96731 1.25 5.3125 1.25H12.7412C14.1061 3.14175 14.75 5.60781 14.75 8C14.75 10.3911 14.1066 12.8576 12.7412 14.75H5.3125C4.96731 14.75 4.6875 15.0298 4.6875 15.375C4.6875 15.7202 4.96731 16 5.3125 16H13.0542C13.2474 16 13.4298 15.9106 13.5482 15.7578C15.2088 13.6147 16 10.7774 16 8C16 5.22294 15.2089 2.38541 13.5482 0.242188Z" fill="#1A2535"></path>
+                            </svg>
+                        </a>
+                        <a href="" class="btn-el fs-18btn-el__lightgreen header-btn">
+                            <span>Order</span>
+                        </a>
+                        <a href="#" class="menu-trigger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="nav-list">
+                    <a href="tel:+18889867161" class="tel-trigger">
+                        <span class="tel-trigger__img">
+                            <img src="{% static 'images/main/tel.svg' %}" alt="tel">
+                        </span>
+                        <span class="tel-trigger__title">1-888-986-7161</span>
+                    </a>
+                    <a class="nav-item" href="{% url 'home' %}">Home</a>
+                    <a class="nav-item" href="{% url 'sample_orders' %}">Samples</a>
+                    <a class="nav-item" href="{% url 'testimonials' %}">Testimonials</a>
+                    <a class="nav-item" href="{% url 'pricing' %}">Pricing</a>
+                    <a class="nav-item" href="{% url 'faqs' %}">FAQ</a>
+                    <a class="nav-item" href="{% url 'about' %}">About us</a>
+                    {% if request.user.is_authenticated %}
+                    <a class="nav-item sign-link line-no" href="{% url 'users:logout' %}">
+                        Sign Out
+                        <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.14022 9.97586C6.89612 10.22 6.89612 10.6157 7.14022 10.8597C7.38428 11.1038 7.78003 11.1038 8.02413 10.8597L10.4419 8.44193C10.6853 8.19852 10.6849 7.80099 10.4419 7.55805L8.02413 5.14024C7.78003 4.89615 7.38428 4.89615 7.14022 5.14024C6.89616 5.38433 6.89612 5.78005 7.14022 6.02411L8.49113 7.37499H0.625C0.279813 7.37499 0 7.6548 0 7.99999C0 8.34518 0.279813 8.62499 0.625 8.62499H8.49113L7.14022 9.97586Z" fill="#1A2535"></path>
+                            <path d="M13.5482 0.242188C13.4298 0.0894063 13.2474 0 13.0542 0H5.3125C4.96731 0 4.6875 0.279813 4.6875 0.625C4.6875 0.970187 4.96731 1.25 5.3125 1.25H12.7412C14.1061 3.14175 14.75 5.60781 14.75 8C14.75 10.3911 14.1066 12.8576 12.7412 14.75H5.3125C4.96731 14.75 4.6875 15.0298 4.6875 15.375C4.6875 15.7202 4.96731 16 5.3125 16H13.0542C13.2474 16 13.4298 15.9106 13.5482 15.7578C15.2088 13.6147 16 10.7774 16 8C16 5.22294 15.2089 2.38541 13.5482 0.242188Z" fill="#1A2535"></path>
+                        </svg>
+                    </a>
+                    {% else %}
+                    <a class="nav-item sign-link line-no" href="{% url 'users:login' %}">
+                        Sign In
+                        <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.14022 9.97586C6.89612 10.22 6.89612 10.6157 7.14022 10.8597C7.38428 11.1038 7.78003 11.1038 8.02413 10.8597L10.4419 8.44193C10.6853 8.19852 10.6849 7.80099 10.4419 7.55805L8.02413 5.14024C7.78003 4.89615 7.38428 4.89615 7.14022 5.14024C6.89616 5.38433 6.89612 5.78005 7.14022 6.02411L8.49113 7.37499H0.625C0.279813 7.37499 0 7.6548 0 7.99999C0 8.34518 0.279813 8.62499 0.625 8.62499H8.49113L7.14022 9.97586Z" fill="#1A2535"></path>
+                            <path d="M13.5482 0.242188C13.4298 0.0894063 13.2474 0 13.0542 0H5.3125C4.96731 0 4.6875 0.279813 4.6875 0.625C4.6875 0.970187 4.96731 1.25 5.3125 1.25H12.7412C14.1061 3.14175 14.75 5.60781 14.75 8C14.75 10.3911 14.1066 12.8576 12.7412 14.75H5.3125C4.96731 14.75 4.6875 15.0298 4.6875 15.375C4.6875 15.7202 4.96731 16 5.3125 16H13.0542C13.2474 16 13.4298 15.9106 13.5482 15.7578C15.2088 13.6147 16 10.7774 16 8C16 5.22294 15.2089 2.38541 13.5482 0.242188Z" fill="#1A2535"></path>
+                        </svg>
+                    </a>
+                    {% endif %}
+                    <a href="{% url 'dashboard:clients:add_order' %}" class="line-no btn-el btn-el__green">
+                        <span>Order</span>
+                    </a>
+                </div>
+            </nav>
+            <div class="header-hidden">
+                {% if request.user.is_authenticated %}
+                <a class="sign-link" href="{% url 'users:logout' %}">
+                    Sign Out
+                    <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.14022 9.97586C6.89612 10.22 6.89612 10.6157 7.14022 10.8597C7.38428 11.1038 7.78003 11.1038 8.02413 10.8597L10.4419 8.44193C10.6853 8.19852 10.6849 7.80099 10.4419 7.55805L8.02413 5.14024C7.78003 4.89615 7.38428 4.89615 7.14022 5.14024C6.89616 5.38433 6.89612 5.78005 7.14022 6.02411L8.49113 7.37499H0.625C0.279813 7.37499 0 7.6548 0 7.99999C0 8.34518 0.279813 8.62499 0.625 8.62499H8.49113L7.14022 9.97586Z" fill="#1A2535"></path>
+                        <path d="M13.5482 0.242188C13.4298 0.0894063 13.2474 0 13.0542 0H5.3125C4.96731 0 4.6875 0.279813 4.6875 0.625C4.6875 0.970187 4.96731 1.25 5.3125 1.25H12.7412C14.1061 3.14175 14.75 5.60781 14.75 8C14.75 10.3911 14.1066 12.8576 12.7412 14.75H5.3125C4.96731 14.75 4.6875 15.0298 4.6875 15.375C4.6875 15.7202 4.96731 16 5.3125 16H13.0542C13.2474 16 13.4298 15.9106 13.5482 15.7578C15.2088 13.6147 16 10.7774 16 8C16 5.22294 15.2089 2.38541 13.5482 0.242188Z" fill="#1A2535"></path>
+                    </svg>
+                </a>
+                {% else %}
+                <a class="sign-link" href="{% url 'users:login' %}">
+                    Sign In
+                    <svg width="16" height="16" viewbox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.14022 9.97586C6.89612 10.22 6.89612 10.6157 7.14022 10.8597C7.38428 11.1038 7.78003 11.1038 8.02413 10.8597L10.4419 8.44193C10.6853 8.19852 10.6849 7.80099 10.4419 7.55805L8.02413 5.14024C7.78003 4.89615 7.38428 4.89615 7.14022 5.14024C6.89616 5.38433 6.89612 5.78005 7.14022 6.02411L8.49113 7.37499H0.625C0.279813 7.37499 0 7.6548 0 7.99999C0 8.34518 0.279813 8.62499 0.625 8.62499H8.49113L7.14022 9.97586Z" fill="#1A2535"></path>
+                        <path d="M13.5482 0.242188C13.4298 0.0894063 13.2474 0 13.0542 0H5.3125C4.96731 0 4.6875 0.279813 4.6875 0.625C4.6875 0.970187 4.96731 1.25 5.3125 1.25H12.7412C14.1061 3.14175 14.75 5.60781 14.75 8C14.75 10.3911 14.1066 12.8576 12.7412 14.75H5.3125C4.96731 14.75 4.6875 15.0298 4.6875 15.375C4.6875 15.7202 4.96731 16 5.3125 16H13.0542C13.2474 16 13.4298 15.9106 13.5482 15.7578C15.2088 13.6147 16 10.7774 16 8C16 5.22294 15.2089 2.38541 13.5482 0.242188Z" fill="#1A2535"></path>
+                    </svg>
+                </a>
+                {% endif %}
+                <a href="{% url 'dashboard:clients:add_order' %}" class="btn-el btn-el__green header-btn">
+                    <span> Order</span>
+                </a>
+                <a href="#" class="menu-trigger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,37 @@
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+  function handleStripeCheckout(element) {
+    var stripe = Stripe('{{stripe_public_key }}');
+    element.setAttribute("disabled", "disabled");
+    // Continue with your checkout logic here
+    // Simulating the process with a timeout
+    setTimeout(() => {
+      // Re-enable the link after processing is complete (if necessary)
+      element.removeAttribute("disabled");
+    }, 10000); // Simulate a 10-second process enough to allow the stripe to proceed
+
+    let detail_order_payment_url = document.querySelector("#topup-payment-url").value;
+
+    fetch(detail_order_payment_url, {
+      method: 'POST',
+      headers: {
+        'X-CSRFToken': '{{ csrf_token }}'
+      }
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (sessionId) {
+        return stripe.redirectToCheckout({sessionId: sessionId.id});
+      })
+      .then(function (result) {
+        if (result.error) {
+          alert(result.error.message);
+        }
+      })
+      .catch(function (error) {
+        console.log("Error:", error);
+      });
+
+  }
+</script>

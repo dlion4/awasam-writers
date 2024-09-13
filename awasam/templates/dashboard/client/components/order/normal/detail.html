@@ -1,0 +1,620 @@
+{% extends 'dashboard/client/base.html' %}
+{% load static %}
+
+{% block css %}{% endblock css %}
+
+{% block content %}
+
+  <!-- ROW OPEN -->
+  <div class="row row-cards" style="padding-top: 80px;">
+    <div class="col-lg-8 col-xl-8">
+
+      <div class="card">
+        <div class="card-header">
+
+          <h4 class="card-title">
+            <span class="badge bg-secondary fs-14 me-2">
+
+              {% if order.is_paid %}
+                Paid
+              {% else %}
+                Payment pending
+              {% endif %}
+            </span>
+            <strong>Order ID:
+              {{order.pk}}</strong>
+
+          </h4>
+
+          <div class="page-options ms-auto">
+            {% if not order.is_paid %}
+              <a class="btn btn-sm btn-warning badge" data-bs-target="#confirm-order{{order.pk}}" data-bs-toggle="modal">
+                <i class="fa fa-check"></i>
+                Click Here To Pay Now
+              </a>
+            {% endif %}
+
+            <!-- <a href="{{order.get_client_edit_url}}" class="btn btn-sm btn-danger badge"> <i class="fa fa-edit"></i> Edit </a> -->
+
+          </div>
+
+          <!-- edit modal-->
+          <div class="modal fade" id="confirm-order{{order.pk}}">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content country-select-modal">
+                <div class="modal-header">
+                  <h6 class="modal-title">Confirm to allow our writers to work on your project #{{order.pk}}</h6>
+                  <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                    <span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-horizontal">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{order.price}}">
+                    <div class=" row mb-4">
+                      <label class="col-md-3 form-label">Title</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" name="name" value="{{order.topic}}" disabled="">
+                      </div>
+                    </div>
+
+                    <div class=" row mb-4">
+                      <label class="col-md-3 form-label">Amount (USD)</label>
+                      <div class="col-md-9">
+                        <input type="text" class="form-control" name="amount" value="{{order.price}}" disabled="">
+                      </div>
+                    </div>
+
+                    <div class=" row mb-4">
+                      <div class="col-md-9">
+                        <button onclick="handleStripeCheckout(this)" class="btn btn-success">
+                          Pay USD
+                          {{order.price}}
+                        </button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- edit modal-->
+          <div class="modal fade" id="solve">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content country-select-modal">
+                <div class="modal-header">
+                  <h6 class="modal-title">Solve a dispute for order #{{order.pk}}</h6>
+                  <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                    <span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                  <form class="form-horizontal" action="" method="POST">
+                    <input type="hidden" name="_token" value="N0dqPBvhcvuoZPZFJQOuamZV9tyuoWDeFDesUW6n">
+                    <input type="hidden" name="order_id" value="44">
+
+                    <div class=" row mb-4">
+                      <label class="col-md-3 form-label">Solution</label>
+                      <div class="col-md-9">
+                        <select name="dispute_option" class="form-control">
+                          <option value="0" selected="">Not defined</option>
+                          <option value="1">Decline Dispute</option>
+                          <option value="2">Full Refund</option>
+                          <option value="3">50% Refund</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class=" row mb-4">
+                      <label class="col-md-4 form-label">Solution description</label>
+                      <div class="col-md-12">
+                        <textarea rows="5" name="dispute_comment" id="dispute2" placeholder=""></textarea>
+                        <script>
+                          ClassicEditor
+                            .create(document.querySelector('#dispute2'))
+                            .catch(error => {
+                              console.error(error);
+                            });
+                        </script>
+
+                      </div>
+                    </div>
+
+                    <div class=" row mb-4">
+
+                      <div class="col-md-9">
+                        <input type="submit" value="Submit Now" class="btn btn-primary">
+                      </div>
+
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- edit modal-->
+          <div class="modal fade" id="dispute">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content country-select-modal">
+                <div class="modal-header">
+                  <h6 class="modal-title">Raise a dispute for order #44</h6>
+                  <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                    <span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                  <form class="form-horizontal" action="https://demo2.academicwritingscript.com/dashboard/send-dispute" method="POST">
+                    <input type="hidden" name="_token" value="N0dqPBvhcvuoZPZFJQOuamZV9tyuoWDeFDesUW6n">
+                    <input type="hidden" name="order_id" value="44">
+
+                    <div class=" row mb-4">
+                      <label class="col-md-4 form-label">Issue Raised</label>
+                      <div class="col-md-12">
+                        <textarea rows="5" name="instructions" id="dispute1" placeholder=""></textarea>
+                        <script>
+                          ClassicEditor
+                            .create(document.querySelector('#dispute1'))
+                            .catch(error => {
+                              console.error(error);
+                            });
+                        </script>
+
+                      </div>
+                    </div>
+
+                    <div class=" row mb-4">
+
+                      <div class="col-md-9">
+                        <input type="submit" value="Submit Now" class="btn btn-primary">
+                      </div>
+
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- edit modal-->
+          <div class="modal fade" id="edit-property">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content country-select-modal">
+                <div class="modal-header">
+                  <h6 class="modal-title">Request revision for order #44</h6>
+                  <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                    <span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                  <form class="form-horizontal" action="https://demo2.academicwritingscript.com/dashboard/send-revision" method="POST">
+                    <input type="hidden" name="_token" value="N0dqPBvhcvuoZPZFJQOuamZV9tyuoWDeFDesUW6n">
+                    <input type="hidden" name="order_id" value="44">
+
+                    <div class=" row mb-4">
+                      <label class="col-md-12 form-label">Due in (Hours)</label>
+                      <div class="col-md-8">
+                        <input type="number" class="form-control" name="due_in" required="" placeholder="Enter hours eg 2">
+                      </div>
+                    </div>
+
+                    <div class=" row mb-4">
+                      <label class="col-md-4 form-label">Instructions</label>
+                      <div class="col-md-12">
+                        <textarea rows="5" name="instructions" id="editor2" placeholder=""></textarea>
+                        <script>
+                          ClassicEditor
+                            .create(document.querySelector('#editor2'))
+                            .catch(error => {
+                              console.error(error);
+                            });
+                        </script>
+
+                      </div>
+                    </div>
+
+                    <div class=" row mb-4">
+
+                      <div class="col-md-9">
+                        <input type="submit" value="Submit Now" class="btn btn-primary">
+                      </div>
+
+                    </div>
+
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card-body">
+
+          {% if messages %}
+            <div class="col-12">
+              {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{message.tags}} {% endif %}">
+                  {{message}}
+                </div>
+              {% endfor %}
+            </div>
+            <hr style="border-top: 1px solid #000000;">
+          {% endif %}
+
+          <span class="badge bg-primary-transparent rounded-pill text-primary p-2 px-3">Use
+            {{order.language}}</span>
+
+          <span class="badge bg-success-transparent rounded-pill text-success p-2 px-3">
+            Normal order
+          </span>
+
+          <hr style="border-top: 1px solid #000000;">
+
+          <div class=" row mb-4">
+            <label class="col-md-3 form-label">Order cost</label>
+            <div class="col-md-8">
+              USD
+              {{order.price}}
+            </div>
+          </div>
+
+          <div class=" row mb-4">
+            <label class="col-md-3 form-label">Topic/Title</label>
+            <div class="col-md-9">
+              <p>{{order.topic}}</p>
+            </div>
+          </div>
+          <hr style="border-top: 1px dotted #000000;">
+
+          <div class=" row mb-4">
+            <label class="col-md-3 form-label">Type of paper:
+            </label>
+            <div class="col-md-9">
+              <p>{{order.get_assignment_type_display|title}}<br>
+              </p>
+            </div>
+          </div>
+          <hr style="border-top: 1px dotted #000000;">
+
+          <div class=" row mb-4">
+            <label class="col-md-3 form-label">
+              <strong>Deadline:</strong>
+            </label>
+            <div class="col-md-9">
+
+              <div class="row">
+                <div class="col-sm-6 alert alert-info">
+
+                  {{order.deadline_text|title}}
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <div class=" row mb-4">
+            <label class="col-md-3 form-label">Discipline:</label>
+            <div class="col-md-9">
+
+              <p>{{order.get_subject_display}}</p>
+            </div>
+          </div>
+          <hr style="border-top: 1px dotted #000000;">
+
+          <div class="row mb-4">
+            <label class="col-md-3 form-label">Number of pages:</label>
+            <div class="col-md-9">
+              {{order.assignment_size_pages_text}}
+              <br>
+              {{order.spacing_text}}
+            </div>
+          </div>
+          <hr style="border-top: 1px dotted #000000;">
+
+          <div class=" row mb-4">
+            <label class="col-md-3 form-label">PowerPoint Slides:</label>
+            <div class="col-md-9">
+              {{order.get_slides_display}}
+            </div>
+          </div>
+          <hr style="border-top: 1px dotted #000000;">
+
+          <div class=" row mb-4">
+            <label class="col-md-3 form-label">Sources to be cited:</label>
+            <div class="col-md-9">
+              {{order.get_sources_display}}
+            </div>
+          </div>
+          <hr style="border-top: 1px dotted #000000;">
+
+          <div class=" row mb-4">
+            <label class="col-md-3 form-label">Paper format:</label>
+            <div class="col-md-9">
+              {{order.citation_text}}
+            </div>
+          </div>
+          <hr style="border-top: 1px dotted #000000;">
+
+          <div class=" row mb-12">
+            <label class="col-md-3 form-label">Order was posted:</label>
+            <div class="col-md-9">
+              {{order.order_date|timesince}}
+              ago
+            </div>
+          </div>
+          <hr style="border-top: 1px dotted #000000;">
+
+          <div class=" row mb-4">
+            <hr style="border: 2px;">
+            <label class="col-md-3 form-label">
+              <strong>Instructions</strong>
+            </label>
+            <div class="col-md-12">
+              <main>
+                <div>{{order.description|safe}}</div>
+              </main>
+
+            </div>
+          </div>
+
+          <div class=" row mb-4">
+
+            <div class="col-md-12">
+              <div id="accordion">
+                {% if order.is_completed and not order.is_revision %}
+                  <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree2" aria-expanded="false" aria-controls="collapseThree">
+                      Request Revision
+                    </button>
+                  </h5>
+                {% endif %}
+
+                <div id="collapseThree2" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                  <div class="card-body">
+                    <form class="form-horizontal" action="https://demo2.academicwritingscript.com/dashboard/send-revision" method="POST">
+                      <input type="hidden" name="_token" value="N0dqPBvhcvuoZPZFJQOuamZV9tyuoWDeFDesUW6n">
+                      <input type="hidden" name="order_id" value="44">
+
+                      <div class=" row mb-4">
+                        <label class="col-md-12 form-label">Due in (Hours)</label>
+                        <div class="col-md-8">
+                          <input type="number" class="form-control" name="due_in" required="" placeholder="Enter hours eg 2">
+                        </div>
+                      </div>
+
+                      <div class=" row mb-4">
+                        <label class="col-md-4 form-label">Instructions</label>
+                        <div class="col-md-12">
+                          <textarea rows="5" name="instructions" id="editor222" placeholder=""></textarea>
+                          <script>
+                            ClassicEditor
+                              .create(document.querySelector('#editor222'))
+                              .catch(error => {
+                                console.error(error);
+                              });
+                          </script>
+
+                        </div>
+                      </div>
+
+                      <div class=" row mb-4">
+
+                        <div class="col-md-9">
+                          <input type="submit" value="Submit Now" class="btn btn-primary">
+                        </div>
+
+                      </div>
+
+                    </form>
+
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+          <div class=" row mb-4">
+
+            <div class="col-md-12">
+              <div id="accordion">
+
+                <script src="{% static 'dashboard/assets/js/jquery.min.js' %}"></script>
+
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed comment-request" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
+                    Add Comment
+                  </button>
+                </h5>
+
+                <script>
+                  $(document).ready(function () {
+                    $(".comment-request").on("click", function () {
+                      $(".comment-request-body").slideToggle("slow"); // Smooth slide transition
+                    });
+                  });
+                </script>
+
+                <style>
+                  .comment-request-body {
+                    display: none;
+                  }
+                </style>
+
+                <div class="comment-request-body">
+                  <div class="card-body">
+                    <form class="form-horizontal" action="" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden" name="intent" value="comment">
+                      <div class=" row mb-4">
+                        <label class="col-md-4 form-label">Comment</label>
+                        <div class="col-md-12">
+                          <textarea rows="5" class="form-control" name="comment" placeholder="Your comment">{{order.comment}}</textarea>
+                        </div>
+                      </div>
+                      <div class=" row mb-4">
+                        <div class="col-md-9">
+                          <input type="submit" value="Submit Now" class="btn btn-primary">
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+          <div class=" row mb-4">
+
+            <div class="col-md-12">
+              <div id="accordion">
+
+                <script src="{% static 'dashboard/assets/js/jquery.min.js' %}"></script>
+
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed revision-request" data-bs-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
+                    Request Revision
+                  </button>
+                </h5>
+
+                <script>
+                  $(document).ready(function () {
+                    $(".revision-request").on("click", function () {
+                      $(".revision-request-body").slideToggle("slow"); // Smooth slide transition
+                    });
+                  });
+                </script>
+
+                <style>
+                  .revision-request-body {
+                    display: none;
+                  }
+
+                  .show-block {
+                    display: block;
+                  }
+                </style>
+
+                <div class="revision-request-body">
+                  <div class="card-body">
+                    <form class="form-horizontal" action="" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden" name="intent" value="instructions">
+                      <div class=" row mb-4">
+                        <label class="col-md-4 form-label">Instructions</label>
+                        <div class="col-md-12">
+                          <textarea rows="5" class="form-control" name="instructions" placeholder="Your revision instructions">{{order.revision_instruction}}</textarea>
+                        </div>
+                      </div>
+                      <div class=" row mb-4">
+                        <div class="col-md-9">
+                          <input type="submit" value="Submit Now" class="btn btn-primary">
+                        </div>
+                      </div>
+                    </form>
+
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      {% for order_file in order.order_files.all %}
+
+        <div class="card">
+          <div class="card-header border-bottom-0"></div>
+          <div class="e-table px-5 pb-5">
+            <div class="table-responsive table-lg">
+              <table class="table border-top table-bordered mb-0">
+                <tbody>
+                  <tr>
+                    <h3>Customer files</h3>
+                  </tr>
+
+                  <tr>
+                    <td>{{order_file.name}}
+                    </td>
+                    <td>
+                      <span style="color: green; font-size: 11px;">
+                        Uploaded by client
+                        {{order_file.normal_order.order_date|timesince}}
+                        ago</span>
+                    </td>
+
+                    <td>
+                      <a href="{{order_file.url}}" target="_blank" class="btn btn-success btn-sm">
+                        <i class="fa fa-download"></i>
+                        Download
+                      </a>
+
+                    </td>
+
+                  </tr>
+
+                </tbody>
+
+              </table>
+
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+
+    <div class="col-lg-4 col-xl-4"></div>
+  </div>
+
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    function handleStripeCheckout(element) {
+      var stripe = Stripe('{{stripe_public_key }}');
+      element.setAttribute("disabled", "disabled");
+      // Continue with your checkout logic here
+      // Simulating the process with a timeout
+      setTimeout(() => {
+        // Re-enable the link after processing is complete (if necessary)
+        element.removeAttribute("disabled");
+      }, 10000); // Simulate a 10-second process enough to allow the stripe to proceed
+
+      let detail_order_payment_url = "{% url 'dashboard:payments:orders:create_detail_checkout_session' order.pk %}"
+
+      fetch(detail_order_payment_url, {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}'
+        }
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (sessionId) {
+          return stripe.redirectToCheckout({sessionId: sessionId.id});
+        })
+        .then(function (result) {
+          if (result.error) {
+            alert(result.error.message);
+          }
+        })
+        .catch(function (error) {
+          console.log("Error:", error);
+        });
+
+    }
+  </script>
+
+  <!-- ROW CLOSED -->
+{% endblock content %}
+
+{% block javascript %}{% endblock javascript %}

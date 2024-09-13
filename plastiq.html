@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <script src="https://workflows.connect.sandbox.plastiq.com/libraries/start-workflows.js"></script>
+</head>
+
+<body>
+    <div id="start-button" class="start-button" style="margin-top: 24px">
+        <button onclick="loadConnectWorkflows()">Start Workflow</button>
+    </div>
+    <div id="connect-checkout"></div>
+
+    <script>
+        function loadConnectWorkflows() {
+            let publicKey = 'sometexthjereandthere'
+            let clientSecret = "thisisaclientsecretforplastiq"
+            const ConnectWorkflows = new window.ConnectWorkflows(publicKey, {
+                environment: 'sandbox'
+            })
+
+            const checkoutWorkflow = ConnectWorkflows.create('checkout', {
+                clientSecret,
+                parentElement: '#connect-checkout',
+                payer: {
+                    id: 'c3dc1943-38cf-4a2f-962c-c85f16392d98'
+                },
+                paymentIntent: {
+                    details: {
+                        accountName: 'Example name',
+                        accountNumber: '12345678',
+                        memo: 'Invoice #SG-A24676-01',
+                    },
+                    targetAmount: {
+                        value: 1234.56,
+                    },
+                },
+                handlers: {
+                    onSuccess: function (event) {
+                        console.log(event.data)
+                    },
+                    onError: function (event) {
+                        console.log(event.data)
+                    },
+                    onComplete: function (event) {
+                        console.log('complete!')
+                    },
+                },
+                theme: {
+                    palette: {
+                        primary: {
+                            main: '#2ac979',
+                            contrastText: '#fff',
+                        },
+                    },
+                    overrides: {
+                        MuiButton: {
+                            text: {
+                                color: '#FFF',
+                            },
+                        },
+                    },
+                }
+            })
+        }
+    </script>
+</body>
+<html>

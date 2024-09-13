@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<div class="pricing section section-main">
+    <div class="layout-wrapper">
+        <div class="section-row">
+            <div class="section-content">
+                <h2 class="title-el text-left">Pricing</h2>
+                <div class="pricing__content">
+                    <h4 class="title-el title-el-m text-left">The price is based on:</h4>
+                    <div class="pricing-benefits">
+                        <div class="pricing-bnf">
+                            <img src="{% static 'images/main/p-bnf-1.svg' %}" alt="svg">
+                            <p>Academic level</p>
+                        </div>
+                        <div class="pricing-bnf">
+                            <img src="{% static 'images/main/p-bnf-2.svg' %}" alt="svg">
+                            <p>Type of assignment</p>
+                        </div>
+                        <div class="pricing-bnf">
+                            <img src="{% static 'images/main/p-bnf-3.svg' %}" alt="svg">
+                            <p>Urgency</p>
+                        </div>
+                        <div class="pricing-bnf">
+                            <img src="{% static 'images/main/p-bnf-4.svg' %}" alt="svg">
+                            <p>Number of pages</p>
+                        </div>
+                    </div>
+                    <div class="pricing-text">
+                        Feel free to calculate the approximate cost of your paper and place your order afterward by clicking the “Proceed to order” button. Do you need more information about ordering or have any special requirements? Contact our support team! They are ready to assist your 24/7.
+                    </div>
+                    <div class="banner__sidebar">
+                        {% include "components/calc.html" %}
+                    </div>
+                    <div class="pricing-text ricing-text-gray">
+                        Unlike some cheap writing companies with prices lower than $10 per page, we charge a fair price that enables us to cover services of professional writers, both ENL and ESL. This allows us to guarantee high-quality and individual papers for every customer.
+                    </div>
+                    <div class="pricing-title">
+                        <div class="pricing-title__img">
+                            <img src="{% static 'images/main/title.svg' %}" alt="title">
+                        </div>
+                        <div class="pricing-title__cnt">
+                            <h3>Do you want to spend less?</h3>
+                            <p>Subscribe to our newsletter! We have many special offers and notify customers via e-mail!</p>
+                        </div>
+                    </div>
+                    <div class="info-best info-banner">
+                        <div class="info-banner__top">
+                            <div class="info-banner__img"><img src="{% static 'images/main/best.svg' %}" alt="best"></div>
+                            <h3>Best Paper Prices</h3>
+                        </div>
+                        <div class="info-best__row">
+                            <p>Essay (Any Type)</p>
+                            <div>
+                                from <span>$10</span> per page
+                                <a href="{% url 'dashboard:clients:add_order' %}">Order now <img src="{% static 'images/main/arrow-right.svg' %}" alt="arrow"></a>
+                            </div>
+                        </div>
+                        <div class="info-best__row">
+                            <p>Proofreading</p>
+                            <div>
+                                from <span>$5</span> per page
+                                <a href="{% url 'dashboard:clients:add_order' %}">Order now <img src="{% static 'images/main/arrow-right.svg' %}" alt="arrow"></a>
+                            </div>
+                        </div>
+                        <div class="info-best__row">
+                            <p>Editing</p>
+                            <div>
+                                from <span>$6</span> per page
+                                <a href="{% url 'dashboard:clients:add_order' %}">Order now <img src="{% static 'images/main/arrow-right.svg' %}" alt="arrow"></a>
+                            </div>
+                        </div>
+                        <div class="info-best__row">
+                            <p>Dissertation Services</p>
+                            <div>
+                                from <span>$24</span> per page
+                                <a href="{% url 'dashboard:clients:add_order' %}">Order now <img src="{% static 'images/main/arrow-right.svg' %}" alt="arrow"></a>
+                            </div>
+                        </div>
+                        <div class="info-best__row">
+                            <p>Research paper</p>
+                            <div>
+                                from <span>$13</span> per page
+                                <a href="{% url 'dashboard:clients:add_order' %}">Order now <img src="{% static 'images/main/arrow-right.svg' %}" alt="arrow"></a>
+                            </div>
+                        </div>
+                        <div class="info-best__row">
+                            <p>Case study</p>
+                            <div>
+                                from <span>$14</span> per page
+                                <a href="{% url 'dashboard:clients:add_order' %}">Order now <img src="{% static 'images/main/arrow-right.svg' %}" alt="arrow"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-sidebar">
+                <div class="pricing-sidebar">
+                    <div class="tabs-block">
+                        <div class="tabs-section-wrap">
+                            <div class="wrapper">
+                                <div class="tabs-section">
+                                    <a href="#" class="tab-cnt-trigger active" data-cnt="tab-cnt-1"><span>About us</span></a>
+                                    <a href="#" class="tab-cnt-trigger" data-cnt="tab-cnt-2"><span>Our writers</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tabs-content">
+                            <div class="wrapper">
+                                <div class="tab-cnt tab-cnt-1 active">
+                                    <div class="pricing-sidebar-item">
+                                        <div class="pricing-sidebar-item__img">
+                                            <img src="{% static 'images/main/pp-1.svg' %}" alt="svg">
+                                        </div>
+                                        <div class="pricing-sidebar-item__cnt">
+                                            <h3>High-quality</h3>
+                                            <p>Only experienced and skillful writers in our team.</p>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-sidebar-item">
+                                        <div class="pricing-sidebar-item__img">
+                                            <img src="{% static 'images/main/pp-2.svg' %}" alt="svg">
+                                        </div>
+                                        <div class="pricing-sidebar-item__cnt">
+                                            <h3>Timely delivery</h3>
+                                            <p>Qualified writers can cope with any urgent task without delays.</p>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-sidebar-item">
+                                        <div class="pricing-sidebar-item__img">
+                                            <img src="{% static 'images/main/pp-3.svg' %}" alt="svg">
+                                        </div>
+                                        <div class="pricing-sidebar-item__cnt">
+                                            <h3>All subjects covered</h3>
+                                            <p>Our great team consists of experts in different fields. We can write papers on any topic.</p>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-sidebar-item">
+                                        <div class="pricing-sidebar-item__img">
+                                            <img src="{% static 'images/main/pp-4.svg' %}" alt="svg">
+                                        </div>
+                                        <div class="pricing-sidebar-item__cnt">
+                                            <h3>Money-back Guarantees</h3>
+                                            <p>We provide a refund if you won’t get the necessary quality of papers.</p>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-sidebar-item">
+                                        <div class="pricing-sidebar-item__img">
+                                            <img src="{% static 'images/main/pp-5.svg' %}" alt="svg">
+                                        </div>
+                                        <div class="pricing-sidebar-item__cnt">
+                                            <h3>100% Secured</h3>
+                                            <p>We use latest encryption technologies and payment gateways to protect our customers.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="offer-item__content tab-cnt tab-cnt-2">
+                                    <div class="pricing-sidebar-item">
+                                        <div class="pricing-sidebar-item__img">
+                                            <img src="{% static 'images/main/pp-6.svg' %}" alt="svg">
+                                        </div>
+                                        <div class="pricing-sidebar-item__cnt">
+                                            <h3>Extended writing skills</h3>
+                                            <p>All of our writers have highest degrees and years of experience.</p>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-sidebar-item">
+                                        <div class="pricing-sidebar-item__img">
+                                            <img src="{% static 'images/main/pp-7.svg' %}" alt="svg">
+                                        </div>
+                                        <div class="pricing-sidebar-item__cnt">
+                                            <h3>Specialization excellence</h3>
+                                            <p>Our writers know all the details of their disciplines.</p>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-sidebar-item">
+                                        <div class="pricing-sidebar-item__img">
+                                            <img src="{% static 'images/main/pp-8.svg' %}" alt="svg">
+                                        </div>
+                                        <div class="pricing-sidebar-item__cnt">
+                                            <h3>Experts in everything</h3>
+                                            <p>We have authors with Master’s and Ph. Degrees in law, economics, computer sciences and other complex subjects.</p>
+                                        </div>
+                                    </div>
+                                    <div class="pricing-sidebar-item">
+                                        <div class="pricing-sidebar-item__img">
+                                            <img src="{% static 'images/main/pp-9.svg' %}" alt="svg">
+                                        </div>
+                                        <div class="pricing-sidebar-item__cnt">
+                                            <h3>Permanent improvement</h3>
+                                            <p>We check the writer’s skill and knowledge every half a year to deliver the best results to our customers.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "components/banner.html" %}
+{% endblock content %}

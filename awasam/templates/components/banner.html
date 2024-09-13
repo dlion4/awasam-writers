@@ -1,0 +1,13 @@
+{% load static %}
+
+<div class="order">
+    <div class="layout-wrapper">
+        <div class="order-row">
+            <div class="order-content">
+                <div class="order-img"><img src="{% static 'images/main/order.png' %}" alt="order"></div>
+                <h2>Leave your stress behind! Make an order and simplify your life!</h2>
+            </div>
+            <a href="{% url 'dashboard:clients:add_order' %}" class="btn-el btn-el_big btn-el__green"><span>Order now</span></a>
+        </div>
+    </div>
+</div>

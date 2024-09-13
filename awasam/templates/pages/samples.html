@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<div class="samples section section-main">
+    <div class="layout-wrapper">
+        <div class="section-row">
+            <div class="section-content">
+                <h1 class="title-el text-left">Samples</h1>
+                <p class="subtitle-el subtitle-el-2 text-left">
+                    Feel free to check out all of the samples that we have put up.
+                    We write original academic papers on any topic, precisely following your instructions.
+                    If you need help with writing or editing your essay, research paper, term paper, review, thesis, dissertation or
+                    any other type of paper, you can always turn to us for help.
+                </p>
+                <div class="samples-row">
+                    {% for sample in sample_orders %}
+                    <div class="samples-item">
+                        <div class="samples-tag samples-tag_blue">{{sample.normal_order.get_assignment_type_display}}</div>
+                        <h3>{{sample.normal_order.topic|title|truncatewords:"4"}}</h3>
+                        <div class="samples-list">
+                            <div>
+                                <p>Academic level:</p>
+                                <span>{{sample.normal_order.get_academic_level_display|title}}</span>
+                            </div>
+                            <div>
+                                <p>Discipline:</p>
+                                <span>{{sample.normal_order.get_subject_display|title}}</span>
+                            </div>
+                            <div>
+                                <p>Paper format:</p>
+                                <span>{{sample.normal_order.get_citation_display|title|default:"APA"}}</span>
+                            </div>
+                            <div>
+                                <p>Sources:</p>
+                                <span>{{sample.normal_order.get_sources_display}}</span>
+                            </div>
+                        </div>
+                        <div class="samples-bottom">
+                            {% if sample.file %}
+                            <a role="button" class="pdf pay-paper-btn" data-bs-toggle="modal" data-bs-target="#payforpaper{{sample.pk}}">
+                                View in PDF
+                            </a>
+                            {% endif %}
+                            <a href="{% url 'dashboard:clients:add_order' %}" class="btn-el btn-el_l btn-el__green btn-el_arrow btn-el_arrow_lightgreen">
+                                <span>
+                                    <span class="btn-el__cnt">Order</span>
+                                    <span class="btn-el__img">
+                                        <img src="{% static 'images/main/arrow-btn.svg' %}" alt="####">
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="popup__discount popup-wrapper modal fade" id="payforpaper{{sample.pk}}" tabindex="-1" aria-labelledby="payforpaper{{sample.pk}}Label" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="popup__discount__transparent"></div>
+                            <div class="popup-layout">
+                                <div class="popup popup__discount__modal">
+
+                                    <div class="popup-head popup__discount__modal-header">
+                                        <div class="popup-head-cnt">
+                                            <h3 class="hidden-after">Purchase paper? <img src="{% static 'images/main/eye.png' %}" alt="eye"></h3>
+                                            <p class="hidden-after">Will charge you 50% less of the price!</p>
+                                        </div>
+                                        <div class="popup-head-img">
+                                            <img class="popup-head-img_1" src="{% static 'images/main/pop.svg' %}" alt="pop">
+                                            <div class="disc">Save 50% <img src="{% static 'images/main/sup2.png' %}" alt="sup2"></div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="popup-cnt-wrap popup__discount__modal-body">
+                                        <div class="popup-cnt">
+                                            <div class="popup-cnt-form">
+                                                <form onsubmit="return purchasePaper(event)" method="post" action="{{sample.get_purchase_url}}">
+                                                    {% csrf_token %}
+                                                    <div class="popup__discount__form-row" style="padding-bottom: 20px;">
+                                                        <div class="popup__discount__form-row-group">
+                                                            <input class="form-field form-field-check required-field" placeholder="Your working email address" type="email" name="email_address">
+                                                            <small>Will send the paper to you email address once you've made payments</small>
+                                                        </div>
+                                                    </div>
+                                                    <div class="popup__discount__form-row">
+                                                        <button type="submit" class="popup__discount__form-row-submit-button btn-el btn-el_big btn-el__green btn-el_arrow">
+                                                            <span>
+                                                                <span class="btn-el__cnt">Purchase Paper</span>
+                                                                <span class="btn-el__img">
+                                                                    <img src="{% static 'images/main/arrow-btn.svg' %}" alt="####" class="mCS_img_loaded">
+                                                                </span>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="popup__discount__modal-header">
+                                        <div class="popup-close popup__discount__modal-close-button" onclick="closeModal(this)">
+                                            <img src="{% static 'images/main/close2.svg' %}" alt="close">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% empty %}
+                    <div class="samples-item">
+                        <div class="samples-tag samples-tag_blue">
+                            No samples yet available
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            <div class="section-sidebar">
+                <div class="banner__sidebar">
+                    {% include "components/calc.html" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    // Properly define the closeModal function
+    function closeModal(element) {
+        // Close the modal by finding the closest modal element and hiding it
+        $(element).closest('.modal').modal('hide');
+    }
+</script>
+
+
+
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    function handleStripeCheckout(url, data) {
+        var stripe = Stripe('{{stripe_public_key }}');
+
+
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (sessionId) {
+                return stripe.redirectToCheckout({ sessionId: sessionId.id });
+            })
+            .then(function (result) {
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            })
+            .catch(function (error) {
+                console.log("Error:", error);
+            });
+
+    }
+
+    function purchasePaper(event) {
+        // Prevent form submission
+        event.preventDefault();
+        // You can send the form data via AJAX or handle it in any way
+        // Example of sending via fetch (AJAX)
+        var form = event.target;
+
+        $(form).find(".popup__discount__form-row-submit-button").html(
+            `
+            <span>
+                <span class="btn-el__cnt">Redirecting ... </span>
+                <span class="btn-el__img">
+                    <img src="{% static 'images/main/arrow-btn.svg' %}" alt="####" class="mCS_img_loaded">
+                </span>
+            </span>
+            `);
+
+        handleStripeCheckout(
+            $(form).attr("action"),
+            { "email_address": $("input[name=email_address]").val() }
+        )
+        setTimeout(() => {
+            $(form).closest('.modal').modal('hide');
+        }, 10000)
+    }
+</script>
+{% endblock content %}

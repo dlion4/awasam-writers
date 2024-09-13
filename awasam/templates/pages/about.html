@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<div class="about-banner b-lazy" data-src="{% static 'images/main/banner-bggg.jpg' %}"></div>
+<div class="benefits benefits-white">
+    <div class="layout-wrapper">
+        <div class="benefits__content">
+            <div class="benefits-item">
+                <h5>5+</h5>
+                <p>years in writing business</p>
+            </div>
+            <div class="benefits-item">
+                <h5>25000+</h5>
+                <p>satisfied clients</p>
+            </div>
+            <div class="benefits-item">
+                <h5>5000+</h5>
+                <p>professional writers</p>
+            </div>
+            <div class="benefits-item">
+                <h5>75000+</h5>
+                <p>orders delivered on time</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="about-text">
+    <div class="layout-wrapper">
+        <div class="about-text__content">
+            <p>The writers in our company have a professional experience of writing and teaching across a broad range of academic levels, so they will always ensure that your papers are brilliant. Nevertheless, we understand that you, as a client can easily find many other similarly-oriented companies on the web, but rest assured we are not like them; we are not just an average essay mill churning thousands of papers daily. On the contrary, we are a smaller company that takes its time and prides itself in what it does.</p>
+            <p>Unlike most of the essay writing companies, we're not trying to use our guarantees as a tact to reel the customer into a false sense of safety. We provide distinct & well-formatted papers on time, and our extensive expertise in academic writing enables us to deliver excellent papers to customers around the world.</p>
+            <p>Looking for a reliable essay writing service? You have reached the goal when entered our website! We do our best to provide exclusive papers for every individual customer.</p>
+        </div>
+    </div>
+</div>
+<div class="about-guaranteed">
+    <div class="layout-wrapper">
+        <h2 class="title-el">Our Features</h2>
+        <div class="about-guaranteed-row">
+            <div class="about-guaranteed-item">
+                <div class="about-guaranteed-item__img">
+                    <img src="{% static 'images/main/guaranteed-1.svg' %}" alt="guaranteed">
+                </div>
+                <div class="about-guaranteed-item__cnt">
+                    <h3>Academic authorship</h3>
+                    <p>Once you receive your paper, you become its sole owner. You're free to use the completed paper at your discretion and be sure that it won't ever be uploaded to any database or appear somewhere on the web.</p>
+                </div>
+            </div>
+            <div class="about-guaranteed-item">
+                <div class="about-guaranteed-item__img">
+                    <img src="{% static 'images/main/guaranteed-2.svg' %}" alt="guaranteed">
+                </div>
+                <div class="about-guaranteed-item__cnt">
+                    <h3>Safety of use</h3>
+                    <p>We never disclose our customers' personal information to any third party, including the writers. You process the payment through a secure payment gateway, so we don't receive nor keep any of your billing details.</p>
+                </div>
+            </div>
+            <div class="about-guaranteed-item">
+                <div class="about-guaranteed-item__img">
+                    <img src="{% static 'images/main/guaranteed-3.svg' %}" alt="guaranteed">
+                </div>
+                <div class="about-guaranteed-item__cnt">
+                    <h3>Plagiarism-free content</h3>
+                    <p>All academic papers we produce are written from scratch according to your specific instructions. We always double-check every single essay using multiple plagiarism detectors to avoid unintentional plagiarism.</p>
+                </div>
+            </div>
+            <div class="about-guaranteed-item">
+                <div class="about-guaranteed-item__img">
+                    <img src="{% static 'images/main/guaranteed-4.svg' %}" alt="guaranteed">
+                </div>
+                <div class="about-guaranteed-item__cnt">
+                    <h3>Quality services</h3>
+                    <p>We can deal with any topic and an assignment of any complexity since our writers have various educational backgrounds. We understand academic writing peculiarities like no one else so rest assured that your paper will be correctly formatted and conformed to all academic standards.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="team">
+    <div class="layout-wrapper">
+        <h2 class="title-el">Our Support Team</h2>
+        <div class="team-row">
+            <div class="team-item">
+                <div class="team-item__img">
+                    <img src="{% static 'images/main/team-1.png' %}" alt="team">
+                </div>
+                <h3>Maggie</h3>
+                <p>Head of Customer Support</p>
+            </div>
+            <div class="team-item">
+                <div class="team-item__img">
+                    <img src="{% static 'images/main/team-2.png' %}" alt="team">
+                </div>
+                <h3>Allen</h3>
+                <p>Head of Writers Department</p>
+            </div>
+            <div class="team-item">
+                <div class="team-item__img">
+                    <img src="{% static 'images/main/team-3.png' %}" alt="team">
+                </div>
+                <h3>Jolie</h3>
+                <p>Data Scientist</p>
+            </div>
+            <div class="team-item">
+                <div class="team-item__img">
+                    <img src="{% static 'images/main/team-4.png' %}" alt="team">
+                </div>
+                <h3>Benjamin</h3>
+                <p>Developer</p>
+            </div>
+            <div class="team-item">
+                <div class="team-item__img">
+                    <img src="{% static 'images/main/team-5.png' %}" alt="team">
+                </div>
+                <h3>Herman</h3>
+                <p>QA Engineer</p>
+            </div>
+            <div class="team-item">
+                <div class="team-item__img">
+                    <img src="{% static 'images/main/team-6.png' %}" alt="team">
+                </div>
+                <h3>Lily</h3>
+                <p>Product Manager</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include "components/banner.html" %}
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends 'dashboard/client/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <div class="row row-cards" style="padding-top: 20px;">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Successful Payment</h3>
+        </div>
+
+        <div class="card-body">
+          Payment for order:
+          <strong style="font-weight: bold;">{{order.topic}}</strong>
+          Received successfully and is now being assigned to a writer
+          <br>
+          <p>
+            We appreciate your business! If you have any questions, please email
+            <a href="mailto:orders@example.com">awasam@writers.hub</a>.
+          </p>
+          <p>
+            <small>You;ll be redirect to the dashboard in 10 seconds</small>
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <!-- COL-END -->
+  </div>
+  <script>
+    setTimeout(function() {
+      window.location.href = '{% url "dashboard:clients:home" %}';
+    }, 10000);  // 10 seconds delay before redirecting to dashboard
+  </script>
+{% endblock content %}

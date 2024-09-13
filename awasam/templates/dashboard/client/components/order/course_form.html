@@ -1,0 +1,119 @@
+{% load static %}
+
+<form class="form-horizontal" method="POST" action="{% url 'dashboard:clients:add_course_order' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-sm-12">
+
+
+            <div class=" row mb-4">
+                <label class="col-md-3 form-label" for="{{form.academic_level.id_for_label}}">
+                    {{form.academic_level.label}}
+                </label>
+                <div class="col-md-9">
+                    {{form.academic_level}}
+                </div>
+            </div>
+
+            <div class=" row mb-4">
+                <label class="col-md-3 form-label" for="{{form.title.id_for_label}}">{{form.title.label}}</label>
+                <div class="col-md-9">
+                    {{form.title}}
+                </div>
+            </div>
+
+
+            <div class=" row mb-4">
+                <label class="col-md-3 form-label" for="{{form.subject.id_for_label}}">{{form.subject.label}}</label>
+                <div class="col-md-9">
+                    {{form.subject}}
+                </div>
+            </div>
+
+
+            <div class="row mb-4">
+                <label class="col-md-3 form-label">How many Weeks/Assignments</label>
+                <div class="col-md-9">
+                    {{ form.number_of_weeks_or_assignments }}
+                    <small class="form-text text-muted py-1">{{ form.number_of_weeks_or_assignments.help_text }}</small>
+                </div>
+            </div>
+
+
+            <div class=" row mb-4">
+                <label class="col-md-3 form-label">{{form.description.label}}:</label>
+                <div class="col-md-9">
+                    {{form.description}}
+                </div>
+            </div>
+
+
+
+            <div class=" row mb-4">
+                <label class="col-md-3 form-label">{{form.course_budget.label}}</label>
+                <div class="col-md-9">
+                    <div class="wrap-input100 validate-input input-group" data-bs-validate="Valid phone is required: 0725000000">
+                        <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                            USD
+                        </a>
+                        {{form.course_budget}}
+                    </div>
+                </div>
+            </div>
+
+            <div class=" row mb-4">
+                <label class="col-md-3 form-label">{{form.course_url.label}}</label>
+                <div class="col-md-9">
+                    {{form.course_url}}
+                    <small class="form-text text-muted py-1 px-2">{{form.course_url.help_text}}</small>
+                </div>
+            </div>
+
+
+            <div class=" row mb-4">
+                <label class="col-md-3 form-label">{{form.student_username.label}}</label>
+                <div class="col-md-9">
+                    {{form.student_username}}
+                    <small class="form-text text-muted py-1 px-2">{{form.student_username.help_text}}</small>
+                </div>
+            </div>
+
+            <div class=" row mb-4">
+                <label class="col-md-3 form-label">{{form.student_course_login_password.label}}</label>
+                <div class="col-md-9">
+                    {{form.student_course_login_password}}
+                    <small class="form-text text-muted py-1 px-2">{{form.student_course_login_password.help_text}}</small>
+                </div>
+            </div>
+
+            {{form.subject_text}}
+            {{form.academic_level_text}}
+
+            <div class="form-group">
+                <button type="submit" id="course-button" class="btn btn-primary">Submit Now</button>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+
+    function handleChangeValue(element) {
+        let selectedText = "";
+
+        if (element.name === "academic_level") {
+            // Find the label element that contains the radio button
+            const label = element.closest('label');
+            // Get the text from the span inside the label
+            const span = label.querySelector('span');
+            selectedText = span ? span.textContent : element.value;
+            document.getElementById("id_academic_level_text").value = selectedText;
+        } else if (element.name === "subject") {
+            // Get the text of the selected option in the select dropdown
+            const selectedOption = element.options[element.selectedIndex];
+            selectedText = selectedOption ? selectedOption.text : element.value;
+            document.getElementById("id_subject_text").value = selectedText;
+        }
+    }
+
+
+</script>

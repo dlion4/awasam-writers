@@ -1,0 +1,105 @@
+/** top stages **/
+body #main-order-form #order-form .tabs-wrapper .tabs li.active:nth-of-type(1), body #main-order-form #order-form .tabs-wrapper .tabs li.active:nth-of-type(2), body #main-order-form #order-form .tabs-wrapper .tabs li.active:nth-of-type(3) {
+    background-image: url("../images/steps.png");
+}
+
+.select-items div, .select-selected, select{
+    min-height: unset;
+}
+
+/** tooltip icons **/
+body #main-order-form #order-form .steps-wrapper .label-custom .info-image,
+body #main-order-form #order-form .steps-wrapper .promo-code .info-image,
+body #main-order-form #order-form .steps-wrapper .user-form-input-name-wrapper .info-image {
+}
+body #main-order-form #order-form .steps-wrapper .label-custom .info-image:hover,
+body #main-order-form #order-form .steps-wrapper .promo-code .info-image:hover,
+body #main-order-form #order-form .steps-wrapper .user-form-input-name-wrapper .info-image:hover{
+}
+
+/** tooltip background color **/
+body #main-order-form #order-form .steps-wrapper .label-custom .info-image:hover ~ .info-content,
+body #main-order-form #order-form .steps-wrapper .promo-code .info-image:hover ~ .info-content,
+body #main-order-form #order-form .steps-wrapper .user-form-input-name-wrapper .info-image:hover ~ .info-content{
+    /*background-color: #8EE1A0;*/
+}
+body #main-order-form #order-form .steps-wrapper .label-custom .info-image:hover ~ .info-content:after,
+body #main-order-form #order-form .steps-wrapper .promo-code .info-image:hover ~ .info-content:after,
+body #main-order-form #order-form .steps-wrapper .user-form-input-name-wrapper .info-image:hover ~ .info-content:after{
+    /*border-top: solid 7px #8EE1A0;*/
+}
+
+/** button color on third step **/
+#order-form .steps-wrapper .custom-button, #order-form .steps-wrapper .custom-button-second-step, #order-form .steps-wrapper .custom-button-third-step {
+    border: 1px solid #00C189!important;
+    background: #00C189!important;
+    background-color: #00C189!important;
+    /*background-color: #8EE1A0;*/
+    /*background-image: -webkit-linear-gradient(top, #8EE1A0 50%, #31AE31 50%);*/
+    /*background-image: -moz-linear-gradient(top, #8EE1A0 50%, #31AE31 50%);*/
+    /*background-image: -o-linear-gradient(top, #8EE1A0 50%, #31AE31 50%);*/
+    /*background-image: -ms-linear-gradient(top, #8EE1A0 50%, #31AE31 50%);*/
+    /*background-image: linear-gradient(top, #8EE1A0 50%, #31AE31 50%);*/
+}
+#order-form .steps-wrapper .custom-button:hover, #order-form .steps-wrapper .custom-button-second-step:hover, #order-form .steps-wrapper .custom-button-third-step:hover {
+    background: #288B7D!important;
+    border: 1px solid #288B7D!important;
+    background-color: #288B7D!important;
+    /*background-color: #8EE1A0;*/
+    /*background-image: -webkit-linear-gradient(top, #8EE1A0 50%, #31AE31 50%);*/
+    /*background-image: -moz-linear-gradient(top, #8EE1A0 50%, #31AE31 50%);*/
+    /*background-image: -o-linear-gradient(top, #8EE1A0 50%, #31AE31 50%);*/
+    /*background-image: -ms-linear-gradient(top, #8EE1A0 50%, #31AE31 50%);*/
+    /*background-image: linear-gradient(top, #8EE1A0 50%, #31AE31 50%);*/
+}
+
+/** font family **/
+body #main-order-form #order-form *,
+body .modal .modal-file-upload *{
+    /*font-family: Arial !important;*/
+}
+/** form background */
+body #main-order-form #order-form{
+    /*background-color: #D9E2D9 !important;*/
+}
+
+/** price block background **/
+body #main-order-form #order-form .steps-wrapper .total-sum>.col-sm-12 {
+    /*background-color: #E2DABD;*/
+}
+
+/** price block text color **/
+body #main-order-form #order-form .steps-wrapper .total-sum-sign {
+    /*color: red;*/
+}
+/** price block value color **/
+body #main-order-form #order-form .steps-wrapper .total-sum-value {
+    /*color: green;*/
+}
+/** price block discount color **/
+body #main-order-form #order-form .steps-wrapper .total-discount-value {
+    /*color: #429742;*/
+}
+.modal .modal-file-upload .modal-content .modal-footer .green-btn, #order-form .steps-wrapper .promo-code .promo-code-value button {
+	background-image: none !important;
+    background: #00C189!important;
+	border: none !important;
+}
+.modal .modal-file-upload .modal-content .modal-footer .green-btn:hover,#order-form .steps-wrapper .promo-code .promo-code-value button:hover{
+    background-image: none !important;
+    background: #288B7D!important;
+    border: none !important;
+}
+#order-form .steps-wrapper .total-sum>.col-sm-12{padding: 0;}
+#order-form .error {
+	border: none;
+}
+.modal .modal-file-upload .modal-content .modal-header{
+    background-color: #63B5C0;
+}
+
+@media(max-width: 768px){
+    #order-form .tabs-wrapper .active{
+        background-color: #63B5C0;
+    }
+}

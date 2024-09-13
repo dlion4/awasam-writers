@@ -1,0 +1,107 @@
+{% extends 'dashboard/client/base.html' %}
+{% load static %}
+
+{% block css %}{% endblock css %}
+
+{% block content %}
+
+  <style type="text/css">
+    .sticky-top {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      left: 0;
+      font-size: 25px;
+    }
+
+    .pricecalculate h3,
+    .pricecalculate h5 {
+      margin-top: 0;
+      margin-bottom: 0;
+      border-bottom: 1px dotted #333;
+      font-size: 18px;
+      text-transform: uppercase;
+      padding: 10px 0;
+      font-size: 22px;
+    }
+
+    .pricecalculate {
+      background-color: #f0fcff;
+      border: 1px solid rgba(0, 0, 100, .09);
+      border-radius: 4px;
+      -webkit-box-shadow: 0 5px 15px rgba(0, 0, 100, .1), 0 0 5px rgba(0, 0, 200, .08);
+      box-shadow: 0 5px 15px rgba(0, 0, 100, .1), 0 0 5px rgba(0, 0, 200, .08);
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      color: #405d6c;
+      padding: 20px;
+    }
+  </style>
+
+  <!-- ROW OPEN -->
+  <div class="row row-cards" style="padding-top: 80px;">
+
+    <div class="col-lg-8 col-xl-8">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Add New order</h4>
+        </div>
+        <div class="card-body">
+          <div class="card-pay">
+            {% include "dashboard/client/components/order/tabs.html" %}
+            <!-- -->
+            {% include "dashboard/client/components/order/normal_form.html" %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-xl-4">
+      <div class="sticky-top">
+        <div class="pricecalculate">
+          <div>
+
+            <div class="">
+
+              <div class="row">
+                <div class="col-sm-12">
+
+                  <div style="font-size: 15px; font-weight: bold" class="topicright"></div>
+                  <div class="col_aclevelright">Academic Level: Not selected</div>
+                  <hr style="margin-bottom: 0px">
+                  <div class="order_tpaperright"></div>
+                  <div class="order_subjectright"></div>
+
+                  <div class="row">
+                    <div class="col-sm-7">
+                      <div class="order_slidesright"></div>
+                    </div>
+                  </div>
+
+                  <hr style="margin-bottom: 0px">
+                  <div class="row">
+                    <div class="col-sm-12 font-weight-bold">
+                      Total price
+                    </div>
+                    <div class="col-sm-12 text-success font-weight-bold">
+                      <h4 id="display-normal-order-price">
+                        USD 0
+                      </h4>
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROW CLOSED -->
+{% endblock content %}
+
+{% block javascript %}{% endblock javascript %}

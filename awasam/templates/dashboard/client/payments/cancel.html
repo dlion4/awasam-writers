@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Checkout canceled</title>
+  </head>
+
+  <body>
+    <section>
+      <p>Forgot to add something to your cart? Shop around then come back to pay!</p>
+    </section>
+  </body>
+
+</html>
+
+{% extends 'dashboard/client/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <div class="row row-cards" style="padding-top: 20px;">
+    <div class="col-lg-8 col-xl-8">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Unsuccessful Payment</h3>
+        </div>
+
+        <div class="card-body">
+          Payment for order
+          {{order.topic}}
+          Has not been placed successfully, you can retry here
+          <button onclick="handleStripeCheckout(this)">Retry payment</button>
+          <br>
+          <p>
+            We appreciate your business! If you have any questions, please email
+            <a href="mailto:orders@example.com">awasam@writers.hub</a>.
+          </p>
+        </div>
+      </div>
+
+    </div>
+    <!-- COL-END -->
+  </div>
+
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <script type="text/javascript">
+    // var stripe = Stripe('{{ STRIPE_PUBLIC_KEY }}');
+    var stripe = Stripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
+    function handleStripeCheckout(value) {
+
+      value.setAttribute('disabled', 'disabled');
+
+      fetch("{% url 'dashboard:payments:orders:create_checkout_session' %}", {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}'
+        }
+      })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (sessionId) {
+          return stripe.redirectToCheckout({sessionId: sessionId.id});
+        })
+        .then(function (result) {
+          if (result.error) {
+            alert(result.error.message);
+          }
+        })
+        .catch(function (error) {
+          console.log("Error:", error);
+        });
+
+    }
+  </script>
+{% endblock content %}

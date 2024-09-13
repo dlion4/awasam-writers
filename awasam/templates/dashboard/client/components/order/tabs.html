@@ -1,0 +1,14 @@
+<ul class="tabs-menu nav">
+  <li>
+    <a href="{% url 'dashboard:clients:add_order' %}" class="payment-icon {% if request.resolver_match.view_name == 'dashboard:clients:add_order' %} active {% endif %}">Normal Order</a>
+  </li>
+
+  <li>
+    <a href="{% url 'dashboard:clients:add_exam_order' %}" class="payment-icon {% if request.resolver_match.view_name == 'dashboard:clients:add_exam_order' %} active {% endif %}">Exam Help</a>
+  </li>
+
+  <li>
+    <a href="{% url 'dashboard:clients:add_course_order' %}" class="payment-icon {% if request.resolver_match.view_name == 'dashboard:clients:add_course_order' %} active {% endif %}">Course Help</a>
+  </li>
+
+</ul>

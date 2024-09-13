@@ -1,0 +1,193 @@
+{% load static i18n compress%}
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+
+  <head>
+
+    <!-- META DATA -->
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+
+    <!-- FAVICON -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'dashboard/logo/edit.png' %}">
+
+    <!-- TITLE -->
+    <title>
+      {% block title %}awasam online writing system account{% endblock title %}
+    </title>
+    <link rel="stylesheet" href="{% static 'account/assets/vendor/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'account/assets/vendor/css/OverlayScrollbars.min.css' %}">
+    <link rel="stylesheet" href="{% static 'account/assets/vendor/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'account/assets/css/style.css' %}">
+    <link rel="stylesheet" id="primaryColor" href="{% static 'account/assets/css/orange-color.css' %}">
+    <!-- for seo stuff -->
+    {% block meta %}{% endblock meta %}
+  </head>
+
+  <body class="light-theme">
+
+    <!-- main content start -->
+    <div class="main-content login-panel">
+      <div class="login-body">
+        <div class="top d-flex justify-content-between align-items-center">
+          <div class="logo">
+            <!-- <img src="dashboad/assets/images/logo-black.png" alt="Logo"> -->
+            <img src="{% static 'dashboard/logo/logo.png' %}" width="150" class="" alt="site logo">
+          </div>
+          <a href="{% url 'home' %}">
+            <i class="fa-duotone fa-house-chimney"></i>
+          </a>
+        </div>
+        <div class="bottom">
+          <h3 class="panel-title">
+            {% block pageTitle %}Sign In{% endblock pageTitle %}
+          </h3>
+          <div class="account_type_response"></div>
+          {% block status %}
+            <div class="login-status">
+              <div class="msg-success alert alert-success py-2 px-3 rounded mb-20 fs-14">
+                <i class="fa-regular fa-check me-2"></i>
+                Login Successfully
+              </div>
+              <div class="msg-error alert alert-danger py-2 px-3 rounded mb-20 fs-14">
+                <i class="fa-regular fa-circle-exclamation me-2"></i>
+                Invalid Username/Password
+              </div>
+            </div>
+          {% endblock status %}
+
+          {% block content %}{% endblock content %}
+
+          {% block socials %}
+            <div class="other-option">
+              <p>
+                <hr/>
+              </p>
+              <div class="social-box d-flex justify-content-center gap-20">
+                <a href="#">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="#">
+                  <i class="fa-brands fa-twitter"></i>
+                </a>
+                <a href="#">
+                  <i class="fa-brands fa-google"></i>
+                </a>
+                <a href="#">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          {% endblock socials %}
+        </div>
+      </div>
+
+      <!-- footer start -->
+      <div class="footer">
+        <p>Copyright©
+          <script>
+            document.write(new Date().getFullYear())
+          </script>
+          All Rights Reserved.
+        </p>
+      </div>
+      <!-- footer end -->
+    </div>
+
+    <!-- main content end -->
+
+    <script src="{% static 'account/assets/vendor/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'account/assets/vendor/js/jquery.overlayScrollbars.min.js' %}"></script>
+    <script src="{% static 'account/assets/vendor/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'account/assets/js/main.js' %}"></script>
+
+    <script>
+      // signup and sign in  requests
+
+      $(document).ready(function () {
+        let signup = $('#signup-form');
+        let signin = $('#signin-form');
+
+        $(signup)
+          .find("select[name=account_type]")
+          .on("change", function (event) {
+            event.preventDefault();
+            if ($(this).val() !== "Student") {
+              $(".account_type_response")
+                .html(`<div class="msg-error alert alert-danger py-2 px-3 rounded mb-20 fs-14">
+                <i class="fa-regular fa-circle-exclamation me-2"></i>
+                Applications for <strong>${event.target.value} Accounts</strong> are currently closed!
+              </div>`)
+                .fadeIn(1000)
+                .fadeOut(5000);
+              $(signup)
+                .find("input")
+                .each(function () {
+                  $(this).attr("disabled", true);
+                });
+              $(signup)
+                .find("button[type=submit]")
+                .attr("disabled", true);
+            } else {
+              $(signup)
+                .find("input")
+                .each(function () {
+                  $(this).attr("disabled", false);
+                });
+              $(signup)
+                .find("button[type=submit]")
+                .attr("disabled", false);
+            }
+          });
+
+        // now submit the signup information
+
+        $(signup).on("submit", function (event) {
+          event.preventDefault();
+
+          $.ajax({
+            type: "POST",
+            url: $(this).attr("action"),
+            headers: {
+              "X-CSRFToken": $("input[name=csrfmiddlewaretoken]").val(),
+              "Accept": "application/json"
+            },
+            data: JSON.stringify($(this).serialize()),
+            success: function (response) {
+              if (response.message) {
+                $(".account_type_response").html(`<div class="msg-success alert alert-success py-2 px-3 rounded mb-20 fs-14">
+                <i class="fa-regular fa-circle-check me-2"></i>
+                ${response.message}
+              </div>`)
+              } else {
+                $(".account_type_response").html(`<div class="msg-error alert alert-exclamation py-2 px-3 rounded mb-20 fs-14">
+                <i class="fa-regular fa-circle-check me-2"></i>
+                ${response.errors}
+              </div>`)
+              };
+
+              setTimeout(function () {
+                if (response.url) {
+                  window.location.href = response.url;
+                }
+              }, 2000);
+            },
+            error: function (jxThr, jqueryError, errorThrown) {
+              console.log(errorThrown);
+              $(".account_type_response").html(`<div class="msg-error alert alert-exclamation py-2 px-3 rounded mb-20 fs-14">
+                <i class="fa-regular fa-circle-check me-2"></i>
+                ${errorThrown}
+              </div>`)
+            }
+          });
+        });
+      })
+    </script>
+  </body>
+
+</html>

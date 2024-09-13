@@ -1,0 +1,172 @@
+{% extends 'dashboard/client/base.html' %}
+{% load static %}
+
+{% block css %}{% endblock css %}
+
+{% block content %}
+  <div class="row row-cards" style="padding-top: 20px;">
+    <div class="col-lg-7 col-xl-7">
+
+      <div class="card">
+        <div class="card-header border-bottom-0">
+          <h2 class="card-title">Recent Transaction</h2>
+
+          <div class="page-options ms-auto">
+            <!-- Wallet USD 0.00 -->
+          </div>
+
+        </div>
+        <div class="e-table px-5 pb-5">
+          <div class="table-responsive table-lg">
+
+            <table class="table border-top table-bordered mb-0">
+              <thead>
+                <tr>
+                  <th class="text-center">ID</th>
+                  <th>Pay Reason</th>
+                  <th>Debit</th>
+                  <th>Credit</th>
+                  <th>Balance</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                {% for transaction in transactions %}
+
+                  <tr>
+                    <td class="align-middle text-center">#{{transaction.pk}}</td>
+                    <td class="text-nowrap align-middle">{{transaction.reason|safe}}<br>
+                      <span style="font-size: 10px;">{{transaction.payment_date}}</span></td>
+                    <td class="text-nowrap align-middle">
+                      {% if transaction.type == "D" %}
+                        <span>USD
+                          {{transaction.amount}}</span>
+                      {% else %}
+                        <span></span>
+                      {% endif %}
+                    </td>
+                    <td class="text-nowrap align-middle">
+                      {% if transaction.type == "C" %}
+                        <span>USD
+                          {{transaction.amount}}</span>
+                      {% else %}
+                        <span></span>
+                      {% endif %}
+                    </td>
+                    <td class="align-middle text-center">{{transaction.amount}}</td>
+                  </tr>
+
+                  {% empty %}
+
+                  <tr>
+                    <td colspan="6" class="text-center">No transactions found.</td>
+                  </tr>
+
+                {% endfor %}
+                <tr>
+                  <td class="align-middle text-center"></td>
+                  <td class="align-middle text-center"></td>
+                  <td>USD 0.00</td>
+                  <td>USD 67.00</td>
+                  <td>USD 67.00</td>
+                  <td></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-5">
+
+        <div class="float-end"></div>
+      </div>
+    </div>
+    <!-- COL-END -->
+
+    <div class="col-lg-5 col-xl-5">
+
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Add funds</h4>
+
+        </div>
+        <div class="card-body">
+          <form class="form-horizontal" id="topuform" action="{% url 'dashboard:payments:top_up_action_view' %}">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-sm-12">
+                <div class=" row mb-4">
+                  <label class="col-md-3 form-label">Amount</label>
+                  <div class="col-md-9">
+                    <div class="wrap-input100 validate-input input-group" data-bs-validate="Valid phone is required: 0725000000">
+                      <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                        USD
+                      </a>
+                      <input required="required" class="input100 border-start-0 ms-0 form-control" name="amount" type="number">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" id="button" class="btn btn-primary deposit-btn">Deposit Now</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="{% static 'dashboard/assets/js/jquery.min.js' %}"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#topuform").on("submit", function (event) {
+        event.preventDefault();
+        var amount = $("input[name='amount']").val();
+        if (amount <= 0) {
+          alert("Please enter a valid amount.");
+          return false;
+        }
+
+        $(this)
+          .find(".deposit-btn")
+          .attr("disabled", true);
+        $.ajax({
+          url: $(this).attr("action"),
+          type: "POST",
+          headers: {
+            "X-CSRFToken": $("input[name=csrfmiddlewaretoken]").val()
+          },
+          data: JSON.stringify({amount: amount}),
+          success: function (response) {
+            $(this)
+              .find(".deposit-btn")
+              .attr("disabled", false);
+            handleStripeCheckout(response);
+          },
+          error: function (xhr, status, error) {
+            alert("An error occurred: " + error);
+          }
+        });
+      });
+
+      function handleStripeCheckout(response) {
+        var stripe = Stripe('{{stripe_public_key }}');
+        // Continue with your checkout logic here
+        // Simulating the process with a timeout
+
+        return stripe.redirectToCheckout({sessionId: response.id});
+
+      }
+
+    });
+  </script>
+
+{% endblock content %}

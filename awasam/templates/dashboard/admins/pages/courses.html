@@ -1,0 +1,173 @@
+{% extends 'dashboard/admins/base.html' %}
+{% load static %}
+
+{% block css %}{% endblock css %}
+
+
+
+{% block content %}
+<div class="row row-cards" style="padding-top: 20px;">
+  <div class="col-lg-12 col-xl-12">
+
+    <div class="card">
+      <div class="card-header border-bottom-0">
+        <h2 class="card-title">Courses</h2>
+
+        <div class="page-options ms-auto">
+          <!-- Wallet USD 0.00 -->
+        </div>
+
+      </div>
+      <div class="e-table px-5 pb-5">
+
+        <div class="table-responsive table-lg">
+
+          <table class="table border-top table-bordered mb-0">
+            <thead>
+              <tr>
+                <th class="text-center">ID</th>
+                <th>Title</th>
+                <th>User Id</th>
+                <th>Info</th>
+                <th>Weeks</th>
+                <th>Budget (USD)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for course in courses %}
+              <tr>
+                <td class="align-middle text-center">#{{course.pk}}</td>
+                <td class="text-nowrap align-middle">{{course.title|truncatewords:"5"}}<br>
+                  <span style="font-size: 10px;">{{course.order_date}}</span>
+                </td>
+                <td class="text-nowrap align-middle">
+                  <a target="_blank" href="">9</a>
+                </td>
+                <td class="text-nowrap align-middle"><span>Subject: {{course.get_subject_display}}<br></span></td>
+                <td class="text-nowrap align-middle"><span>5</span></td>
+                <td class="align-middle text-center">{{course.course_budget}}</td>
+                <td class="align-middle text-center">
+                  {% if course.is_completed %}
+                  {% if course.is_assigned %}
+                  <span class="badge bg-secondary fs-14 me-2">Completed</span>
+                  {% else %}
+                  <span class="badge bg-secondary fs-14 me-2">Completed (Not Assigned)</span>
+                  {% endif %}
+                  {% elif course.is_assigned %}
+                  <span class="badge bg-secondary fs-14 me-2">Assigned</span>
+                  {% else %}
+                  <span class="badge bg-secondary fs-14 me-2">Not Assigned/Completed</span>
+                  {% endif %}
+                </td>
+                <td class="text-center align-middle">
+                  <div class="btn-group align-top">
+                    <a class="btn btn-sm btn-primary badge" data-bs-target="#edit-property{{course.pk}}" data-bs-toggle="modal"><i class="fa fa-edit"></i> Edit</a>
+                  </div>
+                </td>
+              </tr>
+
+
+              <div class="modal fade" id="edit-property{{course.pk}}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content country-select-modal">
+                    <div class="modal-header">
+                      <h6 class="modal-title">Edit Course #{{course.pk}}</h6>
+                      <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form class="form-horizontal" action="{% url 'dashboard:admins:admin_orders_view' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="order_type" value="{{order.type}}">
+                        <input type="hidden" name="order_pk" value="{{order.pk}}">
+                        <div class=" row mb-4">
+                          <label class="col-md-3 form-label">Name</label>
+                          <div class="col-md-9">
+                            <input type="text" class="form-control" name="title" value="{{course.title}}" {% if course.is_assigned or course.is_completed %} disabled {% endif %}>
+                          </div>
+                        </div>
+
+                        <div class=" row mb-4">
+                          <label class="col-md-3 form-label">Amount (USD)</label>
+                          <div class="col-md-9">
+                            <input type="text" class="form-control" name="course_budget" value="{{course.course_budget}}" {% if course.is_assigned or course.is_completed %} disabled {% endif %}>
+                          </div>
+                        </div>
+
+                        <div class=" row mb-4">
+                          <label class="col-md-3 form-label">Status</label>
+                          <div class="col-md-9">
+                            <select class="form-control" name="status" onchange="handleChange(this)">
+                              <option value="0" selected>Pending</option>
+                              {% if not course.is_assigned and not course.is_completed %}
+                              <option value="1">Assign</option>
+                              {% elif course.is_assigned and not course.is_completed %}
+                              <option value="3">Completed</option>
+                              {% endif %}
+                            </select>
+                          </div>
+                        </div>
+                        <div class=" row mb-4 d-none hidden-writers">
+                          <label class="col-md-3 form-label">Writer</label>
+                          <div class="col-md-9">
+                            {{assign_order_form.writers}}
+                          </div>
+                        </div>
+                        <div class=" row mb-4">
+                          <div class="col-md-9 px-4">
+                            <input type="submit" value="Save" class="btn btn-primary" {% if course.is_assigned and course.is_completed %} disabled {% endif %}>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              {% empty %}
+              <tr></tr>
+              {% endfor %}
+
+              <!-- Move the script here -->
+              <script>
+                function handleChange(element) {
+                  let selectedValue = element.options[element.selectedIndex].value;  // Corrected
+                  let modalContent = element.closest('.modal-content');  // Select the modal content
+                  let hiddenClass = modalContent.querySelector(".hidden-writers");  // Get hidden-writers element
+
+                  if (selectedValue == "1") {
+                    // Show hidden writers section
+                    hiddenClass.classList.remove("d-none");
+                  } else {
+                    // Hide hidden writers section and clear any input/select fields within it
+                    hiddenClass.classList.add("d-none");
+
+                    // Clear the value of the select input with name 'writers'
+                    let writerSelect = hiddenClass.querySelector("select[name=writers]");
+                    if (writerSelect) {
+                      writerSelect.value = "";  // Clear the value of the select input
+                    }
+                  }
+                }
+              </script>
+
+            </tbody>
+          </table>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="mb-5">
+
+      <div class="float-end"></div>
+    </div>
+  </div>
+  <!-- COL-END -->
+
+</div>
+{% endblock content %}

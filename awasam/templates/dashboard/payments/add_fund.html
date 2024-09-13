@@ -1,0 +1,87 @@
+{% extends 'dashboard/client/base.html' %}
+{% load static %}
+
+{% block css %}{% endblock css %}
+
+{% block content %}
+  <div class="col-lg-8 col-xl-8">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Add funds</h4>
+      </div>
+      <div class="card-body">
+        <form class="form-horizontal" id="topuform" action="{% url 'dashboard:payments:top_up_action_view' %}">
+          {% csrf_token %}
+          <div class="row">
+            <div class="col-sm-12">
+              <div class=" row mb-4">
+                <label class="col-md-3 form-label">Amount</label>
+                <div class="col-md-9">
+                  <div class="wrap-input100 validate-input input-group" data-bs-validate="Valid phone is required: 0725000000">
+                    <a href="javascript:void(0)" class="input-group-text bg-white text-muted">
+                      USD
+                    </a>
+                    <input required="required" class="input100 border-start-0 ms-0 form-control" name="amount" type="number">
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <button type="submit" id="button" class="btn btn-primary deposit-btn">Deposit Now</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- JQUERY JS -->
+  <script src="{% static 'dashboard/assets/js/jquery.min.js' %}"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <script>
+    $(document).ready(function () {
+      $("#topuform").on("submit", function (event) {
+        event.preventDefault();
+        var amount = $("input[name='amount']").val();
+        if (amount <= 0) {
+          alert("Please enter a valid amount.");
+          return false;
+        }
+
+        $(this)
+          .find(".deposit-btn")
+          .attr("disabled", true);
+        $.ajax({
+          url: $(this).attr("action"),
+          type: "POST",
+          headers: {
+            "X-CSRFToken": $("input[name=csrfmiddlewaretoken]").val()
+          },
+          data: JSON.stringify({amount: amount}),
+          success: function (response) {
+            $(this)
+              .find(".deposit-btn")
+              .attr("disabled", false);
+            handleStripeCheckout(response);
+          },
+          error: function (xhr, status, error) {
+            alert("An error occurred: " + error);
+          }
+        });
+      });
+
+      function handleStripeCheckout(response) {
+        var stripe = Stripe('{{stripe_public_key }}');
+        // Continue with your checkout logic here
+        // Simulating the process with a timeout
+
+        return stripe.redirectToCheckout({sessionId: response.id});
+
+      }
+
+    });
+  </script>
+
+{% endblock content %}

@@ -1,0 +1,81 @@
+{% extends 'dashboard/client/base.html' %}
+{% load static %}
+
+{% block css %}{% endblock css %}
+
+
+
+{% block content %}
+<div class="row row-cards" style="padding-top: 20px;">
+  <div class="col-lg-12 col-xl-12">
+
+    <div class="card">
+      <div class="card-header border-bottom-0">
+        <h2 class="card-title">Courses</h2>
+
+        <div class="page-options ms-auto">
+          <!-- Wallet USD 0.00 -->
+        </div>
+
+      </div>
+      <div class="e-table px-5 pb-5">
+        <div class="table-responsive table-lg">
+          {% if not courses %}
+          No courses
+          {% endif %}
+          <table class="table border-top table-bordered mb-0">
+            <thead>
+              <tr>
+                <th class="text-center">ID</th>
+                <th>Title</th>
+                <th>Info</th>
+                <th>Weeks/Assignments</th>
+                <th>Budget (USD)</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for course in courses %}
+              <tr>
+                <td class="align-middle text-center">#{{course.pk}}</td>
+                <td class="text-nowrap align-middle">
+                  {{course.title|truncatewords:"4"}}<br>
+                  <span style="font-size: 10px;">{{course.order_date}}</span>
+                </td>
+                <td class="text-nowrap align-middle">
+                  <span>
+                    Subject: {{course.subject_text|title}}<br>
+                  </span>
+                </td>
+                <td class="text-nowrap align-middle">
+                  <span>
+                    {{course.number_of_weeks_or_assignments}}
+                  </span>
+                </td>
+                <td class="align-middle text-center">
+                  {{course.course_budget}}
+                </td>
+                <td class="align-middle text-center">
+                  <span class="badge bg-danger fs-14 me-2">pending</span>
+                </td>
+              </tr>
+              {% empty %}
+              <tr></tr>
+
+              {% endfor %}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-5">
+
+      <div class="float-end"></div>
+    </div>
+  </div>
+  <!-- COL-END -->
+
+</div>
+{% endblock content %}

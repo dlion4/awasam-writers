@@ -1,0 +1,545 @@
+{% load static %}
+
+<form id="normalOrderForm" class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+  {% csrf_token %}
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label" for="{{form.academic_level.id_for_label}}">
+          {{form.academic_level.label}}
+        </label>
+        <div class="col-md-9">
+          {{form.academic_level}}
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label" for="{{form.topic.label}}">Assignment topic</label>
+        <div class="col-md-9">
+          {{form.topic}}
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label" for=" {{form.deadline.id_for_label}}">
+          <strong>Urgency:</strong>
+        </label>
+        <div class="col-md-9">
+          {{form.deadline}}
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label" for="{{form.assignment_type.id_for_label}}">
+          Assignment type:
+        </label>
+        <div class="col-md-9">
+          {{form.assignment_type}}
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label" for="{{form.subject.id_for_label}}">{{form.subject.label}}</label>
+        <div class="col-md-9">
+          {{form.subject}}
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">Spacing:</label>
+        <div class="col-md-9">
+          {{form.spacing}}
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">
+          Assignment size:
+        </label>
+        <div class="col-md-9">
+          <div class=" row mb-4">
+            <div class="col-12 py-1">
+              {{form.assignment_size}}
+            </div>
+            <div class="col-12 py-1">
+              {{form.slides}}
+            </div>
+            <div class="col-12 py-1">
+              {{form.sources}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">Citation</label>
+        <div class="col-md-9">
+          {{ form.citation }}
+          <div class="mt-2 other-citation" style="display: none;">
+            {{form.other_citation}}
+          </div>
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">
+          Assignment language:
+        </label>
+        <div class="col-md-9">
+          {{ form.language }}
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">{{form.description.label}}:</label>
+        <div class="col-md-9">
+          {{form.description}}
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">Upload files</label>
+        <div class="col-md-9">
+          {{form.uploads}}
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <label class="col-md-3 form-label">
+          Plagiarism Report (<span style="color: green;">OPTIONAL</span>):
+        </label>
+        <div class="col-md-9">
+          {{ form.attach_plagiarism_report }}
+        </div>
+      </div>
+
+
+      <!--extrassss-->
+
+
+
+      <div class="card-header">
+        <h1 class="card">Extra Services</h1>
+      </div>
+
+
+
+
+      <div class="container">
+        <!-- Draft Section -->
+        <div class="row mb-4">
+          <label class="col-md-4 form-label">Draft</label>
+          <div class="col-md-8">
+            <div class="selectgroup selectgroup-pills">
+              <label class="selectgroup-item">
+                <input type="checkbox" name="draftOption" id="draft_yes" value="1" class="selectgroup-input" onchange="calculate(this.form);">
+                <span class="selectgroup-button">
+                  Yes
+                  <p class="mt-1 small">
+                    <strong>Draft:</strong> Allows you to review a preliminary version of the document before final submission.
+                  </p>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Files of Sources Section -->
+        <div class="row mb-4">
+          <label class="col-md-4 form-label">Files of Sources</label>
+          <div class="col-md-8">
+            <div class="selectgroup selectgroup-pills">
+              <label class="selectgroup-item">
+                <input type="checkbox" name="filesOption" id="files_yes" value="1" class="selectgroup-input" onchange="calculate(this.form);">
+                <span class="selectgroup-button">
+                  $10
+                  <p class="mt-1 small">
+                    <strong>Basic:</strong> You will get copies of used sources. grtyuivertytuilturyurtherhgerh
+                  </p>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- High Priority Status Section -->
+        <div class="row mb-4">
+          <label class="col-md-4 form-label">High Priority Status</label>
+          <div class="col-md-8">
+            <div class="selectgroup selectgroup-pills">
+              <label class="selectgroup-item">
+                <input type="checkbox" name="priorityStatus" id="priority_yes" value="1" class="selectgroup-input" onchange="calculate(this.form);">
+                <span class="selectgroup-button">
+                  $2
+                  <p class="mt-1 small">
+                    <strong>Priority:</strong> Your project will be treated with high priority.ergerhtryjryjry
+                  </p>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 1 Page Summary Section -->
+        <div class="row mb-4">
+          <label class="col-md-4 form-label">1 Page Summary</label>
+          <div class="col-md-8">
+            <div class="selectgroup selectgroup-pills">
+              <label class="selectgroup-item">
+                <input type="checkbox" name="summaryOption" id="summary_yes" value="1" class="selectgroup-input" onchange="calculate(this.form);">
+                <span class="selectgroup-button">
+                  $2
+                  <p class="mt-1 small">
+                    <strong>Priority:</strong> Your project will be treated with high priority.ergerhtryjryjry
+                  </p>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Check Section -->
+        <div class="row mb-4">
+          <label class="col-md-4 form-label">AI Check</label>
+          <div class="col-md-8">
+            <div class="selectgroup selectgroup-pills">
+              <label class="selectgroup-item">
+                <input type="checkbox" name="aiCheckOption" id="aicheck_yes" value="1" class="selectgroup-input" onchange="calculate(this.form);">
+                <span class="selectgroup-button">
+                  $10
+                  <p class="mt-1 small">
+                    <strong>Basic:</strong> Suitable for a basic level of AI verification at a lower cost.
+                  </p>
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Type of Expert Section -->
+        <div class="row mb-4">
+          <label class="col-md-4 form-label">Type of Expert</label>
+          <div class="col-md-8">
+            <div class="row">
+              <!-- Basic Expert -->
+              <div class="col-6">
+                <label class="selectgroup-item">
+                  <input type="radio" name="expertType" id="expert_basic" value="basic" class="selectgroup-input" onchange="calculate(this.form);">
+                  <span class="selectgroup-button">
+                    Basic
+                    <p class="mt-0.5 small">
+                      Suitable for simpler tasks, offering standard expertise at a lower cost.
+                    </p>
+                  </span>
+                </label>
+              </div>
+
+              <!-- Professional Expert -->
+              <div class="col-6">
+                <label class="selectgroup-item">
+                  <input type="radio" name="expertType" id="expert_professional" value="professional" class="selectgroup-input" onchange="calculate(this.form);">
+                  <span class="selectgroup-button">
+                    Professional
+                    <p class="mt-0.5 small">
+                      Ideal for complex projects requiring in-depth knowledge and advanced skills.
+                    </p>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mb-4">
+        <label class="col-md-4 form-label">Software</label>
+        <div class="col-md-8">
+          <div class="addon-ad-charge mt-2">
+            <label class="custom-checkbox">
+              <input type="checkbox" id="softwareCheck" onclick="toggleSoftwareOptions()" style="width: 18px; height: 18px;">
+              <span class="checkbox-custom" style="width: 20px; height: 20px;"></span>
+              If yes, check this box.
+            </label>
+          </div>
+
+          <div class="well" id="softwareOptions" style="display: none;">
+            <select name="software_options" class="form-control select2-show-search form-select" data-placeholder="Choose software">
+              <option label="Choose software"></option>
+              <option value="autocad">AutoCAD</option>
+              <option value="matlab">MATLAB</option>
+              <option value="spss">SPSS</option>
+              <option value="ms_access">MS ACCESS</option>
+              <option value="stata">STATA</option>
+              <option value="database">DataBase</option>
+              <option value="programming_language">Programming language</option>
+              <option value="other">Other (I will specify in paper details)</option>
+              <option value="writers_choice">Writers choice (Any)</option>
+              <option value="javascript">JavaScript</option>
+              <option value="html_css">HTML/CSS</option>
+              <option value="r_studio">R Studio</option>
+              <option value="python">Python</option>
+              <option value="cisco_packet_tracer">Cisco Packet Tracer</option>
+            </select>
+          </div>
+
+          <script>
+            function toggleSoftwareOptions() {
+              var checkBox = document.getElementById("softwareCheck");
+              var softwareOptions = document.getElementById("softwareOptions");
+              if (checkBox.checked) {
+                softwareOptions.style.display = "block";
+              } else {
+                softwareOptions.style.display = "none";
+              }
+            }
+          </script>
+        </div>
+      </div>
+
+
+      {{form.price}}
+
+      {{form.academic_level_text}}
+      {{form.deadline_text}}
+      {{form.subject_text}}
+      {{form.assignment_type_text}}
+      {{form.spacing_text}}
+      {{form.assignment_size_pages_text}}
+      {{form.slides_text}}
+      {{form.sources_text}}
+      {{form.citation_text}}
+      {{form.language_text}}
+
+      <div class="form-group">
+
+        <button type="submit" id="settings_save_btn56" class="btn btn-primary submitBtn">Submit Now</button>
+
+        <div id="spinner-border" style="display:none;" class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</form>
+<script>
+  // Example function to calculate something based on the value
+
+  function calculateValue() {
+    var plagiarism_report_cost = 10;
+
+    // Get values and labels from selected elements
+    var academicLevel = document.querySelector('input[name="academic_level"]:checked');
+    var urgency = document.querySelector('select[name="deadline"]');
+    var assignmentType = document.querySelector('select[name="assignment_type"]');
+    var subject = document.querySelector('select[name="subject"]');
+    var spacing = document.querySelector('input[name="spacing"]');
+    var assignmentSizePages = document.querySelector('select[name="assignment_size"]');
+    var assignmentSizeSlides = document.querySelector('select[name="slides"]');
+    var assignmentSizeSources = document.querySelector('select[name="sources"]');
+    var citation = document.querySelector('input[name="citation"]:checked');
+    var assignmentLanguage = document.querySelector('input[name="language"]:checked');
+    var plagiarismReport = document.querySelector('input[name="attach_plagiarism_report"]:checked');
+
+    var assignmentTopic = document.querySelector('input[name="topic"]');
+    assignmentTopic.addEventListener("keyup", function (event) {
+      var topicSummary = document.querySelector(".topicright")
+      topicSummary.textContent = "Topic: " + event.target.value;
+    });
+
+    assignmentSizePages.addEventListener("change", function (event) {
+      if (event.target.value === 0) {
+        submitBtn.setAttribute('disabled', 'disabled');
+      } else {
+        submitBtn.removeAttribute('disabled');
+      }
+    })
+
+    // Check if elements exist and retrieve their values and labels safely
+    var total = 0;
+    var summary = "";
+
+    if (academicLevel) {
+      total += parseFloat(academicLevel.value);
+      var academicLevelLabel = academicLevel
+        .closest("label")
+        .innerText;
+      var academicSummary = document.querySelector(".col_aclevelright");
+      academicSummary.innerHTML = `<span>Academic Level: ${academicLevelLabel}`;
+      document
+        .getElementById("id_academic_level_text")
+        .value = academicLevelLabel;
+
+    }
+
+    if (urgency) {
+      total += parseFloat(urgency.value);
+      var urgencyLabel = urgency
+        .options[urgency.selectedIndex]
+        .text;
+
+      summary += "Urgency: " + urgencyLabel + " (Value: " + urgency.value + ")<br>";
+
+      document
+        .getElementById("id_deadline_text")
+        .value = urgencyLabel
+
+    }
+
+    if (assignmentType) {
+      total += parseFloat(assignmentType.value);
+      var assignmentTypeLabel = assignmentType
+        .options[assignmentType.selectedIndex]
+        .text;
+      var assignmentTypeSummary = document.querySelector(".order_tpaperright");
+      assignmentTypeSummary.innerHTML = `<span>Assignment Type: ${assignmentTypeLabel}`;
+
+      document
+        .getElementById("id_assignment_type_text")
+        .value = assignmentTypeLabel;
+
+    }
+
+    if (subject) {
+      total += parseFloat(subject.value);
+      var subjectLabel = subject
+        .options[subject.selectedIndex]
+        .text;
+      document
+        .getElementById("id_subject_text")
+        .value = subjectLabel;
+      summary += "Subject: " + subjectLabel + " (Value: " + subject.value + ")<br>";
+    }
+
+    if (spacing) {
+      total += parseFloat(spacing.value);
+      var spacingText = document.getElementById("id_spacing_text");
+      var spacingLabel = spacing
+        .options[spacing.selectedIndex]
+        .text;
+      console.log(spacingLabel);
+      spacingText.value = spacingLabel;
+
+    }
+
+    if (assignmentSizePages) {
+      total += parseFloat(assignmentSizePages.value);
+      var assignmentSizePagesLabel = assignmentSizePages
+        .options[assignmentSizePages.selectedIndex]
+        .text;
+      var assignmentSizePagesSummary = document.querySelector(".order_tpagesright");
+      document
+        .getElementById("id_assignment_size_pages_text")
+        .value = assignmentSizePagesLabel;
+
+    }
+
+    if (assignmentSizeSlides) {
+      total += parseFloat(assignmentSizeSlides.value);
+      var assignmentSizeSlidesLabel = assignmentSizeSlides
+        .options[assignmentSizeSlides.selectedIndex]
+        .text;
+
+      document
+        .getElementById("id_slides_text")
+        .value = assignmentSizeSlidesLabel;
+
+    }
+
+    if (assignmentSizeSources) {
+      total += parseFloat(assignmentSizeSources.value);
+      var assignmentSizeSourcesLabel = assignmentSizeSources
+        .options[assignmentSizeSources.selectedIndex]
+        .text;
+      document
+        .getElementById("id_sources_text")
+        .value = assignmentSizeSourcesLabel;
+
+    }
+
+    if (citation) {
+      var citationLabel = citation
+        .closest("label")
+        .innerText
+        .trim();
+      var citationTextSummary = document.getElementById("id_citation_text")
+      let otherCitation = document.querySelector(".other-citation");
+      if (citationLabel === "Other") {
+        otherCitation.style.display = "block";
+        citationTextSummary.value = otherCitation.firstChild.value;
+      } else {
+        otherCitation.style.display = "none";
+      }
+      citationTextSummary.value = citation.value;
+
+    }
+
+    if (assignmentLanguage) {
+      var assignmentLanguageLabel = assignmentLanguage
+        .closest("label")
+        .innerText
+        .trim();
+      document
+        .getElementById("id_language_text")
+        .value = assignmentLanguage.textContent;
+    }
+
+    if (plagiarismReport) {
+      total += plagiarism_report_cost;
+      var plagiarismReportLabel = plagiarismReport
+        .closest("label")
+        .innerText
+        .trim();
+      summary += "Plagiarism Report: " + plagiarismReportLabel + " (Cost: " + plagiarism_report_cost + ")<br>";
+    }
+
+    // Log the total (or update it in the UI)
+    console.log("Total cost: " + total);
+    let priceValue = document.getElementById("id_price");
+
+    // Return or display total as needed
+    let totalCost = Number
+      .parseFloat(total)
+      .toFixed(2)
+    document
+      .querySelector("#display-normal-order-price")
+      .innerHTML = `USD: ${totalCost}`;
+    priceValue.value = totalCost;
+    return total;
+  }
+
+  function validateForm() {
+    // Get values from the select elements
+    var assignmentSizePages = document.querySelector('select[name="assignment_size"]');
+    var assignmentSizeSlides = document.querySelector('select[name="slides"]');
+    var assignmentSizeSources = document.querySelector('select[name="sources"]');
+    // Convert values to numbers
+    var pagesValue = parseFloat(assignmentSizePages);
+    var slidesValue = parseFloat(assignmentSizeSlides);
+    var sourcesValue = parseFloat(assignmentSizeSources);
+
+    // submit button
+    var submitBtn = document.getElementById('settings_save_btn56');
+
+    // Check if any value is zero
+    if (pagesValue === 0 || slidesValue === 0 || sourcesValue === 0) {
+      submitBtn.setAttribute('disabled', 'disabled');
+      return false; // Prevent form submission
+    }
+
+    submitBtn.removeAttribute('disabled');
+    return true; // Allow form submission
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var form = document.getElementById('normalOrderForm');
+
+    form.addEventListener('submit', function (event) {
+      if (!validateForm()) {
+        event.preventDefault(); // Prevent form submission if validation fails
+      }
+    });
+  });
+</script>

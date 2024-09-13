@@ -1,0 +1,615 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+
+<div class="banner b-lazy" data-src="{% static 'images/main/bg-main-new-min.png' %}">
+    <div class="layout-wrapper">
+        <div class="banner__row">
+            <div class="banner__content">
+                <h1 class="title">College papers became a challenge?</h1>
+                <p class="subtitle">Get 24/7 help from a reliable essay writing service!<br> Affordable rates starting at just $10 per page.</p>
+            </div>
+            <div class="banner__sidebar">
+                {% include "components/calc.html" %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="offer">
+    <div class="layout-wrapper">
+        <h2 class="title-el">You May Get Help</h2>
+        <p class="subtitle-el">with any type of assignment:</p>
+        <div class="tabs-block">
+            <div class="tabs-section-wrap">
+                <div class="wrapper">
+                    <div class="tabs-section">
+                        <a href="#" class="tab-cnt-trigger active" data-cnt="tab-cnt-1"><span>Paper work</span></a>
+                        <a href="#" class="tab-cnt-trigger" data-cnt="tab-cnt-2"><span>Admissions</span></a>
+                        <a href="#" class="tab-cnt-trigger" data-cnt="tab-cnt-3"><span>Editorial work</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="tabs-content">
+                <div class="wrapper">
+                    <div class="tab-cnt tab-cnt-1 active">
+                        <div class="offer-item__content">
+                            <a href="{% url 'dashboard:clients:add_order' %}">Essay (any type)</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Research paper</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Coursework</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}g">Critical thinking</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Case study</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Annotated bibliography</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Article review</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Assignment</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Biographies</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Book report</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Book/movie review</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Business plan</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Creative writing</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Critical review</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Literary analysis</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Presentation or speech</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Reaction paper</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Research proposal</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Summary of online lectures</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Other</a>
+                        </div>
+                    </div>
+                    <div class="offer-item__content tab-cnt tab-cnt-2">
+                        <div class="offer-item__content">
+                            <a href="{% url 'dashboard:clients:add_order' %}">Admission essay</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Application essay</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Cover letter</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Personal statement</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Statement of purpose</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}"></a>
+                        </div>
+                    </div>
+                    <div class="offer-item__content tab-cnt tab-cnt-3">
+                        <div class="offer-item__content">
+                            <a href="{% url 'dashboard:clients:add_order' %}">Editing</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Formatting</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Paraphrasing</a>
+                            <a href="{% url 'dashboard:clients:add_order' %}">Proofreading</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="benefits">
+    <div class="layout-wrapper">
+        <div class="benefits__content">
+            <div class="benefits-item">
+                <h5>5+</h5>
+                <p>years in writing business</p>
+            </div>
+            <div class="benefits-item">
+                <h5>25000+</h5>
+                <p>satisfied clients</p>
+            </div>
+            <div class="benefits-item">
+                <h5>5000+</h5>
+                <p>professional writers</p>
+            </div>
+            <div class="benefits-item">
+                <h5>75000+</h5>
+                <p>orders delivered on time</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="choose">
+    <div class="layout-wrapper">
+        <h2 class="title-el text-left">Why choose us?</h2>
+        <div class="choose-content">
+            <div class="choose-item">
+                <div class="choose-item__head">
+                    <div class="choose-item__img"><img src="{% static 'images/main/choose-1.svg' %}" alt="choose"></div>
+                    <p class="choose-item__title">100% Original Papers</p>
+                </div>
+                <p class="choose-item__text">Every single order we deliver is written from scratch according to your instructions. We have zero tolerance for plagiarism, so we use leading anti-plagiarism tools to ensure the originality of the text.</p>
+            </div>
+            <div class="choose-item">
+                <div class="choose-item__head">
+                    <div class="choose-item__img"><img src="{% static 'images/main/choose-2.svg' %}" alt="choose"></div>
+                    <p class="choose-item__title">Timely Delivery</p>
+                </div>
+                <p class="choose-item__text">No more missed deadlines in your student’s life. We strive to deliver quality custom written papers before the deadline. That's why you don't have to worry about missing the deadline for submitting your assignment.</p>
+            </div>
+            <div class="choose-item">
+                <div class="choose-item__head">
+                    <div class="choose-item__img"><img src="{% static 'images/main/choose-3.svg' %}" alt="choose"></div>
+                    <p class="choose-item__title">High Quality & Expertise</p>
+                </div>
+                <p class="choose-item__text">You get an original and high-quality paper based on extensive research. The completed work will be correctly formatted, referenced and tailored to your level of study.</p>
+            </div>
+            <div class="choose-item">
+                <div class="choose-item__head">
+                    <div class="choose-item__img"><img src="{% static 'images/main/choose-4.svg' %}" alt="choose"></div>
+                    <p class="choose-item__title">Free revisions</p>
+                </div>
+                <p class="choose-item__text">You can ask to revise your paper as many times as you need until you're completely satisfied with the result. Just note the necessary changes, and we’ll make them immediately.</p>
+            </div>
+            <div class="choose-item">
+                <div class="choose-item__head">
+                    <div class="choose-item__img"><img src="{% static 'images/main/choose-5.svg' %}" alt="choose"></div>
+                    <p class="choose-item__title">Confidentiality</p>
+                </div>
+                <p class="choose-item__text">We value your privacy. We do not disclose your personal information to any third party without your consent. Your payment data is also safely handled as you process the payment through a secured and verified payment processor.</p>
+            </div>
+            <div class="choose-item">
+                <div class="choose-item__head">
+                    <div class="choose-item__img"><img src="{% static 'images/main/choose-6.svg' %}" alt="choose"></div>
+                    <p class="choose-item__title">Money Back Guarantee</p>
+                </div>
+                <p class="choose-item__text">If you see that the paper is not completed per your guidelines, you are eligible for a 100% money-back before you accept the paper, or a partial refund for whatever quality concerns.</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="reviews-slider-wrap">
+    <div class="layout-wrapper">
+        <h2 class="title-el">Reviews</h2>
+    </div>
+    <div class="reviews-slider">
+        <div>
+            <div class="reviews-item">
+                <div class="rev">
+                    <div class="rev__top">
+                        <div class="rev__img">
+                            <img src="{% static 'images/main/rev__img.png' %}" alt="people-img">
+                        </div>
+                        <div class="rev__top_content">
+                            <div class="rev__top_content-info">
+                                <div class="rev__name">Customer ID 3659</div>
+                                <div class="rev__hours"><span>Essay</span></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="rev__text">
+                        I'm struggling to keep a balance between school and work. Late shifts, classes, it just leaves you with no time for writing sometimes. Thanks to superb paper I don't have any problems at school, even though I'm really pressed for time with my essays LIKE ALWAYS </div>
+                    <div class="form-field-rating">
+                        <div class="rating rating-static">
+
+                            <label class="active">
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="rev__hours"><span>10 minutes ago</span></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="reviews-item">
+                <div class="rev">
+                    <div class="rev__top">
+                        <div class="rev__img">
+                            <img src="{% static 'images/main/rev__img2.png' %}" alt="people-img">
+                        </div>
+                        <div class="rev__top_content">
+                            <div class="rev__top_content-info">
+                                <div class="rev__name">Customer ID 5488</div>
+                                <div class="rev__hours"><span>Homework</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rev__text">
+                        Thanks to Awasam I aced my finals with a minimum effort. I would recommend them to anyone struggling with too much homework. This is a truly great service. </div>
+                    <div class="form-field-rating">
+                        <div class="rating rating-static">
+
+                            <label class="active">
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="rev__hours"><span>5 hours ago</span></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="reviews-item">
+                <div class="rev">
+                    <div class="rev__top">
+                        <div class="rev__img">
+                            <img src="{% static 'images/main/rev__img3.png' %}" alt="people-img">
+                        </div>
+                        <div class="rev__top_content">
+                            <div class="rev__top_content-info">
+                                <div class="rev__name">Customer ID 4114</div>
+                                <div class="rev__hours"><span>Essay</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rev__text">
+                        I've tried a few similar websites and this one is just a lucky find. They always finish papers on time and they're of great quality. </div>
+                    <div class="form-field-rating">
+                        <div class="rating rating-static">
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label class="active">
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="rev__hours"><span>8 hours ago</span></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="reviews-item">
+                <div class="rev">
+                    <div class="rev__top">
+                        <div class="rev__img">
+                            <img src="{% static 'images/main/rev__img2.png' %}" alt="people-img">
+                        </div>
+                        <div class="rev__top_content">
+                            <div class="rev__top_content-info">
+                                <div class="rev__name">Customer ID 3266</div>
+                                <div class="rev__hours"><span>Essay</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rev__text">
+                        The quality is good and you can place an order at night and have it written by morning. HOW COOL IS THAT?? </div>
+                    <div class="form-field-rating">
+                        <div class="rating rating-static">
+
+                            <label class="active">
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="rev__hours"><span>9 hours ago</span></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="reviews-item">
+                <div class="rev">
+                    <div class="rev__top">
+                        <div class="rev__img">
+                            <img src="{% static 'images/main/rev__img.png' %}" alt="people-img">
+                        </div>
+                        <div class="rev__top_content">
+                            <div class="rev__top_content-info">
+                                <div class="rev__name">Customer ID 4744</div>
+                                <div class="rev__hours"><span>Research paper</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rev__text">
+                        I like the way they work, I mean they sent me a draft (it wasn’t that good so I was able to give them some directions) and the final paper a bit later. Worked out pretty well. Thanks. </div>
+                    <div class="form-field-rating">
+                        <div class="rating rating-static">
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label class="active">
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="rev__hours"><span>12 hours ago</span></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="reviews-item">
+                <div class="rev">
+                    <div class="rev__top">
+                        <div class="rev__img">
+                            <img src="{% static 'images/main/rev__img2.png' %}" alt="people-img">
+                        </div>
+                        <div class="rev__top_content">
+                            <div class="rev__top_content-info">
+                                <div class="rev__name">Customer ID 6556</div>
+                                <div class="rev__hours"><span>Book review</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rev__text">
+                        Awasam is a good option to consider when you're overwhelmed by a lot of things to write. 5/5. </div>
+                    <div class="form-field-rating">
+                        <div class="rating rating-static">
+
+                            <label class="active">
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="rev__hours"><span>1 day ago</span></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="reviews-item">
+                <div class="rev">
+                    <div class="rev__top">
+                        <div class="rev__img">
+                            <img src="{% static 'images/main/rev__img3.png' %}" alt="people-img">
+                        </div>
+                        <div class="rev__top_content">
+                            <div class="rev__top_content-info">
+                                <div class="rev__name">Customer ID 2366</div>
+                                <div class="rev__hours"><span>Essay</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rev__text">
+                        Simply great. I paid them to write a lengthy essay on global warming and got exactly what I needed. What else can I say? They're great </div>
+                    <div class="form-field-rating">
+                        <div class="rating rating-static">
+
+                            <label class="active">
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="rev__hours"><span>2 days ago</span></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="reviews-item">
+                <div class="rev">
+                    <div class="rev__top">
+                        <div class="rev__img">
+                            <img src="{% static 'images/main/rev__img.png' %}" alt="people-img">
+                        </div>
+                        <div class="rev__top_content">
+                            <div class="rev__top_content-info">
+                                <div class="rev__name">Customer ID 4878</div>
+                                <div class="rev__hours"><span>Essay</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rev__text">
+                        Using awasam's services during finals week was a no-brainer. I had a 5 page essay due 24 hours and received it just in time. Thank you so much! </div>
+                    <div class="form-field-rating">
+                        <div class="rating rating-static">
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label class="active">
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+
+                            <label>
+                                <input type="radio" name="rating">
+                            </label>
+                        </div>
+                    </div>
+                    <div class="rev__hours"><span>7 days ago</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="animate1" class="works animate-blk">
+    <div class="layout-wrapper">
+        <h2 class="title-el">How It Works</h2>
+        <div class="works-row">
+            <div class="works-item">
+                <div class="works-item__num">1</div>
+                <div class="works-item__img"><img src="{% static 'images/main/work-1.svg' %}" alt="work"></div>
+                <div class="works-item__title">Fill out the order form</div>
+                <p>Leave your requirements and indicate the deadline. You may attach a file with specific requirements if you have such.</p>
+            </div>
+            <div class="works-item">
+                <div class="works-item__num">2</div>
+                <div class="works-item__img"><img src="{% static 'images/main/work-2.svg' %}" alt="work"></div>
+                <div class="works-item__title">Track the progress</div>
+                <p>Log in to personal account to track the process of creating your paper and communicate with your writer.</p>
+            </div>
+            <div class="works-item">
+                <div class="works-item__num">3</div>
+                <div class="works-item__img"><img src="{% static 'images/main/work-3.svg' %}" alt="work"></div>
+                <div class="works-item__title">Get your paper</div>
+                <p>Download the final version of papers and get the highest grades.</p>
+            </div>
+        </div>
+        <div class="works__btn">
+            <a href="{% url 'dashboard:clients:add_order' %}" class="btn-el btn-el_big btn-el__green"><span>Order Now</span></a>
+        </div>
+    </div>
+</div>
+<div class="info">
+    <div class="layout-wrapper">
+        <div class="info-section">
+            <div class="info-best info-banner">
+                <div class="info-banner__top">
+                    <div class="info-banner__img"><img src="{% static 'images/main/best.svg' %}" alt="best"></div>
+                    <h3>Best Paper Prices</h3>
+                </div>
+                <div class="info-best__row">
+                    <p>Essay (Any Type)</p>
+                    <div>
+                        from <span>$10</span> per page
+                        <a href="{% url 'dashboard:clients:add_order' %}">Order now <img src="{% static 'images/main/arrow-right.svg' %}" alt="arrow"></a>
+                    </div>
+                </div>
+                <div class="info-best__row">
+                    <p>Proofreading</p>
+                    <div>
+                        from <span>$5</span> per page
+                        <a href="{% url 'dashboard:clients:add_order' %}">Order now <img src="{% static 'images/main/arrow-right.svg' %}" alt="arrow"></a>
+                    </div>
+                </div>
+                <div class="info-best__row">
+                    <p>Editing</p>
+                    <div>
+                        from <span>$6</span> per page
+                        <a href="{% url 'dashboard:clients:add_order' %}">Order now <img src="{% static 'images/main/arrow-right.svg' %}" alt="arrow"></a>
+                    </div>
+                </div>
+                <div class="info-best__row">
+                    <p>Dissertation Services</p>
+                    <div>
+                        from <span>$24</span> per page
+                        <a href="{% url 'dashboard:clients:add_order' %}">Order now <img src="{% static 'images/main/arrow-right.svg' %}" alt="arrow"></a>
+                    </div>
+                </div>
+                <div class="info-best__row">
+                    <p>Research paper</p>
+                    <div>
+                        from <span>$13</span> per page
+                        <a href="{% url 'dashboard:clients:add_order' %}">Order now <img src="{% static 'images/main/arrow-right.svg' %}" alt="arrow"></a>
+                    </div>
+                </div>
+                <div class="info-best__row">
+                    <p>Case study</p>
+                    <div>
+                        from <span>$14</span> per page
+                        <a href="{% url 'dashboard:clients:add_order' %}">Order now <img src="{% static 'images/main/arrow-right.svg' %}" alt="arrow"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="info-ano info-banner">
+                <div class="info-banner__top">
+                    <div class="info-banner__img"><img src="{% static 'images/main/ano.svg' %}" alt="best"></div>
+                    <h3>Stay Anonymous With Awasam</h3>
+                </div>
+                <div class="info-ano__text">We guarantee 100% confidentiality of all your personal information. You may ask for help as many times as needed and always remain anonymous.</div>
+                <div class="info-ano__subtitle">Pay safely with:</div>
+                <div class="info-ano__cards">
+                    <span class="info-ano__cards-item"><img src="{% static 'images/main/card-1.svg' %}" alt="card"></span>
+                    <span class="info-ano__cards-item"><img src="{% static 'images/main/card-2.svg' %}" alt="card"></span>
+                    <span class="info-ano__cards-item"><img src="{% static 'images/main/card-3.svg' %}" alt="card"></span>
+                    <span class="info-ano__cards-item"><img src="{% static 'images/main/card-4.svg' %}" alt="card"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include "components/banner.html" %}
+
+
+{% endblock content %}

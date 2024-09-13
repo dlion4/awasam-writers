@@ -1,0 +1,143 @@
+{% load static %}
+
+<div class="sticky">
+    <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
+    <div class="app-sidebar">
+        <div class="side-header">
+            <a class="header-brand1" href="{% url 'home' %}">
+                <img src="" width="150" class="header-brand-img desktop-logo" alt="">
+                <img src="{% static 'dashboard/logo/edit.png' %}" width="150" class="header-brand-img toggle-logo" alt="">
+                <img src="{% static 'dashboard/logo/edit.png' %}" width="150" class="header-brand-img light-logo" alt="">
+                <img src="{% static 'dashboard/logo/logo.png' %}" width="150" class="header-brand-img light-logo1" alt="">
+            </a>
+            <!-- LOGO -->
+        </div>
+        <div class="main-sidemenu">
+            <div class="slide-left disabled" id="slide-left"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewbox="0 0 24 24">
+                    <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
+                </svg></div>
+            <ul class="side-menu">
+                <li class="sub-category">
+                    <span class="badge bg-secondary fs-14 me-2">Writer Account</span>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard-1.html">
+                        <i class="side-menu__icon fa fa-dashboard"></i>
+                        <span class="side-menu__label">Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="slide">
+
+                    <a href="javascript:void(0);" class="side-menu__item has-link" data-bs-toggle="sidebar-right" data-target=".sidebar-right">
+                        <i class="side-menu__icon fe fe-message-square"></i>
+                        <span class="pulse-danger "></span>
+                        <span class="side-menu__label"> Notifications </span>
+                        <span class="badge bg-pink side-badge">0</span>
+
+                    </a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item" data-bs-toggle="slide" href="dashboard/order-2.html">
+                        <i class="side-menu__icon fe fe-folder"></i>
+                        <span class="side-menu__label">My Orders</span>
+                        <span class="badge bg-pink side-badge">2</span>
+                        <i class="angle fe fe-chevron-right hor-angle"></i>
+                    </a>
+
+                </li>
+
+                <div style="margin-left: 80px;">
+                    <li>
+                        <a href="dashboard/order-3.html?wa=1" class="slide-item">
+                            Available (5)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dashboard/order-inprogress.html" class="slide-item">
+                            In progress (1)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="dashboard/order-approved.html" class="slide-item">
+                            Approved (1)
+                        </a>
+                    </li>
+                </div>
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/messages-1.html">
+                        <i class="side-menu__icon fa fa-comment"></i>
+                        <span class="side-menu__label">
+                            Chats
+                        </span>
+                    </a>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="https:///dashboard/inbox">
+                        <i class="side-menu__icon fa fa-comment"></i>
+                        <span class="side-menu__label">
+                            Messages
+                        </span>
+                    </a>
+                </li>
+
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/news.html">
+                        <i class="side-menu__icon fa fa-newspaper-o"></i>
+                        <span class="side-menu__label">NEWS (0)</span>
+                    </a>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/wrules.html">
+                        <i class="side-menu__icon fa fa-newspaper-o"></i>
+                        <span class="side-menu__label">Rules & Regulations</span>
+                    </a>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/samples.html">
+                        <i class="side-menu__icon fa fa-newspaper-o"></i>
+                        <span class="side-menu__label">Samples</span>
+                    </a>
+                </li>
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/wreviews.html">
+                        <i class="side-menu__icon fa fa-star"></i>
+                        <span class="side-menu__label">My Reviews (0)</span>
+                    </a>
+                </li>
+
+
+
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/invoices.html">
+                        <i class="side-menu__icon fa fa-exchange"></i>
+                        <span class="side-menu__label">Invoices</span>
+                    </a>
+                </li>
+                <li class="slide">
+                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="">
+                        <i class="side-menu__icon fe fe-alert-circle"></i>
+                        <span class="side-menu__label">Sign Out</span>
+                    </a>
+                </li>
+                <hr style="background-color: grey;">
+                <a class="nav-link icon theme-layout nav-link-bg layout-setting">
+                    <span class="dark-layout"> Dark Mode <i class="fe fe-moon"></i></span>
+                    <span class="light-layout"> Light Mode <i class="fe fe-sun"></i></span>
+                </a>
+            </ul>
+            <div class="slide-right" id="slide-right">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewbox="0 0 24 24">
+                    <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+    <!--/APP-SIDEBAR-->
+</div>

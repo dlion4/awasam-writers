@@ -1,0 +1,148 @@
+{% extends 'dashboard/client/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <!-- ROW-1 -->
+  <div class="row">
+
+    <div class="col-lg-12 col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="page-title">Thank you for signing up! We are happy to have you on board!</h1>
+        </div>
+        <div class="card-body">
+          <div class="chart-container">
+            <canvas id="chartLine2" class="h-275"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- ROW-1 END -->
+
+  <!-- ROW-4 -->
+  <div class="row" style="padding-top: 20px;">
+
+    <div class="col-lg-8 col-md-12 col-sm-12">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title mb-0">Recent approved orders with writers not rated</h3>
+
+          <div class="page-options ms-auto">
+
+            <form style="display: none;" id="form" action="" method="post">
+              <select class="form-control select2 w-100" onchange="calculate(this.form);"></select>
+            </form>
+
+            <form method='get' id='myform' action="https://demo2.academicwritingscript.com/dashboard">
+
+              <select name='q' id='lang' class="form-control">
+                <option value="0" disabled="disabled">Filter by status</option>
+                <option value="0">pending</option>
+                <option value="1">available</option>
+                <option value="2">in progress</option>
+                <option value="3">editing</option>
+                <option value="4">completed</option>
+                <option value="2">approved</option>
+                <option value="3">revision</option>
+                <option value="4">cancelled</option>
+
+              </select>
+            </form>
+
+            <!-- Script -->
+            <script src="{% static 'dashboard/assets/ajax/libs/jquery/3.2.1/jquery.min.js' %}"></script>
+            <script type='text/javascript'>
+              $(document).ready(function () {
+                $('#lang').change(function () {
+                  $('#myform').submit();
+                });
+              });
+            </script>
+
+          </div>
+
+        </div>
+        <div class="card-body pt-4">
+          <div class="grid-margin">
+
+            {% for order in orders %}
+
+              <div class="row">
+
+                <div class="col-sm-2">
+                  <div class="mt-0 mt-sm-2 d-block">
+                    <h6 class="mb-0 fs-14 fw-semibold">
+                      #{{order.pk}}</h6>
+                  </div>
+                </div>
+
+                <div class="col-sm-3">
+                  <a href="{{order.get_client_order_absolute_url}}">
+                    {{order.topic|truncatewords:"3"}}
+                  </a>
+                  <br>
+                  <span style="font-size: 10px; color: green;">
+                    <div color='red'>placed
+                      {{order.order_date|timesince}}
+                      ago
+                    </div>
+                    <br/>
+                  </span>
+
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="mt-0 mt-sm-1 d-block">
+                    <span style="font-size: 11px;" class="fw-semibold mt-sm-2 d-block">1 page</span>
+                  </div>
+
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="mt-sm-1 d-block">
+                    {% if order.is_assigned %}
+                      <span class="badge bg-success-transparent rounded-pill text-success p-2 px-3">Assigned</span>
+                    {% else %}
+                      <span class="badge bg-success-transparent rounded-pill text-danger p-2 px-3">Unassigned</span>
+                    {% endif %}
+                  </div>
+
+                </div>
+
+                <div class="col-sm-1">
+                  <div class="mt-sm-1 d-block">
+                    {% if order.is_paid %}
+                      <span class="badge bg-success-transparent rounded-pill text-success p-2 px-3">Paid</span>
+                    {% else %}
+                      <span class="badge bg-success-transparent rounded-pill text-danger p-2 px-3">Unpaid</span>
+                    {% endif %}
+                  </div>
+
+                </div>
+
+              </div>
+              {% empty %}
+              <div class="">
+                <div class="panel panel-primary">
+                  <div class="tab-menu-heading border-0 p-0">
+                    <div class="tabs-menu1"></div>
+                  </div>
+
+                  <div>
+                    <tr>No order available</tr>
+                  </div>
+
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+          <!-- ROW-4 END -->
+        </div>
+        <!-- CONTAINER END -->
+      </div>
+    </div>
+
+  {% endblock content %}

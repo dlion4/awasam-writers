@@ -1,0 +1,278 @@
+{% load static i18n compress%}
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+
+
+
+
+<html lang="{{ LANGUAGE_CODE }}">
+
+
+<head>
+  <title>{% block title %}Professional Essay Writing Help | Awasam.com{% endblock title %}</title>
+  <meta name="description" content="We provide high quality essay writing services on a 24/7 basis. Original papers, fast turnaround and reasonable prices! Call us toll-free at 1-888-986-71-61.">
+  <meta property="og:title" content="Professional Essay Writing Help | Awasam.com">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="We provide high quality essay writing services on a 24/7 basis. Original papers, fast turnaround and reasonable prices! Call us toll-free at 1-888-986-71-61.">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- Google Tag Manager -->
+  <!-- <script>
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-5MV5BCM');
+  </script> -->
+  <!-- End Google Tag Manager -->
+
+  <!-- favicons -->
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'dashboard/logo/edit.png' %}">
+
+
+  <!--styles-->
+
+  {% block css %}
+
+  <link href="{% static 'css/project.css' %}" rel="stylesheet" />
+
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/libs/libs.min.css' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+
+
+
+  {% endblock css %}
+</head>
+
+
+<body class="{% block bodyclass %}{% endblock bodyclass %}">
+
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5MV5BCM" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+
+
+  {% block body %}
+
+
+  <div class="scroll-content">
+
+    <div class="main">
+
+      <div class="main-content">
+        {% block header %}
+        {% include "components/header.html" %}
+        {% endblock header %}
+
+        <!-- main inner content  -->
+        {% block content %}
+        {% endblock content %}
+      </div>
+
+
+      <!-- footer -->
+      {% block footer %}
+      {% include 'components/footer.html' %}
+      {% endblock footer %}
+    </div>
+
+  </div>
+  {% endblock body %}
+  <!-- /container -->
+  {# Placed at the top of the document so pages load faster with defer #}
+  {% block javascript %}
+  <!--Libs-->
+  <!-- <script data-cfasync="false" src="{% static 'js/email-decode.min.js' %}"></script> -->
+  <script src="{% static 'js/libs/libs.min.js' %}"></script>
+  <script defer src="{% static 'js/project.js' %}"></script>
+
+  <!--general-->
+  <script src="{% static 'js/common.js' %}"></script>
+  <script src="{% static 'js/calculate.js' %}"></script>
+  <script>
+    jQuery(document).ready(function ($) {
+      if ($('#calc1').length) {
+        $.getScript("{% static 'js/calculate.js' %}", function (data, textStatus, jqxhr) {
+          console.log('Calc loaded');
+        });
+      };
+    });
+  </script>
+  <script src="{% static 'js/modal.js' %}"></script>
+  <script async="" src="{% static 'js/gtm_defer.js' %}"></script>
+
+  {% endblock javascript %}
+
+  {% block modal %}
+
+  <div class="popup__discount popup-wrapper modal">
+    <div class="popup__discount__transparent" onclick="modalPopupDiscount.closePopup(this)"></div>
+
+    <div class="popup-layout">
+      <div class="popup popup__discount__modal">
+        <div class="popup-head popup__discount__modal-header">
+          <div class="popup-head-cnt">
+            <h3 class="hidden-after">Want a discount? <img src="{% static 'images/main/eye.png' %}" alt="eye"></h3>
+            <p class="hidden-after">Subscribe to our newsletter and never miss out on our special offers!</p>
+
+            <div class="popup__discount__modal-body-success-text">
+              <h3 class="second-hidden">Thank you!</h3>
+              <p class="second-hidden">Now you're in the loop of the most important news, special offers, discounts, and deals.</p>
+            </div>
+          </div>
+          <div class="popup-head-img">
+            <img class="popup-head-img_1" src="{% static 'images/main/pop.svg' %}" alt="pop">
+            <div class="disc">Save 10% <img src="{% static 'images/main/sup2.png' %}" alt="sup2"></div>
+          </div>
+        </div>
+        <div class="popup-cnt-wrap popup__discount__modal-body">
+          <div class="popup-cnt">
+            <div class="popup-cnt-form">
+              <form class="popup__discount__form" onsubmit="modalPopupDiscount.submitForm(this);return false;">
+                <div class="popup__discount__form-row">
+                  <div class="popup__discount__form-row-group">
+                    <input class="form-field form-field-check required-field" type="text" name="name" data-type="text" data-required="true" placeholder="Name" onkeyup="modalPopupDiscount.removeFieldError(this)">
+                    <span class="error__text">Please enter your name.</span>
+                  </div>
+                </div>
+                <div class="popup__discount__form-row">
+                  <div class="popup__discount__form-row-group">
+                    <input class="form-field form-field-check required-field" type="text" name="email" data-type="email" data-required="true" placeholder="Email" onkeyup="modalPopupDiscount.removeFieldError(this)">
+                    <span class="error__text">Please enter a valid email.</span>
+                  </div>
+                </div>
+                <div class="popup__discount__form-row">
+                  <button type="submit" class="popup__discount__form-row-submit-button btn-el btn-el_big btn-el__green btn-el_arrow">
+                    <span><span class="btn-el__cnt">Continue</span> <span class="btn-el__img"><img src="{% static 'images/main/arrow-btn.svg' %}" alt="####" class="mCS_img_loaded"></span></span>
+                  </button>
+                </div>
+                <div class="popup__discount__form-row">
+                  <input id="receive-disc" type="checkbox">
+                  <label class="receive-agree" for="receive-disc">I agree to receive discount codes and exclusive offer to my email</label>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="popup__discount__modal-header">
+          <div class="popup-close popup__discount__modal-close-button" onclick="modalPopupDiscount.closePopup(this)">
+            <img src="{% static 'images/main/close2.svg' %}" alt="close">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  {% endblock modal %}
+
+  <!------------------------------------- Popup Template ------------------------------------------------------>
+  <script type="text/javascript">
+    modalPopupDiscount.COOKIE_NAME = 'superb_mail1';
+    modalPopupDiscount.COOKIE_EXPIRE = 90;
+    modalPopupDiscount.setTimeout(15);
+    modalPopupDiscount.setBanEmail([
+      '@mailinator.com',
+      'rocketmail.co'
+    ])
+    modalPopupDiscount.setOptions({
+      beforeShow: function () {
+        $('.js-callback-form-cancel').click();
+        return true;
+      },
+
+      afterShow: function () {
+      },
+
+      beforeClose: function () {
+        return true;
+      },
+
+      afterClose: function () {
+
+      },
+
+      waitSubmitResult: true,
+
+      customErrorMessage: function () {
+      },
+      customSuccessMessage: function () {
+      },
+      beforeFormSubmit: function (form) {
+        if (!$('#receive-disc').is(':checked')) {
+          $('.receive-agree').css('color', '#e03100');
+          return false;
+        }
+        else {
+          $('.hidden-after, .popup__discount__form').css('display', 'none');
+          $('.popup__discount__modal-body-success-text').css('display', 'block');
+          return true;
+        }
+
+      },
+    });
+  </script>
+  <script type="text/javascript">
+    var TypeOfPaper = '{"typeOfPaper":{"HighSchool":[{"option":"Essay (any type)","ratio":"1.00"},{"option":"Admission essay","ratio":"1.50"},{"option":"Analytical essay","ratio":"1.00"},{"option":"Annotated bibliography","ratio":"1.20"},{"option":"Argumentative essay","ratio":"1.20"},{"option":"Article","ratio":"1.00"},{"option":"Article review","ratio":"1.00"},{"option":"Assessment","ratio":"1.00"},{"option":"Assignment","ratio":"1.00"},{"option":"Biographies","ratio":"1.00"},{"option":"Book report","ratio":"1.00"},{"option":"Book review","ratio":"1.00"},{"option":"Book\/movie review","ratio":"1.20"},{"option":"Business plan","ratio":"1.30"},{"option":"Capstone writing","ratio":"1.00"},{"option":"Case study","ratio":"1.40"},{"option":"Cause and effect essay","ratio":"1.00"},{"option":"Compare and contrast essay","ratio":"1.00"},{"option":"Coursework","ratio":"1.30"},{"option":"Creative writing","ratio":"1.00"},{"option":"Critical review","ratio":"1.00"},{"option":"Critical thinking","ratio":"1.20"},{"option":"Definition essay","ratio":"1.00"},{"option":"Descriptive essay","ratio":"1.00"},{"option":"Editing","ratio":"0.60"},{"option":"Evaluation essay","ratio":"1.00"},{"option":"Expository essay","ratio":"1.00"},{"option":"Formatting","ratio":"0.30"},{"option":"Homework","ratio":"1.00"},{"option":"Literary analysis","ratio":"1.00"},{"option":"Movie review","ratio":"1.30"},{"option":"Multiple choice questions","ratio":"0.12"},{"option":"Narrative essay","ratio":"1.00"},{"option":"Other","ratio":"1.40"},{"option":"Paraphrasing","ratio":"1.00"},{"option":"Personal statement","ratio":"1.50"},{"option":"Persuasive essay","ratio":"1.00"},{"option":"Presentation or speech","ratio":"1.00"},{"option":"Problem solving","ratio":"1.70"},{"option":"Proofreading","ratio":"0.50"},{"option":"Reaction paper","ratio":"1.30"},{"option":"Reflective essay","ratio":"1.00"},{"option":"Research paper","ratio":"1.30"},{"option":"Research proposal","ratio":"1.30"},{"option":"Rhetorical analysis","ratio":"1.00"},{"option":"Statement of purpose","ratio":"1.50"},{"option":"Summary of online lectures","ratio":"1.80"},{"option":"Term paper","ratio":"1.40"}],"College":[{"option":"Essay (any type)","ratio":"1.00"},{"option":"Admission essay","ratio":"1.50"},{"option":"Admission\/Application essay","ratio":"1.50"},{"option":"Analytical essay","ratio":"1.00"},{"option":"Annotated bibliography","ratio":"1.20"},{"option":"Argumentative essay","ratio":"1.20"},{"option":"Article","ratio":"1.00"},{"option":"Article review","ratio":"1.00"},{"option":"Assessment","ratio":"1.00"},{"option":"Assignment","ratio":"1.00"},{"option":"Biographies","ratio":"1.00"},{"option":"Book report","ratio":"1.00"},{"option":"Book review","ratio":"1.00"},{"option":"Book\/movie review","ratio":"1.20"},{"option":"Business plan","ratio":"1.30"},{"option":"Capstone writing","ratio":"1.00"},{"option":"Case study","ratio":"1.40"},{"option":"Cause and effect essay","ratio":"1.00"},{"option":"Compare and contrast essay","ratio":"1.00"},{"option":"Coursework","ratio":"1.30"},{"option":"Creative writing","ratio":"1.00"},{"option":"Critical review","ratio":"1.00"},{"option":"Critical thinking","ratio":"1.20"},{"option":"Definition essay","ratio":"1.00"},{"option":"Descriptive essay","ratio":"1.00"},{"option":"Editing","ratio":"0.60"},{"option":"Evaluation essay","ratio":"1.00"},{"option":"Expository essay","ratio":"1.00"},{"option":"Formatting","ratio":"0.30"},{"option":"Homework","ratio":"1.00"},{"option":"Literary analysis","ratio":"1.00"},{"option":"Math Problem","ratio":"1.50"},{"option":"Movie review","ratio":"1.30"},{"option":"Multiple choice questions","ratio":"0.12"},{"option":"Narrative essay","ratio":"1.00"},{"option":"Other","ratio":"1.40"},{"option":"Paraphrasing","ratio":"1.00"},{"option":"Personal statement","ratio":"1.50"},{"option":"Persuasive essay","ratio":"1.00"},{"option":"Presentation or speech","ratio":"1.00"},{"option":"Problem solving","ratio":"1.70"},{"option":"Proofreading","ratio":"0.50"},{"option":"Reaction paper","ratio":"1.30"},{"option":"Reflective essay","ratio":"1.00"},{"option":"Research paper","ratio":"1.30"},{"option":"Research proposal","ratio":"1.30"},{"option":"Rhetorical analysis","ratio":"1.00"},{"option":"Scholarship essay","ratio":"1.00"},{"option":"Statement of purpose","ratio":"1.50"},{"option":"Statistics Project","ratio":"1.00"},{"option":"Summary of online lectures","ratio":"1.80"},{"option":"Term paper","ratio":"1.40"}],"University":[{"option":"Essay (any type)","ratio":"1.00"},{"option":"Admission essay","ratio":"1.50"},{"option":"Admission\/Application essay","ratio":"1.50"},{"option":"All application Job package","ratio":"1.00"},{"option":"Analytical essay","ratio":"1.00"},{"option":"Annotated bibliography","ratio":"1.20"},{"option":"Argumentative essay","ratio":"1.20"},{"option":"Article","ratio":"1.00"},{"option":"Article review","ratio":"1.00"},{"option":"Assessment","ratio":"1.00"},{"option":"Assignment","ratio":"1.00"},{"option":"Biographies","ratio":"1.00"},{"option":"Book report","ratio":"1.00"},{"option":"Book review","ratio":"1.00"},{"option":"Book\/movie review","ratio":"1.20"},{"option":"Business plan","ratio":"1.30"},{"option":"Capstone writing","ratio":"1.00"},{"option":"Case study","ratio":"1.40"},{"option":"Cause and effect essay","ratio":"1.00"},{"option":"Compare and contrast essay","ratio":"1.00"},{"option":"Coursework","ratio":"1.30"},{"option":"Creative writing","ratio":"1.00"},{"option":"Critical review","ratio":"1.00"},{"option":"Critical thinking","ratio":"1.20"},{"option":"Definition essay","ratio":"1.00"},{"option":"Descriptive essay","ratio":"1.00"},{"option":"Dissertation","ratio":"1.50"},{"option":"Dissertation abstract","ratio":"1.50"},{"option":"Dissertation chapter","ratio":"1.50"},{"option":"Dissertation chapter - Conclusion","ratio":"1.50"},{"option":"Dissertation chapter - Discussion","ratio":"1.50"},{"option":"Dissertation chapter - Introduction","ratio":"1.50"},{"option":"Dissertation chapter - Methodology","ratio":"1.50"},{"option":"Dissertation chapter - Results","ratio":"1.50"},{"option":"Dissertation chapter - Review","ratio":"1.50"},{"option":"Dissertation conclusion","ratio":"1.50"},{"option":"Dissertation discussion","ratio":"1.50"},{"option":"Dissertation hypothesis","ratio":"1.50"},{"option":"Dissertation introduction","ratio":"1.50"},{"option":"Dissertation literature review","ratio":"1.50"},{"option":"Dissertation methodology","ratio":"1.50"},{"option":"Dissertation proposal","ratio":"1.50"},{"option":"Dissertation results","ratio":"1.50"},{"option":"Editing","ratio":"0.60"},{"option":"Evaluation essay","ratio":"1.00"},{"option":"Expository essay","ratio":"1.00"},{"option":"Formatting","ratio":"0.30"},{"option":"Homework","ratio":"1.00"},{"option":"Lab report (theoretical part)","ratio":"1.50"},{"option":"Literary analysis","ratio":"1.00"},{"option":"Math Problem","ratio":"1.50"},{"option":"Movie review","ratio":"1.30"},{"option":"Multiple choice questions","ratio":"0.12"},{"option":"Narrative essay","ratio":"1.00"},{"option":"Other","ratio":"1.40"},{"option":"Paraphrasing","ratio":"1.00"},{"option":"Personal statement","ratio":"1.50"},{"option":"Persuasive essay","ratio":"1.00"},{"option":"Presentation or speech","ratio":"1.00"},{"option":"Problem solving","ratio":"1.70"},{"option":"Proofreading","ratio":"0.50"},{"option":"Reaction paper","ratio":"1.30"},{"option":"Reflective essay","ratio":"1.00"},{"option":"Research paper","ratio":"1.30"},{"option":"Research proposal","ratio":"1.30"},{"option":"Resume writing","ratio":"1.00"},{"option":"Rhetorical analysis","ratio":"1.00"},{"option":"Scholarship essay","ratio":"1.00"},{"option":"Statement of purpose","ratio":"1.50"},{"option":"Statistics Project","ratio":"1.00"},{"option":"Summary of online lectures","ratio":"1.80"},{"option":"Term paper","ratio":"1.40"},{"option":"Thesis","ratio":"2.00"},{"option":"Thesis proposal","ratio":"1.50"},{"option":"Thesis statement","ratio":"1.50"},{"option":"Thesis\/Dissertation abstract","ratio":"1.50"},{"option":"Thesis\/Dissertation chapter","ratio":"1.50"},{"option":"Thesis\/Dissertation proposal","ratio":"1.50"}],"Masters":[{"option":"Essay (any type)","ratio":"1.00"},{"option":"Admission essay","ratio":"1.50"},{"option":"Admission\/Application essay","ratio":"1.50"},{"option":"All application Job package","ratio":"1.00"},{"option":"Analytical essay","ratio":"1.00"},{"option":"Annotated bibliography","ratio":"1.20"},{"option":"Argumentative essay","ratio":"1.20"},{"option":"Article","ratio":"1.00"},{"option":"Article review","ratio":"1.00"},{"option":"Assessment","ratio":"1.00"},{"option":"Assignment","ratio":"1.00"},{"option":"Biographies","ratio":"1.00"},{"option":"Book report","ratio":"1.00"},{"option":"Book review","ratio":"1.00"},{"option":"Book\/movie review","ratio":"1.20"},{"option":"Business plan","ratio":"1.30"},{"option":"Capstone writing","ratio":"1.00"},{"option":"Case study","ratio":"1.40"},{"option":"Cause and effect essay","ratio":"1.00"},{"option":"Compare and contrast essay","ratio":"1.00"},{"option":"Coursework","ratio":"1.30"},{"option":"Creative writing","ratio":"1.00"},{"option":"Critical review","ratio":"1.00"},{"option":"Critical thinking","ratio":"1.20"},{"option":"Definition essay","ratio":"1.00"},{"option":"Descriptive essay","ratio":"1.00"},{"option":"Dissertation","ratio":"1.50"},{"option":"Dissertation abstract","ratio":"1.50"},{"option":"Dissertation chapter","ratio":"1.50"},{"option":"Dissertation chapter - Conclusion","ratio":"1.50"},{"option":"Dissertation chapter - Discussion","ratio":"1.50"},{"option":"Dissertation chapter - Introduction","ratio":"1.50"},{"option":"Dissertation chapter - Methodology","ratio":"1.50"},{"option":"Dissertation chapter - Results","ratio":"1.50"},{"option":"Dissertation chapter - Review","ratio":"1.50"},{"option":"Dissertation conclusion","ratio":"1.50"},{"option":"Dissertation discussion","ratio":"1.50"},{"option":"Dissertation hypothesis","ratio":"1.50"},{"option":"Dissertation introduction","ratio":"1.50"},{"option":"Dissertation literature review","ratio":"1.50"},{"option":"Dissertation methodology","ratio":"1.50"},{"option":"Dissertation proposal","ratio":"1.50"},{"option":"Dissertation results","ratio":"1.50"},{"option":"Editing","ratio":"0.60"},{"option":"Evaluation essay","ratio":"1.00"},{"option":"Expository essay","ratio":"1.00"},{"option":"Formatting","ratio":"0.30"},{"option":"Homework","ratio":"1.00"},{"option":"Lab report (theoretical part)","ratio":"1.50"},{"option":"Literary analysis","ratio":"1.00"},{"option":"Math Problem","ratio":"1.50"},{"option":"Movie review","ratio":"1.30"},{"option":"Multiple choice questions","ratio":"0.12"},{"option":"Narrative essay","ratio":"1.00"},{"option":"Other","ratio":"1.40"},{"option":"Paraphrasing","ratio":"1.00"},{"option":"Personal statement","ratio":"1.50"},{"option":"Persuasive essay","ratio":"1.00"},{"option":"Presentation or speech","ratio":"1.00"},{"option":"Problem solving","ratio":"1.70"},{"option":"Proofreading","ratio":"0.50"},{"option":"Reaction paper","ratio":"1.30"},{"option":"Reflective essay","ratio":"1.00"},{"option":"Research paper","ratio":"1.30"},{"option":"Research proposal","ratio":"1.30"},{"option":"Resume writing","ratio":"1.00"},{"option":"Rhetorical analysis","ratio":"1.00"},{"option":"Scholarship essay","ratio":"1.00"},{"option":"Statement of purpose","ratio":"1.50"},{"option":"Statistics Project","ratio":"1.00"},{"option":"Summary of online lectures","ratio":"1.80"},{"option":"Term paper","ratio":"1.40"},{"option":"Thesis","ratio":"2.00"},{"option":"Thesis proposal","ratio":"1.50"},{"option":"Thesis statement","ratio":"1.50"},{"option":"Thesis\/Dissertation abstract","ratio":"1.50"},{"option":"Thesis\/Dissertation chapter","ratio":"1.50"},{"option":"Thesis\/Dissertation proposal","ratio":"1.50"}],"PhD":[{"option":"Essay (any type)","ratio":"1.00"},{"option":"Admission essay","ratio":"1.50"},{"option":"Admission\/Application essay","ratio":"1.50"},{"option":"All application Job package","ratio":"1.00"},{"option":"Analytical essay","ratio":"1.00"},{"option":"Annotated bibliography","ratio":"1.20"},{"option":"Argumentative essay","ratio":"1.20"},{"option":"Article","ratio":"1.00"},{"option":"Article review","ratio":"1.00"},{"option":"Assessment","ratio":"1.00"},{"option":"Assignment","ratio":"1.00"},{"option":"Biographies","ratio":"1.00"},{"option":"Book report","ratio":"1.00"},{"option":"Book review","ratio":"1.00"},{"option":"Book\/movie review","ratio":"1.20"},{"option":"Business plan","ratio":"1.30"},{"option":"Capstone writing","ratio":"1.00"},{"option":"Case study","ratio":"1.40"},{"option":"Cause and effect essay","ratio":"1.00"},{"option":"Compare and contrast essay","ratio":"1.00"},{"option":"Coursework","ratio":"1.30"},{"option":"Creative writing","ratio":"1.00"},{"option":"Critical review","ratio":"1.00"},{"option":"Critical thinking","ratio":"1.20"},{"option":"Definition essay","ratio":"1.00"},{"option":"Descriptive essay","ratio":"1.00"},{"option":"Dissertation","ratio":"1.50"},{"option":"Dissertation abstract","ratio":"1.50"},{"option":"Dissertation chapter","ratio":"1.50"},{"option":"Dissertation chapter - Conclusion","ratio":"1.50"},{"option":"Dissertation chapter - Discussion","ratio":"1.50"},{"option":"Dissertation chapter - Introduction","ratio":"1.50"},{"option":"Dissertation chapter - Methodology","ratio":"1.50"},{"option":"Dissertation chapter - Results","ratio":"1.50"},{"option":"Dissertation chapter - Review","ratio":"1.50"},{"option":"Dissertation conclusion","ratio":"1.50"},{"option":"Dissertation discussion","ratio":"1.50"},{"option":"Dissertation hypothesis","ratio":"1.50"},{"option":"Dissertation introduction","ratio":"1.50"},{"option":"Dissertation literature review","ratio":"1.50"},{"option":"Dissertation methodology","ratio":"1.50"},{"option":"Dissertation proposal","ratio":"1.50"},{"option":"Dissertation results","ratio":"1.50"},{"option":"Editing","ratio":"0.60"},{"option":"Evaluation essay","ratio":"1.00"},{"option":"Expository essay","ratio":"1.00"},{"option":"Formatting","ratio":"0.30"},{"option":"Homework","ratio":"1.00"},{"option":"Lab report (theoretical part)","ratio":"1.50"},{"option":"Literary analysis","ratio":"1.00"},{"option":"Math Problem","ratio":"1.50"},{"option":"Movie review","ratio":"1.30"},{"option":"Multiple choice questions","ratio":"0.12"},{"option":"Narrative essay","ratio":"1.00"},{"option":"Other","ratio":"1.40"},{"option":"Paraphrasing","ratio":"1.00"},{"option":"Personal statement","ratio":"1.50"},{"option":"Persuasive essay","ratio":"1.00"},{"option":"Presentation or speech","ratio":"1.00"},{"option":"Problem solving","ratio":"1.70"},{"option":"Proofreading","ratio":"0.50"},{"option":"Reaction paper","ratio":"1.30"},{"option":"Reflective essay","ratio":"1.00"},{"option":"Research paper","ratio":"1.30"},{"option":"Research proposal","ratio":"1.30"},{"option":"Resume writing","ratio":"1.00"},{"option":"Rhetorical analysis","ratio":"1.00"},{"option":"Scholarship essay","ratio":"1.00"},{"option":"Statement of purpose","ratio":"1.50"},{"option":"Statistics Project","ratio":"1.00"},{"option":"Summary of online lectures","ratio":"1.80"},{"option":"Term paper","ratio":"1.40"},{"option":"Thesis","ratio":"2.00"},{"option":"Thesis proposal","ratio":"1.50"},{"option":"Thesis statement","ratio":"1.50"},{"option":"Thesis\/Dissertation abstract","ratio":"1.50"},{"option":"Thesis\/Dissertation chapter","ratio":"1.50"},{"option":"Thesis\/Dissertation proposal","ratio":"1.50"}]}}';
+
+    var AcademyPriceDependenceList = '{"High School":{"1209600":"10.00","604800":"12.00","432000":"14.00","259200":"15.00","172800":"17.00","86400":"21.00","28800":"25.00","10800":"38.00"},"College":{"1209600":"14.00","604800":"15.00","432000":"16.00","259200":"19.00","172800":"25.00","86400":"32.00","28800":"34.00","10800":"40.00"},"University":{"1209600":"16.00","604800":"17.00","432000":"20.00","259200":"23.00","172800":"31.00","86400":"38.00"},"Masters":{"1209600":"22.00","604800":"24.00","432000":"27.00","259200":"30.00","172800":"40.00","86400":"50.00"},"PhD":{"1209600":"29.00","604800":"31.00","432000":"32.00","259200":"35.00","172800":"47.00","86400":"58.00"}}';
+
+    var hiw = $('.works-item');
+    function toggleHiw(item) {
+      $('.works-item.active').removeClass('active');
+      $(item).toggleClass('active');
+    };
+    var k = 0;
+    var timerId;
+    function timer() {
+      timerId = setInterval(() => hiwAnimation(), 3500);
+    }
+    timer();
+    function hiwAnimation() {
+      toggleHiw(hiw[k]);
+      k = k + 1;
+      if (k === 4) {
+        k = 0;
+      }
+    }
+    $('.howitworks-items').mouseover(function () {
+      $('.howitworks-item.active').removeClass('active');
+      clearInterval(timerId);
+    });
+    $('.howitworks-items').mouseout(function () {
+      toggleHiw($('.howitworks-item')[0]);
+      timer();
+    });
+    $('.howitworks-item').mouseover(function () {
+      $('.howitworks-item.active').removeClass('active');
+      $(this).addClass('active');
+    });
+    hiwAnimation();
+
+  </script>
+
+  {% block inline_javascript %}
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      /* Run whatever you want */
+    });
+  </script>
+  {% endblock inline_javascript %}
+
+
+</body>
+
+</html>

@@ -1,0 +1,363 @@
+{% load static %}
+
+<form id="fupForm" class="form-horizontal" method="POST" action="" enctype="multipart/form-data">
+  <input type="hidden" name="_token" value="heI4IMy9WqJTFkG6Chi6cTWcpKync5mcHsl1Qnda">
+  <input type="hidden" name="order_level" value="normal">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">Academic Level</label>
+        <div class="col-md-9">
+          <div class="selectgroup selectgroup-pills">
+
+            <label class="selectgroup-item">
+              <input type="radio" name="aclevel" id="aclevel" value="0.9" class="selectgroup-input" onchange="calculate(this.form);">
+              <span class="selectgroup-button">
+                High School
+              </span>
+            </label>
+            <label class="selectgroup-item">
+              <input type="radio" name="aclevel" id="aclevel" value="1" class="selectgroup-input" onchange="calculate(this.form);">
+              <span class="selectgroup-button">
+                College
+              </span>
+            </label>
+            <label class="selectgroup-item">
+              <input type="radio" name="aclevel" id="aclevel" value="1.1" class="selectgroup-input" checked="" onchange="calculate(this.form);">
+              <span class="selectgroup-button">
+                Undergraduate
+              </span>
+            </label>
+            <label class="selectgroup-item">
+              <input type="radio" name="aclevel" id="aclevel" value="1.3" class="selectgroup-input" onchange="calculate(this.form);">
+              <span class="selectgroup-button">
+                Masters
+              </span>
+            </label>
+            <label class="selectgroup-item">
+              <input type="radio" name="aclevel" id="aclevel" value="1.4" class="selectgroup-input" onchange="calculate(this.form);">
+              <span class="selectgroup-button">
+                PhD
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+    
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">Assignment topic</label>
+        <div class="col-md-9">
+          <input type="" name="title" class="form-control" placeholder="Enter title" required="">
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">
+          <strong>Urgency:</strong>
+        </label>
+        <div class="col-md-9">
+          <select name="client_deadline" class="form-control form-control-sm mb-3" required="" onchange="calculate(this.form);">
+            <option value="15">
+              30 Days
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">
+          Assignment type:
+        </label>
+        <div class="col-md-9">
+          <select name="paper_id" class="form-control" onchange="calculate(this.form);">
+            <option value="1" selected="">Essay (Any Type)</option>
+            <option value="1">Acceptance letter</option>
+          </select>
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">Subject</label>
+        <div class="col-md-9">
+          <select name="order_type" class="form-control" onchange="calculate(this.form);">
+            <option>Select subject</option>
+            <option value="1" selected="">General</option>
+            <option value="51">Accounting</option>
+          </select>
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">Spacing:</label>
+        <div class="col-md-9">
+          <select class="form-control select2" name="price" onchange="calculate(this.form);">
+            <option selected="">select Spacing</option>
+            <option selected="" value="1">Double</option>
+            <option value="2">Single</option>
+          </select>
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">
+          Assignment size:
+        </label>
+        <div class="col-md-9">
+          <select class="form-control select2" name="page" onchange="calculate(this.form);">
+            <option value="0" selected="">0 pages</option>
+            <option value="0.5">0.5 page (137.5 words)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label"></label>
+        <div class="col-md-9">
+          <select class="form-control select2" name="slide" onchange="calculate(this.form);">
+            <option value="0" selected="">0 slide</option>
+            <option value="1">1 slides</option>
+          </select>
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">Number of sources</label>
+        <div class="col-md-3">
+          <div class="input-group">
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-danger btn-number" data-type="minus" data-field="sources">
+                <span class="glyphicon glyphicon-minus"></span>
+              </button>
+            </span>
+            <input type="text" name="sources" class="form-control input-number" value="0" min="0" max="100">
+            <span class="input-group-btn">
+              <button type="button" class="btn btn-success btn-number" data-type="plus" data-field="sources">
+                <span class="glyphicon glyphicon-plus"></span>
+              </button>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <div class="input-group mt-2">
+            words/pages
+          </div>
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">Citation</label>
+        <div class="col-md-9">
+
+          <div class="selectgroup selectgroup-pills">
+            <label class="selectgroup-item">
+              <input type="radio" name="order_citation" id="order_citation" value="APA 6th Ed" class="selectgroup-input">
+              <span class="selectgroup-button">APA 6th Ed</span>
+            </label>
+          </div>
+
+          <div class="selectgroup selectgroup-pills">
+            <label class="selectgroup-item">
+              <input type="radio" name="order_citation" id="order_citation" value="APA 7th Ed" class="selectgroup-input" checked="">
+              <span class="selectgroup-button">
+                APA 7th Ed
+              </span>
+            </label>
+          </div>
+
+          <div class="selectgroup selectgroup-pills">
+            <label class="selectgroup-item">
+              <input type="radio" name="order_citation" id="order_citation" value="MLA" class="selectgroup-input">
+              <span class="selectgroup-button">
+                MLA
+              </span>
+            </label>
+          </div>
+
+          <div class="selectgroup selectgroup-pills">
+            <label class="selectgroup-item">
+              <input type="radio" name="order_citation" id="order_citation" value="Harvard" class="selectgroup-input">
+              <span class="selectgroup-button">
+                Harvard
+              </span>
+            </label>
+          </div>
+
+          <div class="selectgroup selectgroup-pills">
+            <label class="selectgroup-item">
+              <input type="radio" name="order_citation" id="order_citation" value="Chicago" class="selectgroup-input">
+              <span class="selectgroup-button">
+                Chicago
+              </span>
+            </label>
+          </div>
+
+          <div class="selectgroup selectgroup-pills">
+            <label class="selectgroup-item">
+              <input type="radio" name="order_citation" id="order_citation" value="Other" class="selectgroup-input">
+              <span class="selectgroup-button">
+                Other
+              </span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">
+          Assignment language:
+        </label>
+        <div class="col-md-9">
+
+          <div class="selectgroup selectgroup-pills">
+            <label class="selectgroup-item">
+              <input type="radio" name="language" id="order_citation" value="USA English" class="selectgroup-input" checked="">
+              <span class="selectgroup-button">
+                English (US)
+              </span>
+            </label>
+          </div>
+
+          <div class="selectgroup selectgroup-pills">
+            <label class="selectgroup-item">
+              <input type="radio" name="language" id="order_citation" value="UK English" class="selectgroup-input">
+              <span class="selectgroup-button">
+                English (UK)
+              </span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">Progressive delivery?</label>
+        <div class="col-md-9">
+          <div class="addon-ad-charge mt-3">
+            <label>
+              <input type="checkbox" id="myCheck" onclick="myFunction()">
+              If yes check the box.
+            </label>
+          </div>
+
+          <div class="well" id="text" style="display: none;">
+
+            <select name="order_continuation" class="form-control select2-show-search form-select" data-placeholder="Choose previous order">
+              <option label="Choose previous order"></option>
+
+              <option value="34">34 - Test</option>
+            </select>
+          </div>
+          <script>
+            function myFunction() {
+              var checkBox = document.getElementById("myCheck");
+              var text = document.getElementById("text");
+              if (checkBox.checked == true) {
+                text.style.display = "block";
+              } else {
+                text.style.display = "none";
+              }
+            }
+          </script>
+
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">Description:</label>
+        <div class="col-md-9">
+          <textarea class="form-control content" name="description"></textarea>
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">Upload files</label>
+        <div class="col-md-9">
+          <input type="file" class="form-control" name="photos[]" multiple="">
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <label class="col-md-3 form-label">
+          Plagiarism Report (<span style="color: green;">OPTIONAL</span>):
+        </label>
+        <div class="col-md-9">
+          <select class="form-control select2" name="plagiarism_report" onchange="calculate(this.form);">
+            <option selected="" value="0">NO</option>
+            <option value="1">YES</option>
+          </select>
+        </div>
+      </div>
+
+      <div class=" row mb-4">
+        <label class="col-md-3 form-label">Work with preferred writer?</label>
+        <div class="col-md-9">
+          <div class="addon-ad-charge mt-3">
+            <label>
+              <input type="checkbox" id="my" onclick="myWriter()">
+              If yes check the box.
+            </label>
+          </div>
+
+          <div class="well" id="text1" style="display: none;">
+
+            <select name="preferred_writer" class="form-control select2-show-search form-select" data-placeholder="Choose writer previously worked on paper">
+              <option label="Choose previous order"></option>
+              <option value="19">19 - Jeckonia</option>
+            </select>
+          </div>
+          <script>
+            function myWriter() {
+              var my = document.getElementById("my");
+              var text1 = document.getElementById("text1");
+              var topWriters = document.getElementById("top-10-writers")
+              if (my.checked == true) {
+                text1.style.display = "block";
+                topWriters.style.display = "none";
+              } else {
+                text1.style.display = "none";
+                topWriters.style.display = "flex";
+              }
+            }
+          </script>
+
+        </div>
+      </div>
+
+      <div class=" row mb-4" style="display: none;">
+        <label class="col-md-12 form-label" style="color: red;">Work with preferred writer only:</label>
+        <div class="col-md-9">
+          <select class="form-control select2" name="preferred_writer_only" onchange="calculate(this.form);">
+            <option selected="" value="0">YES</option>
+            <option value="0">NO</option>
+          </select>
+        </div>
+      </div>
+
+      <div class=" row mb-4" id="top-10-writers">
+        <label class="col-md-3 form-label" style="color: green;">Hire only among top 10 writers:</label>
+        <div class="col-md-9">
+          <select class="form-control select2" name="top_ten" onchange="calculate(this.form);">
+            <option value="1">YES</option>
+            <option value="0" selected="">NO</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="hidden" name="total" class="form-control">
+        <input type="hidden" name="due_in" class="form-control">
+        <input type="hidden" name="paper" class="form-control">
+
+        <button type="submit" id="settings_save_btn56" class="btn btn-primary submitBtn">Submit Now</button>
+
+        <div id="spinner-border" style="display:none;" class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>

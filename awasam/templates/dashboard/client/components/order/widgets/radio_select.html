@@ -1,0 +1,10 @@
+{% for group in widget.optgroups %}
+  {% for option in group.1 %}
+    <div class="selectgroup selectgroup-pills">
+      <label class="selectgroup-item">
+        <input type="radio" name="{{ widget.name }}" value="{{ option.value }}" class="selectgroup-input" {% if option.attrs %} {% for attr, value in option.attrs.items %} {{ attr }}="{{ value }}" {% endfor %} {% endif %} {% if option.selected %} checked {% endif %}>
+        <span class="selectgroup-button">{{ option.label }}</span>
+      </label>
+    </div>
+  {% endfor %}
+{% endfor %}

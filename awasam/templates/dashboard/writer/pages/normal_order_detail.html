@@ -1,0 +1,248 @@
+{% extends 'dashboard/writer/base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="row row-cards">
+    <div class="col-lg-8 col-xl-8">
+
+        <div class="card">
+            <div class="card-header">
+
+                <h4 class="card-title">
+                    <span class="badge bg-secondary fs-14 me-2">
+
+                        {% if order.is_paid %}
+                        Paid
+                        {% else %}
+                        Payment pending
+                        {% endif %}
+                    </span>
+                    <strong>Order ID:
+                        {{order.pk}}</strong>
+
+                </h4>
+
+                <div class="page-options ms-auto">
+                    <a href="" class="btn btn-success badge btn-sm">
+                        <i class="fa fa-history"></i> Client History (3)
+                    </a>
+                </div>
+            </div>
+
+            <div class="card-body">
+
+                {% if messages %}
+                <div class="col-12">
+                    {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{message.tags}} {% endif %}">
+                        {{message}}
+                    </div>
+                    {% endfor %}
+                </div>
+                <hr style="border-top: 1px solid #000000;">
+
+
+
+                {% endif %}
+
+                {% if order.is_revision %}
+                <div class="row" style="background-color: #E9E9EA; padding: 20px; margin-bottom: 20px;">
+                    <p>This order was fined USD {{order.fine}}</p><br>
+                    Not responding
+                </div>
+
+                <div class="row" style="background-color: #FFEAE9; padding: 20px; margin-bottom: 20px;">
+
+
+                    <h4 style="color: #000000;">Revisions Instructions</h4>
+
+
+                    <div class="col-md-12" style="color: #000000;">
+                        <p>{{order.revision_instruction|safe}}</p>
+                        <div class="alert alert-info">Dear Writer, <br>When revising a paper, always use the edited copy that was sent to the client (Check the latest date). DO NOT use the paper you had sent to the system as a number of edits were done to improve the paper.</div>
+                        Due at: <div color="red">{{completed_date.completed_date|timesince}} passed </div><br>
+                    </div>
+
+
+                    <hr style="border-top: 1px solid #000000;">
+
+
+                </div>
+                {% endif %}
+
+
+                <span class="badge bg-primary-transparent rounded-pill text-primary p-2 px-3">Use
+                    {{order.language}}</span>
+
+                <span class="badge bg-success-transparent rounded-pill text-success p-2 px-3">
+                    Normal order
+                </span>
+
+                <hr style="border-top: 1px solid #000000;">
+
+                <div class=" row mb-4">
+                    <label class="col-md-3 form-label">Order cost</label>
+                    <div class="col-md-8">
+                        USD
+                        {{order.price}}
+                    </div>
+                </div>
+
+                <div class=" row mb-4">
+                    <label class="col-md-3 form-label">Topic/Title</label>
+                    <div class="col-md-9">
+                        <p>{{order.topic}}</p>
+                    </div>
+                </div>
+                <hr style="border-top: 1px dotted #000000;">
+
+                <div class=" row mb-4">
+                    <label class="col-md-3 form-label">Type of paper:
+                    </label>
+                    <div class="col-md-9">
+                        <p>{{order.get_assignment_type_display|title}}<br>
+                        </p>
+                    </div>
+                </div>
+                <hr style="border-top: 1px dotted #000000;">
+
+                <div class=" row mb-4">
+                    <label class="col-md-3 form-label">
+                        <strong>Deadline:</strong>
+                    </label>
+                    <div class="col-md-9">
+
+                        <div class="row">
+                            <div class="col-sm-6 alert alert-info">
+
+                                {{order.deadline_text|title}}
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class=" row mb-4">
+                    <label class="col-md-3 form-label">Discipline:</label>
+                    <div class="col-md-9">
+
+                        <p>{{order.get_subject_display}}</p>
+                    </div>
+                </div>
+                <hr style="border-top: 1px dotted #000000;">
+
+                <div class="row mb-4">
+                    <label class="col-md-3 form-label">Number of pages:</label>
+                    <div class="col-md-9">
+                        {{order.assignment_size_pages_text}}
+                        <br>
+                        {{order.spacing_text}}
+                    </div>
+                </div>
+                <hr style="border-top: 1px dotted #000000;">
+
+                <div class=" row mb-4">
+                    <label class="col-md-3 form-label">PowerPoint Slides:</label>
+                    <div class="col-md-9">
+                        {{order.get_slides_display}}
+                    </div>
+                </div>
+                <hr style="border-top: 1px dotted #000000;">
+
+                <div class=" row mb-4">
+                    <label class="col-md-3 form-label">Sources to be cited:</label>
+                    <div class="col-md-9">
+                        {{order.get_sources_display}}
+                    </div>
+                </div>
+                <hr style="border-top: 1px dotted #000000;">
+
+                <div class=" row mb-4">
+                    <label class="col-md-3 form-label">Paper format:</label>
+                    <div class="col-md-9">
+                        {{order.citation_text}}
+                    </div>
+                </div>
+                <hr style="border-top: 1px dotted #000000;">
+
+                <div class=" row mb-12">
+                    <label class="col-md-3 form-label">Order was posted:</label>
+                    <div class="col-md-9">
+                        {{order.order_date|timesince}}
+                        ago
+                    </div>
+                </div>
+                <hr style="border-top: 1px dotted #000000;">
+
+                <div class=" row mb-4">
+                    <hr style="border: 2px;">
+                    <label class="col-md-3 form-label">
+                        <strong>Instructions</strong>
+                    </label>
+                    <div class="col-md-12">
+                        <main>
+                            <div>{{order.description|safe}}</div>
+                        </main>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        {% for order_file in order.order_files.all %}
+
+
+        <div class="card">
+            <div class="card-header border-bottom-0"></div>
+            <div class="e-table px-5 pb-5">
+                <div class="table-responsive table-lg">
+                    <h3>Customer files</h3>
+                    <table class="table border-top table-bordered mb-0">
+                        <tbody>
+                            <tr>
+
+                            </tr>
+
+                            <tr>
+                                <td>{{order_file.uploads.name}}</td>
+                                <td>
+                                    <span style="color: green; font-size: 11px;">
+                                        Uploaded by Client
+                                        {{order_file.normal_order.order_date|timesince}}
+                                        ago
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <a href="{{order_file.uploads.url}}" target="_blank" class="btn btn-success btn-sm">
+                                        <i class="fa fa-download"></i>
+                                        Download
+                                    </a>
+                                </td>
+
+                            </tr>
+
+
+
+                        </tbody>
+
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="col-lg-4 col-xl-4"></div>
+</div>
+{% endblock content %}

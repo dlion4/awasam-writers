@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<div class="banner  banner-rev b-lazy" data-src="{% static 'images/main/banner-bg-rev.jpg' %}">
+    <div class="layout-wrapper">
+        <div class="banner__row">
+            <div class="banner__content">
+                <h1 class="title title-m color-white">SuperbPaper Customer Reviews</h1>
+                <p class="subtitle subtitle-m color-white">Your feedback is crucial in helping us maintain excellent academic writing services. Feel free to provide a short comment about your experience with our service so that we can make it even better!</p>
+                <div class="banner-rev-list">
+                    <div class="banner-rev-item">
+                        <div class="banner-rev-item__top">
+                            <p>4.8/5</p>
+                            <img src="{% static 'images/main/revvvv-2.svg' %}" alt="revvvv">
+                        </div>
+                        <p>average rating</p>
+                    </div>
+                    <div class="banner-rev-item">
+                        <div class="banner-rev-item__top">
+                            <p>5 <span>years</span></p>
+                            <img src="{% static 'images/main/revvvv-3.svg' %}" alt="revvvv">
+                        </div>
+                        <p>of writing experience</p>
+                    </div>
+                    <div class="banner-rev-item">
+                        <div class="banner-rev-item__top">
+                            <p><span>Excellent</span></p>
+                            <img src="{% static 'images/main/revvvv-1.svg' %}" alt="revvvv">
+                        </div>
+                        <p>customer reviews</p>
+                    </div>
+                </div>
+            </div>
+            <div class="banner__img">
+                <img src="{% static 'images/main/banner-img-rev.png' %}" alt="banner">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="testimonials section section-main">
+    <div class="layout-wrapper">
+        <div class="section-row">
+            <div class="section-content">
+                <h2 class="title-el title-el-m text-left">Testimonials</h2>
+                <div class="rev-section">
+                    <div class="rev">
+                        <div class="rev__top">
+                            <div class="rev__img">
+                                <img src="{% static 'images/main/rev__img.png' %}" alt="people-img">
+                            </div>
+                            <div class="rev__top_content rev__top_content-simple">
+                                <div class="rev__top_content-info">
+                                    <div class="rev__name">Customer ID 3659</div>
+                                    <div class="rev__hours"><span>Essay</span>
+                                        <!--                                                        <span>, </span>-->
+                                        <!--                                                        <span>-->
+                                        <?//=$item['time']?><!--</span>-->
+                                    </div>
+                                </div>
+                                <div class="form-field-rating">
+                                    <div class="rating rating-static">
+
+                                        <label class="active">
+                                            <input type="radio" name="rating">
+                                        </label>
+
+                                        <label>
+                                            <input type="radio" name="rating">
+                                        </label>
+
+                                        <label>
+                                            <input type="radio" name="rating">
+                                        </label>
+
+                                        <label>
+                                            <input type="radio" name="rating">
+                                        </label>
+
+                                        <label>
+                                            <input type="radio" name="rating">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="rev__text">
+                            I'm struggling to keep a balance between school and work. Late shifts, classes, it just leaves you with no time for writing sometimes. Thanks to superb paper I don't have any problems at school, even though I'm really pressed for time with my essays LIKE ALWAYS </div>
+                        <div class="rev-hidden-bottom">
+                            <div class="form-field-rating">
+                                <div class="rating rating-static">
+
+                                    <label class="active">
+                                        <input type="radio" name="rating">
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="rating">
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="rating">
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="rating">
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="rating">
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="rev__hours"><span>10 minutes ago</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-sidebar">
+                <div class="banner__sidebar">
+                    {% include "components/calc.html" %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "components/banner.html" %}
+{% endblock content %}
