@@ -14,6 +14,8 @@ from .choices import (
     SUBJECT_CHOICES,
     ASSIGNMENT_SLIDES_SIZE_CHOICES,
     ASSIGNMENT_SOURCES_SIZE_CHOICES,
+    CITATION_CHOICES,
+    EXPERT_CHOICES,
 )
 
 class NormalManager(models.Manager):
@@ -71,21 +73,14 @@ class Normal(models.Model):
     )
     citation = models.CharField(
         max_length=300,
-        choices=(
-            ('Harvard', 'Harvard'),
-            ('Chicago', 'Chicago'),
-            ('Turabian', 'Turabian'),
-            ('APA', 'APA'),
-            ('Other', 'Other'),
-        ),
+        choices=CITATION_CHOICES,
         blank=True,
     )
     other_citation = models.CharField(max_length=100, blank=True)
     language = models.CharField(max_length=100, blank=True)
-    description = models.TextField(blank=True, null=True)
-
-    attach_plagiarism_report = models.CharField(max_length=5, default="0", help_text="value of 1 is yes")
-    
+    description = models.TextField(blank=True)
+    attach_plagiarism_report = models.CharField(
+        max_length=5, default="0", help_text="value of 1 is yes")
     academic_level_text = models.CharField(max_length=100, blank=True)
     deadline_text = models.CharField(max_length=100, blank=True)
     subject_text = models.CharField(max_length=100, blank=True)

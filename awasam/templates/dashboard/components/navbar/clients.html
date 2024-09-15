@@ -23,8 +23,9 @@
 
       <!-- sidebar-toggle-->
       <a class="logo-horizontal" href="{% url 'home' %}">
-        <img src="{% static 'dashboard/logo/logo.png' %}" width="50" class="header-brand-img desktop-logo" alt="logo">
-        <img src="{% static 'dashboard/logo/logo.png' %}" width="50" class="header-brand-img light-logo1" alt="logo">
+        <img src="{% static 'images/main/logo.svg' %}" width="50" class="header-brand-img desktop-logo" alt="logo">
+        <img src="{% static 'images/main/logo.svg' %}" width="50" class="header-brand-img light-logo1" alt="logo">
+        <!-- {% static 'dashboard/logo/logo.png' %} -->
       </a>
       <!-- LOGO -->
       <div class="main-header-center ms-3 d-none d-lg-block">
@@ -79,7 +80,8 @@
                   <div class="drop-heading">
                     <div class="text-center">
                       <h5 class="text-dark mb-0 fs-14 fw-semibold">{{profile.full_name|default:"No name set"}}</h5>
-                      <h5 class="text-dark mb-0 fs-14 fw-semibold">Merchant ID: {{profile.pk}}</h5>
+                      <h5 class="text-dark mb-0 fs-14 fw-semibold">Merchant ID:
+                        {{profile.pk}}</h5>
                     </div>
                   </div>
                   <div class="dropdown-divider m-0"></div>

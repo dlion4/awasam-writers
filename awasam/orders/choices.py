@@ -762,3 +762,32 @@ ASSIGNMENT_SOURCES_SIZE_CHOICES = (
     ("1.1","15 Sources"),
 )
 
+
+EXPERT_CHOICES = (
+    ("basic", "Basic"),
+    ("professional", "Professional"),
+)
+CITATION_CHOICES = (
+    ("Harvard", "Harvard"),
+    ("Chicago", "Chicago"),
+    ("Turabian", "Turabian"),
+    ("APA", "APA"),
+    ("Other", "Other"),
+)
+SOFTWARE_CHOICES = [
+    ("autocad", "AutoCAD"),
+    ("matlab", "MATLAB"),
+    ("spss", "SPSS"),
+    ("ms_access", "MS ACCESS"),
+    ("stata", "STATA"),
+    ("database", "Database"),
+    ("programming_language", "Programming language"),
+    ("other", "Other (I will specify in paper details)"),
+    ("writers_choice", "Writer’s choice (Any)"),
+    ("javascript", "JavaScript"),
+    ("html_css", "HTML/CSS"),
+    ("r_studio", "R Studio"),
+    ("python", "Python"),
+    ("cisco_packet_tracer", "Cisco Packet Tracer"),
+]
+

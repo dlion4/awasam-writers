@@ -115,188 +115,135 @@
         </div>
       </div>
 
-
       <!--extrassss-->
 
+      <h1 class="card">Extra Services</h1>
 
-
-      <div class="card-header">
-        <h1 class="card">Extra Services</h1>
-      </div>
-
-
-
-
-      <div class="container">
-        <!-- Draft Section -->
-        <div class="row mb-4">
-          <label class="col-md-4 form-label">Draft</label>
-          <div class="col-md-8">
-            <div class="selectgroup selectgroup-pills">
-              <label class="selectgroup-item">
-                <input type="checkbox" name="draftOption" id="draft_yes" value="1" class="selectgroup-input" onchange="calculate(this.form);">
-                <span class="selectgroup-button">
-                  Yes
-                  <p class="mt-1 small">
-                    <strong>Draft:</strong> Allows you to review a preliminary version of the document before final submission.
-                  </p>
-                </span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <!-- Files of Sources Section -->
-        <div class="row mb-4">
-          <label class="col-md-4 form-label">Files of Sources</label>
-          <div class="col-md-8">
-            <div class="selectgroup selectgroup-pills">
-              <label class="selectgroup-item">
-                <input type="checkbox" name="filesOption" id="files_yes" value="1" class="selectgroup-input" onchange="calculate(this.form);">
-                <span class="selectgroup-button">
-                  $10
-                  <p class="mt-1 small">
-                    <strong>Basic:</strong> You will get copies of used sources. grtyuivertytuilturyurtherhgerh
-                  </p>
-                </span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <!-- High Priority Status Section -->
-        <div class="row mb-4">
-          <label class="col-md-4 form-label">High Priority Status</label>
-          <div class="col-md-8">
-            <div class="selectgroup selectgroup-pills">
-              <label class="selectgroup-item">
-                <input type="checkbox" name="priorityStatus" id="priority_yes" value="1" class="selectgroup-input" onchange="calculate(this.form);">
-                <span class="selectgroup-button">
-                  $2
-                  <p class="mt-1 small">
-                    <strong>Priority:</strong> Your project will be treated with high priority.ergerhtryjryjry
-                  </p>
-                </span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <!-- 1 Page Summary Section -->
-        <div class="row mb-4">
-          <label class="col-md-4 form-label">1 Page Summary</label>
-          <div class="col-md-8">
-            <div class="selectgroup selectgroup-pills">
-              <label class="selectgroup-item">
-                <input type="checkbox" name="summaryOption" id="summary_yes" value="1" class="selectgroup-input" onchange="calculate(this.form);">
-                <span class="selectgroup-button">
-                  $2
-                  <p class="mt-1 small">
-                    <strong>Priority:</strong> Your project will be treated with high priority.ergerhtryjryjry
-                  </p>
-                </span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <!-- AI Check Section -->
-        <div class="row mb-4">
-          <label class="col-md-4 form-label">AI Check</label>
-          <div class="col-md-8">
-            <div class="selectgroup selectgroup-pills">
-              <label class="selectgroup-item">
-                <input type="checkbox" name="aiCheckOption" id="aicheck_yes" value="1" class="selectgroup-input" onchange="calculate(this.form);">
-                <span class="selectgroup-button">
-                  $10
-                  <p class="mt-1 small">
-                    <strong>Basic:</strong> Suitable for a basic level of AI verification at a lower cost.
-                  </p>
-                </span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <!-- Type of Expert Section -->
-        <div class="row mb-4">
-          <label class="col-md-4 form-label">Type of Expert</label>
-          <div class="col-md-8">
-            <div class="row">
-              <!-- Basic Expert -->
-              <div class="col-6">
-                <label class="selectgroup-item">
-                  <input type="radio" name="expertType" id="expert_basic" value="basic" class="selectgroup-input" onchange="calculate(this.form);">
-                  <span class="selectgroup-button">
-                    Basic
-                    <p class="mt-0.5 small">
-                      Suitable for simpler tasks, offering standard expertise at a lower cost.
-                    </p>
-                  </span>
-                </label>
-              </div>
-
-              <!-- Professional Expert -->
-              <div class="col-6">
-                <label class="selectgroup-item">
-                  <input type="radio" name="expertType" id="expert_professional" value="professional" class="selectgroup-input" onchange="calculate(this.form);">
-                  <span class="selectgroup-button">
-                    Professional
-                    <p class="mt-0.5 small">
-                      Ideal for complex projects requiring in-depth knowledge and advanced skills.
-                    </p>
-                  </span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- Draft Section -->
       <div class="row mb-4">
-        <label class="col-md-4 form-label">Software</label>
+        <label class="col-md-4 form-label">Draft</label>
         <div class="col-md-8">
-          <div class="addon-ad-charge mt-2">
-            <label class="custom-checkbox">
-              <input type="checkbox" id="softwareCheck" onclick="toggleSoftwareOptions()" style="width: 18px; height: 18px;">
-              <span class="checkbox-custom" style="width: 20px; height: 20px;"></span>
-              If yes, check this box.
+          <div class="selectgroup selectgroup-pills">
+            <label class="selectgroup-item">
+              <input type="checkbox" data-price="10.00" name="draft" id="draft_yes" value="1" class="selectgroup-input" onchange="calculate(this);">
+              <span class="selectgroup-button">
+                $10.00
+                <p class="mt-1 small">
+                  <strong>Draft:</strong>
+                  Allows you to review a preliminary version of the document before final submission.
+                </p>
+              </span>
             </label>
           </div>
-
-          <div class="well" id="softwareOptions" style="display: none;">
-            <select name="software_options" class="form-control select2-show-search form-select" data-placeholder="Choose software">
-              <option label="Choose software"></option>
-              <option value="autocad">AutoCAD</option>
-              <option value="matlab">MATLAB</option>
-              <option value="spss">SPSS</option>
-              <option value="ms_access">MS ACCESS</option>
-              <option value="stata">STATA</option>
-              <option value="database">DataBase</option>
-              <option value="programming_language">Programming language</option>
-              <option value="other">Other (I will specify in paper details)</option>
-              <option value="writers_choice">Writers choice (Any)</option>
-              <option value="javascript">JavaScript</option>
-              <option value="html_css">HTML/CSS</option>
-              <option value="r_studio">R Studio</option>
-              <option value="python">Python</option>
-              <option value="cisco_packet_tracer">Cisco Packet Tracer</option>
-            </select>
-          </div>
-
-          <script>
-            function toggleSoftwareOptions() {
-              var checkBox = document.getElementById("softwareCheck");
-              var softwareOptions = document.getElementById("softwareOptions");
-              if (checkBox.checked) {
-                softwareOptions.style.display = "block";
-              } else {
-                softwareOptions.style.display = "none";
-              }
-            }
-          </script>
         </div>
       </div>
 
+      <!-- Files of Sources Section -->
+      <div class="row mb-4">
+        <label class="col-md-4 form-label">Files of Sources</label>
+        <div class="col-md-8">
+          <div class="selectgroup selectgroup-pills">
+            <label class="selectgroup-item">
+              <input type="checkbox" data-price="10.00" name="files_of_sources" id="files_yes" value="1" class="selectgroup-input" onchange="calculate(this);">
+              <span class="selectgroup-button">
+                $10
+                <p class="mt-1 small">
+                  <strong>Basic:</strong>
+                  You will get copies of used sources. grtyuivertytuilturyurtherhgerh
+                </p>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- High Priority Status Section -->
+      <div class="row mb-4">
+        <label class="col-md-4 form-label">High Priority Status</label>
+        <div class="col-md-8">
+          <div class="selectgroup selectgroup-pills">
+            <label class="selectgroup-item">
+              <input type="checkbox" data-price="2.00" name="high_priority_status" id="priority_yes" value="1" class="selectgroup-input" onchange="calculate(this);">
+              <span class="selectgroup-button">
+                $2
+                <p class="mt-1 small">
+                  <strong>Priority:</strong>
+                  Your project will be treated with high priority.ergerhtryjryjry
+                </p>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1 Page Summary Section -->
+      <div class="row mb-4">
+        <label class="col-md-4 form-label">1 Page Summary</label>
+        <div class="col-md-8">
+          <div class="selectgroup selectgroup-pills">
+            <label class="selectgroup-item">
+              <input type="checkbox" data-price="0.93" name="summary_1_page_option" id="summary_yes" value="1" class="selectgroup-input" onchange="calculate(this);">
+              <span class="selectgroup-button">
+                $0.93
+                <p class="mt-1 small">
+                  <strong>Priority:</strong>
+                  Your project will be treated with high priority.ergerhtryjryjry
+                </p>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- AI Check Section -->
+      <div class="row mb-4">
+        <label class="col-md-4 form-label">AI Check</label>
+        <div class="col-md-8">
+          <div class="selectgroup selectgroup-pills">
+            <label class="selectgroup-item">
+              <input type="checkbox" data-price="10.00" name="ai_check_option" id="aicheck_yes" value="1" class="selectgroup-input" onchange="calculate(this);">
+              <span class="selectgroup-button">
+                $10.00
+                <p class="mt-1 small">
+                  <strong>Basic:</strong>
+                  Suitable for a basic level of AI verification at a lower cost.
+                </p>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Type of Expert Section -->
+
+      <div class="row mb-4">
+        <label class="col-md-4 form-label">{{ form.expert_type.label }}</label>
+        <div class="col-md-8">
+          <div class="row">
+            <!-- Render options dynamically -->
+            {% for choice in form.expert_type %}
+              <div class="col-6">
+                <label class="selectgroup-item">
+                  {{ choice.tag }}
+                  <!-- Renders each radio input -->
+                  <span class="selectgroup-button">
+                    {{ choice.choice_label }}
+                    {% if choice.choice_label == "Basic" %}
+                      <p class="mt-0.5 small">
+                        Suitable for simpler tasks, offering standard expertise at a lower cost.
+                      </p>
+                    {% elif choice.choice_label == "Professional" %}
+                      <p class="mt-0.5 small">
+                        Ideal for complex projects requiring in-depth knowledge and advanced skills.
+                      </p>
+                    {% endif %}
+                  </span>
+                </label>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
 
       {{form.price}}
 
@@ -502,10 +449,24 @@
     // Return or display total as needed
     let totalCost = Number
       .parseFloat(total)
-      .toFixed(2)
+      .toFixed(2);
+
+    const priceElement = document.getElementById('display-normal-order-price');
+
+    // Extract the inner text from the element
+    const htmlContent = priceElement.innerText;
+
+    // Regex to capture the number or 0.00
+    const regex = /USD\s([0-9]+(?:\.[0-9]{1,2})?)/;
+
+    const match = htmlContent.match(regex);
+    console.log(match)
+    console.log(htmlContent)
+
     document
       .querySelector("#display-normal-order-price")
       .innerHTML = `USD: ${totalCost}`;
+
     priceValue.value = totalCost;
     return total;
   }
@@ -542,4 +503,43 @@
       }
     });
   });
+
+  function selectExpert(element) {
+    console.log(element)
+  }
+
+  function calculate(element) {
+    // Get the price element
+    const priceElement = document.getElementById('display-normal-order-price');
+
+    // Extract the inner text from the element
+    const htmlContent = priceElement.innerText;
+
+    // Regex to capture the number or 0.00
+    const regex = /USD\s([0-9]+(?:\.[0-9]{1,2})?)/;
+
+    const match = htmlContent.match(regex);
+    var currentPrice;
+    console.log(match)
+    console.log(htmlContent)
+
+    if (match) {
+      currentPrice = parseFloat(match[1]); // Output will be the number or 0.00
+    } else {
+      currentPrice = parseFloat("0.00");
+    }
+
+    // Retrieve the price associated with the checkbox
+    const checkboxPrice = parseFloat(element.getAttribute('data-price')) || 0;
+
+    // Adjust the price based on whether the checkbox is checked
+    if (element.checked) {
+      currentPrice += checkboxPrice;
+    } else {
+      currentPrice -= checkboxPrice;
+    }
+
+    // Update the displayed price
+    // priceElement.textContent = `USD ${currentPrice.toFixed(2)}`;
+  }
 </script>

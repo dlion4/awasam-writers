@@ -1,108 +1,118 @@
 {% load static %}
 
 <style>
-    .pl-1 {
-        padding-left: 10px !important;
-    }
+  .pl-1 {
+    padding-left: 10px !important;
+  }
 </style>
 
 <div class="sticky">
-    <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
-    <div class="app-sidebar">
-        <div class="side-header">
-            <a class="header-brand1" href="{% url 'home' %}">
-                <img src="{% static 'dashboard/logo/logo.png' %}" width="50" class="header-brand-img desktop-logo" alt="">
-                <img src="{% static 'dashboard/logo/logo.png' %}" width="50" class="header-brand-img light-logo1" alt="">
-            </a>
-            <!-- LOGO -->
-        </div>
-        <div class="main-sidemenu">
-            <div class="slide-left disabled" id="slide-left">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewbox="0 0 24 24">
-                    <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
-                </svg>
-            </div>
-            <ul class="side-menu pt-4">
-
-                <li class="sub-category">
-                    <a href="https://demo2.academicwritingscript.com/dashboard/subscribe" style="display: none">
-                        <span class="badge bg-secondary fs-14 me-2">none</span>
-                        <span>
-                            <p style="color: green;" id="demo2"></p>
-                        </span>
-                    </a>
-                    <span class="badge bg-secondary fs-14 me-2">Editor Account</span>
-                </li>
-
-
-                <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="{% url 'dashboard:clients:home' %}">
-                        <i class="side-menu__icon fa-light fa-grid-2"></i>
-                        <span class="side-menu__label pl-1 pl-1">Dashboard</span>
-                    </a>
-                </li>
-                <li class="slide">
-                    <a href="javascript:void(0);" class="side-menu__item has-link" data-bs-toggle="sidebar-right" data-target=".sidebar-right">
-                        <i class="side-menu__icon fa-light fa-bell animate"></i>
-                        <span class="pulse-danger "></span>
-                        <span class="side-menu__label pl-1 pl-1"> Notifications </span>
-                        <span class="badge bg-pink side-badge">0</span>
-                    </a>
-                </li>
-
-                <li class="slide">
-                    <a class="side-menu__item" data-bs-toggle="slide" href="dashboard/order.html">
-                        <i class="side-menu__icon fa-light fa-bag-shopping"></i>
-                        <span class="side-menu__label pl-1 pl-1">My Orders</span>
-                        <span class="badge bg-pink side-badge">7</span>
-                        <i class="angle hor-angle"></i>
-                    </a>
-                </li>
-
-                <div style="margin-left: 40px;">
-                    <li><a href="dashboard/order-approved.html" class="slide-item"> Approved (1)</a></li>
-                </div>
-
-                <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/messages-1.html">
-                        <i class="side-menu__icon fa-light fa-comment-dots"></i>
-                        <span class="side-menu__label pl-1">Chats</span>
-                    </a>
-                </li>
-
-                <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/writers.html">
-                        <i class="side-menu__icon fa-light fa-users"></i>
-                        <span class="side-menu__label">My Writers</span>
-                    </a>
-                </li>
-
-                <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/epayments.html">
-                        <i class="side-menu__icon fa-light fa-exchange"></i>
-                        <span class="side-menu__label">Payments</span>
-                    </a>
-                </li>
-
-                <li class="slide">
-                    <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/invoices-1.html">
-                        <i class="side-menu__icon fa-light fa-file-invoice"></i>
-                        <span class="side-menu__label">Invoices</span>
-                    </a>
-                </li>
-
-                <hr style="background-color: grey;">
-                <a class="nav-link icon theme-layout nav-link-bg layout-setting">
-                    <span class="dark-layout"> Dark Mode <i class="fa-light fa-moon" style="transform: rotate(30deg);"></i></span>
-                    <span class="light-layout"> Light Mode <i class="fa-light fa-sun"></i></span>
-                </a>
-            </ul>
-            <div class="slide-right" id="slide-right">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewbox="0 0 24 24">
-                    <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
-                </svg>
-            </div>
-        </div>
+  <div class="app-sidebar__overlay" data-bs-toggle="sidebar"></div>
+  <div class="app-sidebar">
+    <div class="side-header">
+      <a class="header-brand1" href="{% url 'home' %}">
+        <img src="{% static 'images/main/logo.svg' %}" width="50" class="header-brand-img desktop-logo" alt="">
+        <img src="{% static 'images/main/logo.svg' %}" width="50" class="header-brand-img light-logo1" alt="">
+      </a>
+      <!-- LOGO -->
     </div>
-    <!--/APP-SIDEBAR-->
+    <div class="main-sidemenu">
+      <div class="slide-left disabled" id="slide-left">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewbox="0 0 24 24">
+          <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
+        </svg>
+      </div>
+      <ul class="side-menu pt-4">
+
+        <li class="sub-category">
+          <a href="https://demo2.academicwritingscript.com/dashboard/subscribe" style="display: none">
+            <span class="badge bg-secondary fs-14 me-2">none</span>
+            <span>
+              <p style="color: green;" id="demo2"></p>
+            </span>
+          </a>
+          <span class="badge bg-secondary fs-14 me-2">Editor Account</span>
+        </li>
+
+        <li class="slide">
+          <a class="side-menu__item has-link" data-bs-toggle="slide" href="{% url 'dashboard:clients:home' %}">
+            <i class="side-menu__icon fa-light fa-grid-2"></i>
+            <span class="side-menu__label pl-1 pl-1">Dashboard</span>
+          </a>
+        </li>
+        <li class="slide">
+          <a href="javascript:void(0);" class="side-menu__item has-link" data-bs-toggle="sidebar-right" data-target=".sidebar-right">
+            <i class="side-menu__icon fa-light fa-bell animate"></i>
+            <span class="pulse-danger "></span>
+            <span class="side-menu__label pl-1 pl-1">
+              Notifications
+            </span>
+            <span class="badge bg-pink side-badge">0</span>
+          </a>
+        </li>
+
+        <li class="slide">
+          <a class="side-menu__item" data-bs-toggle="slide" href="dashboard/order.html">
+            <i class="side-menu__icon fa-light fa-bag-shopping"></i>
+            <span class="side-menu__label pl-1 pl-1">My Orders</span>
+            <span class="badge bg-pink side-badge">7</span>
+            <i class="angle hor-angle"></i>
+          </a>
+        </li>
+
+        <div style="margin-left: 40px;">
+          <li>
+            <a href="dashboard/order-approved.html" class="slide-item">
+              Approved (1)</a>
+          </li>
+        </div>
+
+        <li class="slide">
+          <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/messages-1.html">
+            <i class="side-menu__icon fa-light fa-comment-dots"></i>
+            <span class="side-menu__label pl-1">Chats</span>
+          </a>
+        </li>
+
+        <li class="slide">
+          <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/writers.html">
+            <i class="side-menu__icon fa-light fa-users"></i>
+            <span class="side-menu__label">My Writers</span>
+          </a>
+        </li>
+
+        <li class="slide">
+          <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/epayments.html">
+            <i class="side-menu__icon fa-light fa-exchange"></i>
+            <span class="side-menu__label">Payments</span>
+          </a>
+        </li>
+
+        <li class="slide">
+          <a class="side-menu__item has-link" data-bs-toggle="slide" href="dashboard/invoices-1.html">
+            <i class="side-menu__icon fa-light fa-file-invoice"></i>
+            <span class="side-menu__label">Invoices</span>
+          </a>
+        </li>
+
+        <hr style="background-color: grey;">
+        <a class="nav-link icon theme-layout nav-link-bg layout-setting">
+          <span class="dark-layout">
+            Dark Mode
+            <i class="fa-light fa-moon" style="transform: rotate(30deg);"></i>
+          </span>
+          <span class="light-layout">
+            Light Mode
+            <i class="fa-light fa-sun"></i>
+          </span>
+        </a>
+      </ul>
+      <div class="slide-right" id="slide-right">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24" viewbox="0 0 24 24">
+          <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <!--/APP-SIDEBAR-->
 </div>
